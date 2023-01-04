@@ -1,0 +1,324 @@
+var image1 = document.querySelector(".player1");
+var image2 = document.querySelector(".player2");
+var separetor = document.querySelector(".separetor");
+
+var laser1 = document.querySelectorAll('.laser1');
+var laser2 = document.querySelectorAll('.laser2');
+
+var ability1 = document.querySelectorAll('.ability1');
+var ability2 = document.querySelectorAll('.ability2');
+var ability3 = document.querySelectorAll('.ability3');
+var ability4 = document.querySelectorAll('.ability4');
+var stop1, stop2, stop3, stop4;
+
+const possibility1 = ["yo", "fire", "cSharp", "grenade"];
+const possibility2 = ["laser", "rocket"];
+
+var animation1 = assegnazioneAbilita(ability1, possibility1, 1);
+var animation2 = assegnazioneAbilita(ability2, possibility2, 1);
+var animation3 = assegnazioneAbilita(ability3, possibility1, 2);
+var animation4 = assegnazioneAbilita(ability4, possibility2, 2);
+
+//SETTAGGIO POSIZIONI INIZIALI DEI GIOCATORI
+image1.style.top = 40 + "%";
+image2.style.top = 40 + "%";
+
+image1.style.rotate = "0deg";
+image2.style.rotate = "0deg";
+
+image1.style.left = 40 + "%";
+image2.style.right = 40 + "%";
+
+
+//aggiungo la classe così setta in automatico l'animazione e la classe dell'abilità
+function settaggioClasse(element, possibility, player) {
+    element.forEach(val => {
+        val.classList.add(possibility);
+
+        //prende l'indirizzo del file e gli aggiunge il nome dell'immagine abilità
+        //così setta quella come abilità
+        val.src = window.location.pathname.split(`index.html`)[0] + "img/" + possibility + ".png";
+
+        /*.split(`index.html`)[0]
+        .split(`index.html`) ===> prende l'indirizzo della carterra corrente
+                                e arriva fino a 'index.html'
+
+        .split(`index.html`)[0] ===> quando c'è [0]
+                                prende il testo PRIMA di 'index.html'
+
+        .split(`index.html`)[0] ===> quando c'è [1]
+                                prende il testo DOPO 'index.html'
+        */
+    });
+
+    switch (possibility) {
+        case "grenade":
+            animation = "grenade" + player + " infinite 2s linear";
+            break;
+
+        case "yo":
+            animation = "fire" + player + " 1.7s linear";
+            break;
+
+        case "fire":
+            animation = "fire" + player + " 1.7s linear";
+            break;
+
+        case "laser":
+            animation = "laser" + player + " 1.7s linear";
+            break;
+
+        case "cSharp":
+            animation = "cSharp" + player + " 1.7s linear";
+            break;
+
+        default:
+            break;
+    }
+
+    return animation;
+
+}
+
+
+//ASSEGNAZIONE CLASSE E ANIMAZIONE IN BASE
+//ALL'ABILITA' SCELTA
+function assegnazioneAbilita(abilityArray, possibility, player) {
+
+    var animation;
+    var source = abilityArray[0].src;
+
+    //TRASFORMALO IN UNO CICLO WHILE!!
+    for (let i = 0; i < possibility.length; i++) {
+        if (source.includes(possibility[i]))
+            animation = settaggioClasse(abilityArray, possibility[i], player);
+    }
+
+    return animation;
+
+}
+
+function move(player, type) {
+
+    /* tolgo la sbarra di metà campo se non è ancora stata tolta */
+    if (parseInt(separetor.style.top) != 100) {
+        separetor.style.height = "0%";
+        separetor.style.top = "100%";
+    }
+
+    if (player == 1) {
+        settingStyle(image1, type, 1);
+    } else {
+        settingStyle(image2, type, 2);
+    }
+}
+
+function settingStyle(image, type, player) {
+
+    switch (type) {
+
+        case 7:
+            /* ruota sinistra  */
+            image.style.rotate = parseInt(image.style.rotate) - 20 + "deg";
+            break;
+
+        case 9:
+            /*  ruota destra  */
+            image.style.rotate = parseInt(image.style.rotate) + 20 + "deg";
+
+            break;
+
+        case 8:
+            /*  up  */
+            if (parseInt(image.style.top) != 0)
+                image.style.top = parseInt(image.style.top) - 5 + "%";
+
+            break;
+
+        case 2:
+            /*  down  */
+            if (parseInt(image.style.top) != 100)
+                image.style.top = parseInt(image.style.top) + 5 + "%";
+
+            break;
+
+        case 4:
+            /*  left  */
+            if (player == 1) {
+                if (parseInt(image.style.left) != 0) {
+                    image.style.left = parseInt(image.style.left) - 5 + "%";
+                }
+            } else {
+                if (parseInt(image.style.right) != 85)/*85 se vuoi solo fino a metà schermo intero*/ {
+                    image.style.right = parseInt(image.style.right) + 5 + "%";
+                }
+            }
+            break;
+
+        case 6:
+            /*  right  */
+            if (player == 1) {
+                if (parseInt(image.style.left) != 85)/*85 se vuoi solo fino a metà schermo intero*/ {
+                    image.style.left = parseInt(image.style.left) + 5 + "%";
+                }
+            } else {
+                if (parseInt(image.style.right) != 0)
+                    image.style.right = parseInt(image.style.right) - 5 + "%";
+            }
+            break;
+
+        case 10:
+            /*  abilità fuoco  */
+            //OTTIMIZZA PER "ABILITA' 1-3"
+
+            if (player == 1) {
+
+                eseguiFor(ability1, "top", image, 0);
+                eseguiFor(ability1 , "left" , image , 10);
+
+                for (let i = 0; i < ability1.length; i++)
+                    ability1[i].style.animation = animation1;
+                //ability1[i].style.animation = "fire1 1.7s linear";
+
+                //metti la durata del timeout uguale alla durata dell'animazione
+                stop1 = setTimeout(ability1Reset, 1700);
+
+            } else {
+
+                eseguiFor(ability3, "top", image, 0);
+                eseguiFor(ability3, "right", image, 10);
+
+                for (let i = 0; i < ability3.length; i++)
+                    ability3[i].style.animation = animation3;
+                //ability3[i].style.animation = "fire2 1.7s linear";
+
+                //metti la durata del timeout uguale alla durata dell'animazione
+                stop3 = setTimeout(ability3Reset, 2000);
+
+            }
+
+
+            break;
+
+        case 20:
+            /*  abilità laser  */
+            //OTTIMIZZA PER "ABILITA' 2-4"
+
+            if (player==1)
+                setSecondAbility(ability2 , 1);
+            else
+                setSecondAbility(ability4 , 2);
+
+            break;
+
+        default:
+            break;
+    }
+
+}
+
+function setSecondAbility(ability , player){
+
+    var source = ability[0].src;
+
+    if (source.includes("laser")) {
+        if (player == 1) {
+            ability2.forEach(val => {
+                val.style.top = Math.floor(Math.random() * 80) + 10 + "%";
+                val.style.left = Math.floor(Math.random() * 15) + 10 + "%";
+                val.style.animation = animation2;
+            })
+
+            //metti la durata del timeout uguale alla durata dell'animazione
+            stop2 = setTimeout(ability2Reset, 1700);
+
+        } else {
+            ability4.forEach(val => {
+                val.style.top = Math.floor(Math.random() * 80) + 10 + "%";
+                val.style.right = Math.floor(Math.random() * 15) + 10 + "%";
+                val.style.animation = animation4;
+            })
+
+            //metti la durata del timeout uguale alla durata dell'animazione
+            stop4 = setTimeout(ability4Reset, 1700);
+
+        }
+    } else {
+        
+    }
+
+}
+
+function eseguiFor(array, stile, image, sfasamento) {
+
+    switch (stile) {
+        case "top":
+            for (let i = 0; i < array.length; i++)
+                array[i].style.top = parseInt(image.style.top) + (i * sfasamento) + "%";
+            break;
+
+        case "right":
+            for (let i = 0; i < array.length; i++)
+                array[i].style.right = parseInt(image.style.right) + (i * sfasamento) + "%";
+            break;
+
+        case "left":
+            for (let i = 0; i < array.length; i++)
+                array[i].style.left = parseInt(image.style.left) + (i * sfasamento) + "%";
+            break;
+
+        default:
+            break;
+    }
+}
+
+function ability1Reset() {
+    for (let i = 0; i < 4; i++)
+        ability1[i].style.animation = null;
+    stopTimeout(stop1);
+}
+
+function ability3Reset() {
+    for (let i = 0; i < 4; i++)
+        ability3[i].style.animation = null;
+    stopTimeout(stop2);
+}
+
+function ability2Reset() {
+    ability2.forEach(val => {
+        val.style.animation = null;
+    });
+    stopTimeout(stop3);
+}
+
+function ability4Reset() {
+    ability4.forEach(val => {
+        val.style.animation = null;
+    });
+    stopTimeout(stop4);
+}
+
+function stopTimeout(timeoutStop) {
+    clearTimeout(timeoutStop);
+}
+
+function setLaser(laser , animation , player){
+    laser.forEach(val => {
+        val.style.top = Math.floor(Math.random() * 80) + 10 + "%";
+        val.style.left = Math.floor(Math.random() * 15) + 10 + "%";
+        val.style.animation = animation3;
+    })
+
+    if (player==1) {
+        
+    } else {
+        
+    }
+
+}
+
+function setGrenade(){}
+
+function setFirstAbility(){
+
+}

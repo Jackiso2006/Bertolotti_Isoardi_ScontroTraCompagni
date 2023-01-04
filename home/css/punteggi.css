@@ -1,0 +1,64 @@
+*{
+    margin: 0px;
+}
+
+body{
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+header > img{
+    width: 40%;
+    height: auto;
+}
+
+header, section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+}
+
+#podio{
+    width: 50%;
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#primo, #secondo, #terzo{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    justify-content: flex-start;
+    padding: 25px;
+    gap: 15px;
+    align-items: center;
+}
+
+#terzo{
+    height: 40%;
+    background-color: #CD7F32;
+}
+
+#secondo{
+    height: 60%;
+    background-color: #C0C0C0;
+
+}
+
+#primo{
+    height: 80%;
+    background-color: #FFD700;
+}
+
+#podio img{
+    height: 50%;
+    width: auto;
+}

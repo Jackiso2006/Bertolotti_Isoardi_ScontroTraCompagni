@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <!-- FONTS ICON -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- IMPLEMENTAZIONE FONT E SETTAGGIO FONTS ICON -->
+    <style>
+        @font-face {
+            font-family: "bold";
+            src: url(../font/RedHatDisplay-Bold.otf);
+        }
+
+        @font-face {
+            font-family: "regular";
+            src: url(../font/RedHatDisplay-Regular.otf);
+        }
+
+        .material-symbols-rounded {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 600,
+                'GRAD' 0,
+                'opsz' 48
+        }
+    </style>
+
+    <title>Gioco</title>
+
+</head>
+
+<body>
+
+    <header>
+        <button id="header_btn">
+            <!-- icona della casa -->
+            <span class="material-symbols-rounded">
+                home
+            </span>
+            <span>
+                Vai alla home
+            </span>
+        </button>
+
+    </header>
+    <main>
+        <div class="tutorial">
+            <div class="message">
+
+            </div>
+            <div class="form">
+                <button class="skip" onclick="skip()">Salta tutorial</button>
+                <button class="next" onclick="next()">Prossimo (5)</button>
+            </div>
+        </div>
+
+        <!-- sezione primo giocatore -->
+        <section class="first">
+
+            <!-- area di gioco -->
+            <div class="game_space">
+                <!-- BARRA DELLA VITA (opzionalmente usala in position: absolute) -->
+                <div class="life"></div>
+
+                <!-- qui ci vanno i personaggi -->
+                <!-- astronauta width: 180px; height: 180px; -->
+                <!-- trevor width: 180px; height: 250px;-->
+                <!-- incrocio il tuo sguardo width: 150px; height: 250px; -->
+                <img class="player1" src="./img/incrocio_il_tuo_sguardo.png">
+
+            </div>
+
+            <div class="control">
+                <div class="joistick">
+                    <div class="ability">
+
+                        <!-- move(1,10) == move(player1,abilità numero 1) -->
+                        <button>
+                            <!-- quando c'è incrocio il tuo sguardo
+                            l'immagine diventa  "./img/yo_ability.png" -->
+                            <img src="./img/yo_ability.png">
+                        </button>
+
+                        <!-- move(1,20) == move(player1,abilità numero 2) -->
+                        <button>
+                            <img src="./img/grenade_ability.png">
+                        </button>
+
+                    </div>
+                    <div class="movement">
+
+                        <!-- move(1,8) == move(player1,ruota_a_sinistra)  -->
+                        <button class="rotete_neg">
+                            <span class="material-symbols-rounded">
+                                rotate_left
+                            </span>
+                        </button>
+
+                        <button class="up_arrow">
+                            <span class="material-symbols-rounded">
+                                north
+                            </span>
+                        </button>
+
+                        <button class="rotete_neg">
+                            <span class="material-symbols-rounded">
+                                rotate_right
+                            </span>
+                        </button>
+
+                        <button class="left_arrow">
+                            <span class="material-symbols-rounded">
+                                west
+                            </span>
+                        </button>
+
+                        <button class="down_arrow">
+                            <span class="material-symbols-rounded">
+                                south
+                            </span>
+                        </button>
+
+                        <button class="right_arrow">
+                            <span class="material-symbols-rounded">
+                                east
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- LINEA BIANCA CHE SEPARA GIOCATORE 1 E GIOCATORE 2 -->
+        <div class="separetor"></div>
+        <!-- SCRIPT DEL TUTORIAL -->
+        <script src="./js/tutorial.js"></script>
+
+        <!-- sezione secondo giocatore -->
+        <section class="second">
+
+            <!-- area di gioco -->
+            <div class="game_space">
+                <!-- BARRA DELLA VITA (opzionalmente usala in position: absolute) -->
+                <div class="life"></div>
+
+                <!-- qui ci vanno i personaggi e le abilità -->
+                <img class="player2" src="./img/astronaut.png">
+                
+
+            </div>
+
+            <div class="control">
+                <div class="joistick">
+                    <div class="ability">
+
+                        <button>
+                            <img src="./img/fire_ability.png">
+                        </button>
+
+                        <button>
+                            <img src="./img/cs_ability.png">
+                        </button>
+
+                    </div>
+                    <div class="movement">
+
+                        <button class="rotete_neg">
+                            <span class="material-symbols-rounded">
+                                rotate_left
+                            </span>
+                        </button>
+
+                        <button class="up_arrow">
+                            <span class="material-symbols-rounded">
+                                north
+                            </span>
+                        </button>
+
+                        <button class="rotete_neg">
+                            <span class="material-symbols-rounded">
+                                rotate_right
+                            </span>
+                        </button>
+
+                        <button class="left_arrow">
+                            <span class="material-symbols-rounded">
+                                west
+                            </span>
+                        </button>
+
+                        <button class="down_arrow">
+                            <span class="material-symbols-rounded">
+                                south
+                            </span>
+                        </button>
+
+                        <button class="right_arrow">
+                            <span class="material-symbols-rounded">
+                                east
+                            </span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</body>
+
+</html>
