@@ -1,31 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Questo è un fantastimitico gioco dove puoi combattere fra personaggi con fantastiche abilità a tua scelta! Prova Endor Works e te ne innamorerai!!">
+    <meta name="description"
+        content="Questo è un fantastimitico gioco dove puoi combattere fra personaggi con fantastiche abilità a tua scelta! Prova Endor Works e te ne innamorerai!!">
     <meta name="keywords" content="EndorWorks GiocoMultigiocatore GiocoConAbilità MigliorSparatutto">
     <meta name="author" content="Bertolotti & Isoardi">
     <meta property="og:title" content="Endor Works - Il gioco multigiocatore per eccellenza">
     <meta property="og:site_name" content="endor.works">
     <meta property="og:url" content="https://endorworks.com">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./img/icon.png">
+    <link rel="icon" href="../img/icon.png">
     <title>Chose your character</title>
 </head>
 
 <body>
     <form action="../game/game.html" method="get">
-        <section id="personaggio1">
-            <img src="./img/scegliIlPersonaggio.png" style="max-width: 25%; height: auto;">
+        <section id="pl1">
+            <img src="../img/scegliIlPersonaggio.png" style="max-width: 25%; height: auto;">
+
             <span>PLAYER 1</span>
+
             <div style="margin-top: 0px;">
+
                 <label class="card desGabibbo">
                     <input type="radio" name="pl1" value="gabibbo">
                     <div class="picture">
-                        <img src="./img/gabibbo.png">
+                        <img src="../img/gabibbo.png">
                     </div>
                     <div class="description">
                         <h3>Gabibbo</h3>
@@ -33,10 +41,11 @@
                             ha dalla sua parte tutto il popolo di striscia ma gli basterà la tifoseria per vincere?</p>
                     </div>
                 </label>
+
                 <label class="card desIncrocio">
                     <input type="radio" name="pl1" value="timmy">
                     <div class="picture">
-                        <img src="./img/timmy.png">
+                        <img src="../img/timmy.png" style="max-width: 50%;">
                     </div>
                     <div class="description">
                         <h3>Timmy De Pizza</h3>
@@ -45,10 +54,11 @@
                             queste sfide?</p>
                     </div>
                 </label>
+
                 <label class="card desGerry">
                     <input type="radio" name="pl1" value="gerry">
                     <div class="picture">
-                        <img src="./img/gerry.png">
+                        <img src="../img/gerry.png">
                     </div>
                     <div class="description">
                         <h3>Gerry Scotty</h3>
@@ -57,10 +67,11 @@
                         </p>
                     </div>
                 </label>
+
                 <label class="card desTrevor">
                     <input type="radio" name="pl1" value="tervor">
                     <div class="picture">
-                        <img src="./img/trevor.png">
+                        <img src="../img/trevor.png">
                     </div>
                     <div class="description">
                         <h3>Trevor</h3>
@@ -69,10 +80,197 @@
                         </p>
                     </div>
                 </label>
+
                 <label class="card desSarim">
                     <input type="radio" name="pl1" value="sarim">
                     <div class="picture">
-                        <img src="./img/sarim.png">
+                        <img src="../img/sarim.png">
+                    </div>
+                    <div class="description">
+                        <h3>Sarim Akhtar</h3>
+                        <p>Non molti lo conoscono ma lui è molto famoso nel web per la sua delusione,
+                            probabilmente la sua squadra di cricket ha perso la finale, ma lui non perderà questa sfida
+                        </p>
+                    </div>
+                </label>
+
+            </div>
+
+            <label>
+                <input type="radio">
+                Conferma
+            </label>
+        </section>
+
+        <section id="ab1">
+            <img src="./img/scegliLeAbilità.png" style="max-width: 25%; height: auto;">
+
+            <span>PLAYER 1</span>
+
+            <div style="margin-top: 0px;">
+                <div>
+                    <label class="card desCSharp">
+                        <input type="radio" name="ab1" value="cSharp">
+                        <div class="picture">
+                            <img src="../img/cSharp.png">
+                        </div>
+                        <div class="description">
+                            <h3>C#</h3>
+                            <p>
+                                Linguaggio molto usato che potrebbe permettere al tuo personaggio di cancellare
+                                definitivamente
+                                l'avversario con un semplice <b style="color: #3d8553;">Console</b>.<b
+                                    style="color: #c3ca8b;">Clear</b><b style="color: #99a19a;">()</b> al posto giusto
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desFire">
+                        <input type="radio" name="ab1" value="fire">
+                        <div class="picture">
+                            <img src="../img/fire.png">
+                        </div>
+                        <div class="description">
+                            <h3>Fuoco</h3>
+                            <p>
+                                La prima difesa della storia, ha permesso l'evoluzione di tutta l'umanità, sembra una
+                                cosa
+                                innocua
+                                ma in questo gioco ha un'effetto negativo, sull'avversario ovviamente
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desGrenade">
+                        <input type="radio" name="ab1" value="grenade">
+                        <div class="picture">
+                            <img src="../img/grenade.png">
+                        </div>
+                        <div class="description">
+                            <h3>Granata</h3>
+                            <p>
+                                Un'arma di distruzione di massa, spesso vista solo nei film ma oggi può essere tua.
+                                E no, non siamo in una pubblicità in america, puoi usarla veramente amche qua
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desYo">
+                        <input type="radio" name="ab1" value="yo">
+                        <div class="picture">
+                            <img src="../img/yo.png">
+                        </div>
+                        <div class="description">
+                            <h3>YO!</h3>
+                            <p>
+                                Si conoscono solo poche leggende riguardo a questa mossa, si narra che sia stata
+                                inventata
+                                da Pietro Storti e dalla sua squadra di football, sarà utile in questa sfida?
+                            </p>
+                        </div>
+                    </label>
+                </div>
+                <div>
+                    <label class="card desLaser">
+                        <input type="radio" name="ab2" value="laser">
+                        <div class="picture">
+                            <img src="../img/laser.png">
+                        </div>
+                        <div class="description">
+                            <h3>Laser</h3>
+                            <p>
+                                Hai capito bene, non ci fanno solo le spade con questo materiale, puoi avere dalla
+                                tua parte decine di spari laser che danno una grande mano nelle battaglie
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desRocket">
+                        <input type="radio" name="ab2" value="rocket">
+                        <div class="picture">
+                            <img src="../img/rocket.png">
+                        </div>
+                        <div class="description">
+                            <h3>Rocket</h3>
+                            <p>
+                                É uscito direttamente dall'arena di Clash Royale per poter essere l'arma più utlizzata
+                                in questa sfida, vuoi realizzare il sogno della sua vita e lanciarne qualcuno contro il
+                                tuo
+                                avversario?
+                            </p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <label>
+                <input type="radio" class="confirm">
+                Conferma
+            </label>
+        </section>
+
+        <section id="pl2">
+            <img src="../img/scegliIlPersonaggio.png" style="max-width: 25%; height: auto;">
+
+            <span>PLAYER 2</span>
+
+            <div style="margin-top: 0px;">
+
+                <label class="card desGabibbo">
+                    <input type="radio" name="pl2" value="gabibbo">
+                    <div class="picture">
+                        <img src="../img/gabibbo.png">
+                    </div>
+                    <div class="description">
+                        <h3>Gabibbo</h3>
+                        <p>Non c'è molto da dire per questo personaggio, è la mascotte ufficiale di striscia la notizia,
+                            ha dalla sua parte tutto il popolo di striscia ma gli basterà la tifoseria per vincere?</p>
+                    </div>
+                </label>
+
+                <label class="card desIncrocio">
+                    <input type="radio" name="pl2" value="timmy">
+                    <div class="picture">
+                        <img src="../img/timmy.png" style="max-width: 50%;">
+                    </div>
+                    <div class="description">
+                        <h3>Timmy De Pizza</h3>
+                        <p>Sembra un innoquo tiktoker, ma quando incrocia il tuo sguardo rimani come paralizzato.
+                            Il suo maestro Pietro Storti gli ha insegnato quest'arte, sarà capace di applicarla in
+                            queste sfide?</p>
+                    </div>
+                </label>
+
+                <label class="card desGerry">
+                    <input type="radio" name="pl2" value="gerry">
+                    <div class="picture">
+                        <img src="../img/gerry.png">
+                    </div>
+                    <div class="description">
+                        <h3>Gerry Scotty</h3>
+                        <p>Non si conoscono bene le sue origini, se arrivi dalla terra o da qualche pianeta alieno,
+                            ma Gerry è una delle persone più famose in italia, gli sarà utile in questo gioco?
+                        </p>
+                    </div>
+                </label>
+
+                <label class="card desTrevor">
+                    <input type="radio" name="pl2" value="tervor">
+                    <div class="picture">
+                        <img src="../img/trevor.png">
+                    </div>
+                    <div class="description">
+                        <h3>Trevor</h3>
+                        <p>Arriva direttamente da GTA V, ha chiesto un permesso alla rockstar per poter partecipare
+                            a questo gioco, ma sarà in grado di superare questa missione?
+                        </p>
+                    </div>
+                </label>
+
+                <label class="card desSarim">
+                    <input type="radio" name="pl2" value="sarim">
+                    <div class="picture">
+                        <img src="../img/sarim.png">
                     </div>
                     <div class="description">
                         <h3>Sarim Akhtar</h3>
@@ -82,315 +280,189 @@
                     </div>
                 </label>
             </div>
+
             <label>
                 <input type="radio">
                 Conferma
             </label>
         </section>
-        <section id="personaggio2">
-            <img src="./img/scegliIlPersonaggio.png" style="max-width: 25%; height: auto;">
-            <span>PLAYER 2</span>
-            <div style="margin-top: 0px;">
-                <label class="card desGabibbo">
-                    <input type="radio" name="pl1" value="gabibbo">
-                    <div class="picture">
-                        <img src="./img/gabibbo.png">
-                    </div>
-                    <div class="description">
-                        <h3>Gabibbo</h3>
-                        <p>Non c'è molto da dire per questo personaggio, è la mascotte ufficiale di striscia la notizia,
-                            ha dalla sua parte tutto il popolo di striscia ma gli basterà la tifoseria per vincere?</p>
-                    </div>
-                </label>
-                <label class="card desIncrocio">
-                    <input type="radio" name="pl1" value="timmy">
-                    <div class="picture">
-                        <img src="./img/timmy.png">
-                    </div>
-                    <div class="description">
-                        <h3>Timmy De Pizza</h3>
-                        <p>Sembra un innoquo tiktoker, ma quando incrocia il tuo sguardo rimani come paralizzato.
-                            Il suo maestro Pietro Storti gli ha insegnato quest'arte, sarà capace di applicarla in
-                            queste sfide?</p>
-                    </div>
-                </label>
-                <label class="card desGerry">
-                    <input type="radio" name="pl1" value="gerry">
-                    <div class="picture">
-                        <img src="./img/gerry.png">
-                    </div>
-                    <div class="description">
-                        <h3>Gerry Scotty</h3>
-                        <p>Non si conoscono bene le sue origini, se arrivi dalla terra o da qualche pianeta alieno,
-                            ma Gerry è una delle persone più famose in italia, gli sarà utile in questo gioco?
-                        </p>
-                    </div>
-                </label>
-                <label class="card desTrevor">
-                    <input type="radio" name="pl1" value="tervor">
-                    <div class="picture">
-                        <img src="./img/trevor.png">
-                    </div>
-                    <div class="description">
-                        <h3>Trevor</h3>
-                        <p>Arriva direttamente da GTA V, ha chiesto un permesso alla rockstar per poter partecipare
-                            a questo gioco, ma sarà in grado di superare questa missione?
-                        </p>
-                    </div>
-                </label>
-                <label class="card desSarim">
-                    <input type="radio" name="pl1" value="sarim">
-                    <div class="picture">
-                        <img src="./img/sarim.png">
-                    </div>
-                    <div class="description">
-                        <h3>Sarim Akhtar</h3>
-                        <p>Non molti lo conoscono ma lui è molto famoso nel web per la sua delusione,
-                            probabilmente la sua squadra di cricket ha perso la finale, ma lui non perderà questa sfida
-                        </p>
-                    </div>
-                </label>
-            </div>
-            <label>
-                <input type="radio">
-                Conferma
-            </label>
-        </section>
-        <section id="abilita1">
+
+        <section id="ab2">
             <img src="./img/scegliLeAbilità.png" style="max-width: 25%; height: auto;">
+
             <span>PLAYER 1</span>
+
             <div style="margin-top: 0px;">
-                <label class="card" class="desCSharp">
-                    <input type="radio" name="ab1" value="cSharp">
-                    <div class="picture">
-                        <img src="./img/cSharp.png">
-                    </div>
-                    <div class="description">
-                        <h3>C#</h3>
-                        <p>
-                            Linguaggio molto usato che potrebbe permettere al tuo personaggio di cancellare
-                            definitivamente
-                            l'avversario con un semplice <b style="color: #3d8553;">Console</b>.<b
-                                style="color: #c3ca8b;">Clear</b><b style="color: #99a19a;">()</b> al posto giusto
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desFire">
-                    <input type="radio" name="ab1" value="fire">
-                    <div class="picture">
-                        <img src="./img/fire.png">
-                    </div>
-                    <div class="description">
-                        <h3>Fuoco</h3>
-                        <p>
-                            La prima difesa della storia, ha permesso l'evoluzione di tutta l'umanità, sembra una cosa
-                            innocua
-                            ma in questo gioco ha un'effetto negativo, sull'avversario ovviamente
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desGrenade">
-                    <input type="radio" name="ab1" value="grenade">
-                    <div class="picture">
-                        <img src="./img/grenade.png">
-                    </div>
-                    <div class="description">
-                        <h3>Granata</h3>
-                        <p>
-                            Un'arma di distruzione di massa, spesso vista solo nei film ma oggi può essere tua.
-                            E no, non siamo in una pubblicità in america, puoi usarla veramente amche qua
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desYo">
-                    <input type="radio" name="ab1" value="yo">
-                    <div class="picture">
-                        <img src="./img/yo.png">
-                    </div>
-                    <div class="description">
-                        <h3>YO!</h3>
-                        <p>
-                            Si conoscono solo poche leggende riguardo a questa mossa, si narra che sia stata inventata
-                            da Pietro Storti e dalla sua squadra di football, sarà utile in questa sfida?
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desLaser">
-                    <input type="radio" name="ab2" value="laser">
-                    <div class="picture">
-                        <img src="./img/laser.png">
-                    </div>
-                    <div class="description">
-                        <h3>Laser</h3>
-                        <p>
-                            Hai capito bene, non ci fanno solo le spade con questo materiale, puoi avere dalla
-                            tua parte decine di spari laser che danno una grande mano nelle battaglie
-                        </p>
-                    </div>
-                </label>
-                <label class="card desRocket">
-                    <input type="radio" name="ab2" value="rocket">
-                    <div class="picture">
-                        <img src="./img/rocket.png">
-                    </div>
-                    <div class="description">
-                        <h3>Rocket</h3>
-                        <p>
-                            É uscito direttamente dall'arena di Clash Royale per poter essere l'arma più utlizzata
-                            in questa sfida, vuoi realizzare il sogno della sua vita e lanciarne qualcuno contro il tuo
-                            avversario?
-                        </p>
-                    </div>
-                </label>
+
+                <div>
+                    <label class="card desCSharp">
+                        <input type="radio" name="ab1" value="cSharp">
+                        <div class="picture">
+                            <img src="../img/cSharp.png">
+                        </div>
+                        <div class="description">
+                            <h3>C#</h3>
+                            <p>
+                                Linguaggio molto usato che potrebbe permettere al tuo personaggio di cancellare
+                                definitivamente
+                                l'avversario con un semplice <b style="color: #3d8553;">Console</b>.<b
+                                    style="color: #c3ca8b;">Clear</b><b style="color: #99a19a;">()</b> al posto giusto
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desFire">
+                        <input type="radio" name="ab1" value="fire">
+                        <div class="picture">
+                            <img src="../img/fire.png">
+                        </div>
+                        <div class="description">
+                            <h3>Fuoco</h3>
+                            <p>
+                                La prima difesa della storia, ha permesso l'evoluzione di tutta l'umanità, sembra una
+                                cosa
+                                innocua
+                                ma in questo gioco ha un'effetto negativo, sull'avversario ovviamente
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desGrenade">
+                        <input type="radio" name="ab1" value="grenade">
+                        <div class="picture">
+                            <img src="../img/grenade.png">
+                        </div>
+                        <div class="description">
+                            <h3>Granata</h3>
+                            <p>
+                                Un'arma di distruzione di massa, spesso vista solo nei film ma oggi può essere tua.
+                                E no, non siamo in una pubblicità in america, puoi usarla veramente amche qua
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desYo">
+                        <input type="radio" name="ab1" value="yo">
+                        <div class="picture">
+                            <img src="../img/yo.png">
+                        </div>
+                        <div class="description">
+                            <h3>YO!</h3>
+                            <p>
+                                Si conoscono solo poche leggende riguardo a questa mossa, si narra che sia stata
+                                inventata
+                                da Pietro Storti e dalla sua squadra di football, sarà utile in questa sfida?
+                            </p>
+                        </div>
+                    </label>
+                </div>
+                <div>
+
+                    <label class="card desLaser">
+                        <input type="radio" name="ab2" value="laser">
+                        <div class="picture">
+                            <img src="../img/laser.png">
+                        </div>
+                        <div class="description">
+                            <h3>Laser</h3>
+                            <p>
+                                Hai capito bene, non ci fanno solo le spade con questo materiale, puoi avere dalla
+                                tua parte decine di spari laser che danno una grande mano nelle battaglie
+                            </p>
+                        </div>
+                    </label>
+
+                    <label class="card desRocket">
+                        <input type="radio" name="ab2" value="rocket">
+                        <div class="picture">
+                            <img src="../img/rocket.png">
+                        </div>
+                        <div class="description">
+                            <h3>Rocket</h3>
+                            <p>
+                                É uscito direttamente dall'arena di Clash Royale per poter essere l'arma più utlizzata
+                                in questa sfida, vuoi realizzare il sogno della sua vita e lanciarne qualcuno contro il
+                                tuo
+                                avversario?
+                            </p>
+                        </div>
+                    </label>
+                </div>
             </div>
+
             <label>
                 <input type="radio" class="confirm">
                 Conferma
             </label>
         </section>
-        <section id="abilita2">
-            <img src="./img/scegliLeAbilità.png" style="max-width: 25%; height: auto;">
-            <span>PLAYER 2</span>
-            <div style="margin-top: 0px;">
-                <label class="card" class="desCSharp">
-                    <input type="radio" name="ab1" value="cSharp">
-                    <div class="picture">
-                        <img src="./img/cSharp.png">
-                    </div>
-                    <div class="description">
-                        <h3>C#</h3>
-                        <p>
-                            Linguaggio molto usato che potrebbe permettere al tuo personaggio di cancellare
-                            definitivamente
-                            l'avversario con un semplice <b style="color: #3d8553;">Console</b>.<b
-                                style="color: #c3ca8b;">Clear</b><b style="color: #99a19a;">()</b> al posto giusto
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desFire">
-                    <input type="radio" name="ab1" value="fire">
-                    <div class="picture">
-                        <img src="./img/fire.png">
-                    </div>
-                    <div class="description">
-                        <h3>Fuoco</h3>
-                        <p>
-                            La prima difesa della storia, ha permesso l'evoluzione di tutta l'umanità, sembra una cosa
-                            innocua
-                            ma in questo gioco ha un'effetto negativo, sull'avversario ovviamente
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desGrenade">
-                    <input type="radio" name="ab1" value="grenade">
-                    <div class="picture">
-                        <img src="./img/grenade.png">
-                    </div>
-                    <div class="description">
-                        <h3>Granata</h3>
-                        <p>
-                            Un'arma di distruzione di massa, spesso vista solo nei film ma oggi può essere tua.
-                            E no, non siamo in una pubblicità in america, puoi usarla veramente amche qua
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desYo">
-                    <input type="radio" name="ab1" value="yo">
-                    <div class="picture">
-                        <img src="./img/yo.png">
-                    </div>
-                    <div class="description">
-                        <h3>YO!</h3>
-                        <p>
-                            Si conoscono solo poche leggende riguardo a questa mossa, si narra che sia stata inventata
-                            da Pietro Storti e dalla sua squadra di football, sarà utile in questa sfida?
-                        </p>
-                    </div>
-                </label>
-                <label class="card" class="desLaser">
-                    <input type="radio" name="ab2" value="laser">
-                    <div class="picture">
-                        <img src="./img/laser.png">
-                    </div>
-                    <div class="description">
-                        <h3>Laser</h3>
-                        <p>
-                            Hai capito bene, non ci fanno solo le spade con questo materiale, puoi avere dalla
-                            tua parte decine di spari laser che danno una grande mano nelle battaglie
-                        </p>
-                    </div>
-                </label>
-                <label class="card desRocket">
-                    <input type="radio" name="ab2" value="rocket">
-                    <div class="picture">
-                        <img src="./img/rocket.png">
-                    </div>
-                    <div class="description">
-                        <h3>Rocket</h3>
-                        <p>
-                            É uscito direttamente dall'arena di Clash Royale per poter essere l'arma più utlizzata
-                            in questa sfida, vuoi realizzare il sogno della sua vita e lanciarne qualcuno contro il tuo
-                            avversario?
-                        </p>
-                    </div>
-                </label>
-            </div>
-            <label>
-                <input type="radio" class="confirm">
-                Conferma
-            </label>
-        </section>
+
         <section id="location">
             <img src="./img/scegliIlLuogo.png" style="max-width: 25%; height: auto;">
-            <div>
-                <label class="luoghi" id="luogo1">
-                    <input type="radio" name="bkg" value="backDesert">
-                    <div class="picture">
+            <div class="containerLuogo">
+                <div id="mainPageLuogo">
+                    <a class="frecciaSX"><</a>
+        
+                    <div class="slidesLuogo visibile">
                         <img src="./img/backDesert.jpg">
                     </div>
-                </label>
-                <label class="luoghi" id="luogo2">
-                    <input type="radio" name="bkg" value="blackSpace">
-                    <div class="picture">
+        
+                    <div class="slidesLuogo">
                         <img src="./img/blackSpace.jpg">
                     </div>
-                </label>
-                <label class="luoghi" id="luogo3">
-                    <input type="radio" name="bkg" value="citySquare">
-                    <div class="picture">
+        
+                    <div class="slidesLuogo">
                         <img src="./img/citySquare.jpg">
                     </div>
-                </label>
-                <label class="luoghi" id="luogo4">
-                    <input type="radio" name="bkg" value="backDesert">
-                    <div class="picture">
+        
+                    <div class="slidesLuogo">
                         <img src="./img/forestLake.jpg">
                     </div>
-                </label>
-                <label class="luoghi" id="luogo5">
-                    <input type="radio" name="bkg" value="gtaNewRoad">
-                    <div class="picture">
+        
+                    <div class="slidesLuogo">
                         <img src="./img/gtaNewRoad.jpg">
                     </div>
-                </label>
-                <label class="luoghi" id="luogo6">
-                    <input type="radio" name="bkg" value="gtaVgroove">
-                    <div class="picture">
+        
+                    <div class="slidesLuogo">
                         <img src="./img/gtaVgroove.jpg">
                     </div>
-                </label>
-                <label class="luoghi" id="luogo7">
-                    <input type="radio" name="bkg" value="NYCbigRoad">
-                    <div class="picture">
+
+                    <div class="slidesLuogo">
                         <img src="./img/NYCbigRoad.jpg">
                     </div>
-                </label>
-                <label class="luoghi" id="luogo8">
-                    <input type="radio" name="bkg" value="springfild">
-                    <div class="picture">
+
+                    <div class="slidesLuogo">
                         <img src="./img/springfild.jpg">
                     </div>
-                </label>
+        
+                    <a class="frecciaDX">></a>
+                </div>
+                
+                <div class="demoLuoghi">
+                    <div>
+                        <img src="./img/backDesert.jpg">
+                    </div>
+                    <div>
+                        <img src="./img/blackSpace.jpg">
+                    </div>
+                    <div>
+                        <img src="./img/citySquare.jpg">
+                    </div>
+                    <div>
+                        <img src="./img/forestLake.jpg">
+                    </div>
+                    <div>
+                        <img src="./img/gtaNewRoad.jpg">
+                    </div>
+                    <div>
+                        <img src="./img/gtaVgroove.jpg">
+                    </div>
+                    <div>
+                        <img src="./img/NYCbigRoad.jpg">
+                    </div>
+                    <div>
+                        <img src="./img/springfild.jpg">
+                    </div>
+                </div>
             </div>
             
             <label>
@@ -400,6 +472,28 @@
             </label>
         </section>
     </form>
+
+    <div id="settings">
+        <a href="../settings/crediti.html?bkg=circuitBkg&ver=Scelta">
+            <img src="../img/settings.png">
+        </a>
+        <span>
+            Vai alle <br> impostazioni
+            <label>
+                <input type="radio">
+                <span class="material-symbols-rounded">
+                    close
+                </span>
+            </label>
+        </span>
+    </div>
+
+    <a id="back" href="./index.html">
+        <span class="material-symbols-rounded">
+            west
+        </span>
+    </a>
+
 </body>
 
 </html>

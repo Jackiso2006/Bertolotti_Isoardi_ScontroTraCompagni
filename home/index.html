@@ -1,33 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Questo è un fantastimitico gioco dove puoi combattere fra personaggi con fantastiche abilità a tua scelta! Prova Endor Works e te ne innamorerai!!">
+    <meta name="description"
+        content="Questo è un fantastimitico gioco dove puoi combattere fra personaggi con fantastiche abilità a tua scelta! Prova Endor Works e te ne innamorerai!!">
     <meta name="keywords" content="EndorWorks GiocoMultigiocatore GiocoConAbilità MigliorSparatutto">
     <meta name="author" content="Bertolotti & Isoardi">
     <meta property="og:title" content="Endor Works - Il gioco multigiocatore per eccellenza">
     <meta property="og:site_name" content="endor.works">
     <meta property="og:url" content="https://endorworks.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./img/icon.png">
+    <link rel="stylesheet" href="../commonCss/animation.css">
+
+    <link rel="icon" href="../img/icon.png">
     <title>Endor Works</title>
 </head>
+
 <body>
-    <header>
-        <img src="./img/logo.png">
-    </header>
-    <section>
-        <form action="./scelta.html">
-            <p>Inserisci il nome che verrà visualizzato sulla classifica, <br>
-                se sarai in grado di battere tutti i tuoi avversari</p>
-            <div id="registrazione">
-                <input type="text" placeholder="Giocatore1" id="user">
-                <input type="text" placeholder="Giocatore2" id="user">
-            </div>
-            <input type="submit" value="INIZIA!">
-        </form>
+    <main>
+        <header>
+            <img src="../img/logo.png">
+        </header>
+        <section>
+            <form action="./scelta.html" id="registrazioneForm" method="get">
+                <p>Inserisci il nome che verrà visualizzato sulla classifica, <br>
+                    se sarai in grado di battere i tuoi avversari</p>
+                <div id="registrazione">
+                    <input type="text" placeholder="Giocatore 1">
+                    <input type="text" placeholder="Giocatore 2">
+                </div>
+                <button type="submit">
+                    INIZIA!
+                </button>
+            </form>
+        </section>
+        <div id="settings">
+            <a href="../settings/crediti.html?bkg=circuitBkg&ver=Homepg">
+                <img src="../img/settings.png">
+            </a>
+            <span>
+                Vai alle <br> impostazioni
+                <label>
+                    <input type="radio">
+                    <span class="material-symbols-rounded">
+                        close
+                    </span>
+                </label>
+            </span>
+        </div>
+    </main>
+
+    <section id="sectionAnimation">
+        <div id="circle">
+            <span></span>
+            <div class="miniCircle"></div>
+            <div class="miniCircle"></div>
+            <div class="miniCircle"></div>
+            <div class="miniCircle"></div>
+        </div>
     </section>
+
+    <!-- questo script imposta la riproduzione dell'animazione di caricamento SOLAMENTE
+    la prima volta che è stata ricaricata la pagina -->
+    <script>
+        /* prima volta che è stata caricata la pagina non assegno nulla e dopo la assegno
+           così quando riesegue il controllo vede che è già stata assegnata allo  non
+           riproduce l'animazione iniziale */
+
+        if (sessionStorage.alreadyLoaded == undefined)
+            sessionStorage.alreadyLoaded = "true";
+        else
+            document.getElementById("sectionAnimation").style.display = "none";
+    </script>
+
 </body>
+
 </html>
