@@ -1,3 +1,4 @@
+
 /* IMPLEMENTAZIONE FONT */
 @font-face {
     font-family: "bold";
@@ -90,29 +91,19 @@ span.material-symbols-rounded{
     height: fit-content;
 }
 
-body{
+body {
     margin: 0;
     overflow: hidden;
     width: 100%;
     height: 100vh;
+    background-image: url("../../img/gtaVgroove.jpg");
     background-color: rgba(6, 6, 6, 0.6);
     background-position: center;
     background-size: cover;
 }
 
-.lightMode{
-    background-color: transparent;
-    color: aliceblue;
-    border-color: aliceblue;
-}
-
-.darkMode{
-    background-color: rgb(6, 6, 6);
-    color: aliceblue;
-}
-
 header {
-    position: absolute;
+    position: fixed;
     z-index: 4;
     top: -110px;
     display: flex;
@@ -120,6 +111,8 @@ header {
     justify-content: space-around;
     width: 100%;
     height: 120px;
+    background-image: url("../../img/blackground_logo.png");
+    background-size: contain;  
     transition: top 0.7s;
 }
 
@@ -127,17 +120,7 @@ header:hover {
     top: 0px;
 }
 
-.lightHeader{
-    background-color: transparent;
-    background-image: none;
-}
-
-.darkHeader{
-    background-image: url("../../img/blackground_logo.png");
-    background-size: contain;
-}
-
-div.volume{
+header > div{
     width: fit-content;
     height: 100%;
     display: flex;
@@ -153,6 +136,8 @@ header button , header a{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: aliceblue;
+    background-color: rgb(6, 6, 6);
 }
 
 #volumeBtn:focus + #volumeRange , #volumeRange:hover{
@@ -162,13 +147,17 @@ header button , header a{
 #volumeRange{
     display: none;
     justify-content: center;
+    color: aliceblue;
 }
 
 #volumeRange > span{
-    color: aliceblue;
     font-size: 20px;
     padding: 0px 5px;
 }
+
+/*
+riesco a modificare le impostazioni base del tag <input type="range">
+browser tramite la pseudo-classe -webkit */
 
 /*  BARRA DEL RANGE  */
 #volumeValue::-webkit-slider-runnable-track {
@@ -185,7 +174,21 @@ header button , header a{
     cursor: pointer;
 }
 
+/* 
+    pt.1 nojava.css
+    usando la pseudo-classe ::before e l'attributo (content:"")
+    riesco a modificare il contenuto dell'elemento immediatamente prima 
+*/
+header >:last-child > span::before{
+    content: "light_mode";
+}
+
+header >:last-child:focus > span::before{
+    content: "dark_mode";
+}
+
 /*  FINE PARTE RELATIVA ALL'HEADER  */
+
 
 
 /* PARTE RELATIVA AL MENU */
@@ -206,12 +209,11 @@ body:has(header > #pauseBtn:focus , #menu:hover) > #menu{
     animation: show 0.3s linear;
 }
 
-@keyframes show { from{opacity: 0;} to{opacity: 1;} }
-
 header:has(> #pauseBtn:focus , #menu:hover){
     top: -110px;
 }
 
+@keyframes show { from{opacity: 0;} to{opacity: 1;} }
 
 #menu{
     position: fixed;
@@ -269,25 +271,14 @@ header:has(> #pauseBtn:focus , #menu:hover){
 /* FINE PARTE RELATIVA AL MENU */
 
 
-/*SCHERMO*/
-main{
+/* SCHERMO */
+main {
     position: absolute;
     z-index: 1;
     display: flex;
     width: 100%;
     height: 100vh;
 }
-
-
-/* LINEA CHE SEPARA PLAYER 1-2 */
-#separator {
-    position: absolute;
-    z-index: 3;
-    background-color: rgba(240, 248, 255, 0.5);
-    left: 49.8%;
-    top: 0%;
-}
-
 
 /*  SCHERMO DIVISO IN 2 SECTION  */
 section {
@@ -297,22 +288,31 @@ section {
     flex-direction: column;
 }
 
+/* LINEA SEPARATORE GIOCATORE 1-2*/
+#separator {
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    width: 5px;
+    background-color: rgba(240, 248, 255, 0.5);
+    left: 49.8%;
+    top: 0%;
+}
 
-/* BARRA DELLA VITA */
+/*  BARRA DELLA VITA  */
 div.life {
     position: absolute;
     z-index: 3;
     top: 20px;
     width: 400px;
     height: 10px;
-    border: 5px aliceblue solid;
+    border: 5px lightgrey solid;
     border-radius: 10px;
     background-color: red;
 }
 
 /* CONTROLLY E JOYSTICK */
 .control {
-    position: relative;
     z-index: 3;
     display: flex;
     align-items: center;
@@ -325,9 +325,11 @@ div.life {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: fit-content;
     height: 180px;
-    border: 5px rgba(229, 243, 255, 0.7) solid;
     border-radius: 50px;
+    border: 5px aliceblue solid;
+    background-color: rgba(6, 6, 6, 0.6);
 }
 
 .ability {
@@ -374,122 +376,49 @@ div.life {
 }
 
 .movement > button:active{
-    background-color: rgb(150, 150, 150);
+    background-color: rgb(140, 140, 140);
 }
 
 .movement span.material-symbols-rounded {
     font-size: 30px;
 }
 
-
-/*  QUESTA SEZIONE RIGUARDA ALLA FINESTRA DEL TUTORIAL  */
-/*  guarda pt.1 tutorial.js  */
-
-.tutorialDark{
-    background-color: rgb(6, 6, 6);
-    border-color: aliceblue;
-    color: aliceblue;
-}
-
-.tutorialLight{
-    background-color: aliceblue;
-    border-color: black;
-    color: black;
-}
-
-#tutorial {
-    position: absolute;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-    height: 180px;
-    border: 2px solid;
-    border-radius: 10px;
-    transition: top 0.5s linear, left 0.5s linear, bottom 0.5s linear, right 0.5s linear;
-}
-
-#messageTutorial{
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 20px;
-    font-family: "regular";
-    font-size: 20px;
-}
-
-/*  QUESTO STILE SI ATTIVA SOLO QUANDO IL TUTORIAL E' COMPLETATO guarda pt 2 tutorial.js  */
-#messageTutorial > span {
-    font-family: "bold";
-}
-
-#formTutorial {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 50px;
-    width: 100%;
-    border-top: 2px solid;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-
-#formTutorial > button {
-    height: 35px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-family: "bold";
-    border: 2px black solid;
-}
-
-#next {
-    width: 150px;
-    text-align: center;
-    background-color: rgb(91, 136, 222);
-}
-
-#next:hover{
-    background-color: rgb(65, 110, 195);
-}
-
-#skip {
-    width: 110px;
-    background-color: rgb(234, 112, 74);
-}
-
-#skip:hover{
-    background-color: rgb(210, 95, 65);
-}
-
-/*  FINE PARTE RELATIVA ALLA FINESTRA DEL TUTORIAL  */
-
+/* FINE zona joystick */
 
 /* PERSONAGGI E AREA DI MOVIMENTO  */
-.game_space {
-    position: relative;
+.gameSpace {
     flex-grow: 1;
+    position: relative;
     display: flex;
     justify-content: center;
 }
 
-.game_space > img {
+.gameSpace > img {
     position: absolute;
 }
 
-#player1 {
+/* player1 e player2 sono i 2 giocatori*/
+#player1{
     transform: rotateY(180deg);
 }
 
 #player1 , #player2 {
     position: absolute;
+    z-index: 2;
+    top: 40%;
+    left: 10%;
     padding: 0;
-    border: none;
-    background-color: transparent;
     transition: all 0.4s;
+    background-color: transparent;
+    border: none;
     animation: none;
 }
 
+/*
+    pt.2 nojava.css
+    tramite l'azione :focus MA NON l'azione :active si attiva una animazione.
+    In base alle azioni (:focus , :active) ci saranno animazioni differenti
+*/
 #player1:focus:not(:active){
     animation: disappear 5s ease-out;
 }
@@ -497,17 +426,19 @@ div.life {
 #player1 + img{
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     width: 200px;
     height: 200px;
+    top: 40%;
+    left: 0%;
 }
 
 #player1:active + img{
     display: block;
     opacity: 0;
     position: absolute;
-    animation: rocket1 10s linear;
-    animation-delay: 0.2s;
+    animation: rocket1 8s linear;
+    animation-delay: 0.3s;
 }
 
 #player2:hover{
@@ -519,64 +450,35 @@ div.life {
     animation: attack2 1.5s ease-in-out;
 }
 
-.game_space > img[src $= "grenade.png"]{
-    width: 65px;
-    height: 65px;
-}
-
-.game_space > img[src $= "yo.png"]{
-    width: 70px;
-    height: 70px;
-}
-
-.game_space > img[src $= "cSharp.png"] {
-    width: 60px;
-    height: 60px;
-}
-
-.game_space > img[src $= "laser.png"]{
-    width: 25px;
-    height: 8px;
-}
-
-.game_space > img[src $= "rocket.png"]{
-    width: 200px;
-    height: 200px;
-    top: 50%;
-}
-
 /* $= corrisponde a "finisce per" */
-.game_space > button > img[src $= "timmy.png"]{
+.gameSpace > button > img[src $= "timmy.png"]{
     width: 150px;
     height: 250px;
 }
 
-.game_space > button > img[src $= "trevor.png"]{
+.gameSpace > button > img[src $= "trevor.png"]{
     width: 180px;
     height: 250px;
 }
 
-.game_space > button > img[src $= "gabibbo.png"] , .game_space > button > img[src $= "gerry.png"]{
+.gameSpace > button > img[src $= "gabibbo.png"] , .game_space > button > img[src $= "gerry.png"]{
     width: 200px;
     height: 250px;
 }
 
-.game_space > button > img[src $= "sarim.png"]{
-    width: 250px;
-    height: 200px;
+.gameSpace > button > img[src $= "sarim.png"]{
+    width: 105px;
+    height: 175px;
 }
-
-.ability1 , .ability2 , .ability3 , .ability4{
-    z-index: 2;
-    opacity: 0;
-}
-
-.ability2 {left: 0%;}
-.ability4 {right: 0%;}
 
 /* FINE PARTE RELATIVA AI COMANDI */
 
+
+/* MEDIA QUERY */
+
+/* media query per laptop */
 @media screen and (max-width: 1024px) {
+    
     
     #menu{
         top: 20%;
@@ -624,15 +526,10 @@ div.life {
 
 }
 
+/* media query per telefoni / tablet */
 @media screen and (max-width: 769px) {
 
-    #voidCircle > div{
-        transform: rotate(-90deg);
-    }
-
     header{
-        position: fixed;
-        z-index: 4;
         left: -305px;
         top: 45%;
         width: 540px;
@@ -653,9 +550,8 @@ div.life {
         top: 45%;
     }
 
-    .joystick button:hover{
-        filter: drop-shadow(0px 0px 15px black);
-        transform: scale(110%);
+    header button:active ,header a:active{
+        transform: scale(68%) rotate(90deg);
     }
 
     header button , header a{
@@ -666,7 +562,7 @@ div.life {
         filter: drop-shadow(0px 0px 15px black);
         transform: scale(80%) rotate(90deg);
     }
-    
+
     #menu{
         top: 30%;
         left: 30%;
@@ -679,7 +575,7 @@ div.life {
         transform: scale(110%) rotate(0deg);
     }
 
-    #tutorial , #volumeRange , .joystick{
+    .joystick , #volumeRange{
         transform: scale(65%);
     }
 
@@ -723,6 +619,14 @@ div.life {
         height: 140px;
     }
 
+    #player1 , #player2{
+        top: 20%;
+    }
+
+    #player1:focus:not(:active){
+        animation: disappear 5s ease-out;
+    }
+    
     #player1 + img{
         z-index: 4;
         width: 150px;
@@ -730,11 +634,7 @@ div.life {
         top: 20%;
         left: 0%;
     }
-
-    #player1:focus:not(:active){
-        animation: disappear 5s ease-out;
-    }
-
+    
     #player1:active + img{
         animation: rocket1Mobile 8s linear;
     }
@@ -750,9 +650,10 @@ div.life {
 
 }
 
+/* media query per telefoni piccoli */
 @media screen and (max-width: 480px) {
 
-    .joystick , #tutorial{
+    .joystick{
         transform: scale(55%);
     }
 

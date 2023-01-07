@@ -1,0 +1,422 @@
+
+/*
+    l'animazione raimbowBorder ricrea un bordo
+    arcobaleno che ruota in modo lineare, utilizzando
+    un conic-gradient per realizzarlo
+*/
+
+@keyframes raimbowBorder {
+    
+    0%   { border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 30%; }
+    16.6%{ border-image: conic-gradient(magenta, red, yellow, lime, aqua, blue, magenta) 30%; }
+    33.3%{ border-image: conic-gradient(blue, magenta, red, yellow, lime, aqua, blue) 30%; }
+    50%  { border-image: conic-gradient(aqua, blue, magenta, red, yellow, lime, aqua) 30%; }
+    66.6%{ border-image: conic-gradient(lime, aqua, blue, magenta, red, yellow, lime) 30%; }
+    83.3%{ border-image: conic-gradient(yellow, lime, aqua, blue, magenta, red, yellow) 30%; }
+    100% { border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 30%; }
+}
+
+/* 
+    l'animazione attack2 ricrea l'attacco del GIOCATORE 2
+    verso il giocatore 1
+*/
+
+@keyframes attack2 {
+
+    35%{
+        transform: rotate(0deg) translateX(100px) translateY(-100px) rotate(-100deg) scale(50%);
+        filter: saturate(15);
+    }
+    60%{
+        transform: rotate(40deg) translateX(-600px) translateY(+450px) rotate(0deg) scale(140%);
+    }
+}
+
+
+/*
+    l'animazione spin ricrea un giramento su stesso del giocatore
+*/
+@keyframes spin {
+    15%{
+        transform: scale(70%) rotate(-360deg);
+    }
+    30%{
+        transform: scale(130%) rotate(-720deg);
+    }
+    100%{
+        transform: scale(100%) rotate(-1440deg);
+    }
+}
+
+/*
+    l'animazione ricrea la scomparsa di un giocatore
+*/
+@keyframes disappear {
+    10%{
+        transform: rotateY(240deg) translateY(100px) translateZ(100px);
+        opacity: 1;
+    }
+    100%{
+        transform: rotateY(240deg) translateY(-1000px) translateZ(-1500px) rotate(60deg);
+        opacity: 0;
+    }
+}
+
+/*
+    l'animazione rocket1 ricrea, per il GIOCATORE 1,
+    la comparsa di un razzo e il suo spostamento lungo tutto
+    lo spazio di gioco
+*/
+@keyframes rocket1 {
+    5%{
+        opacity: 1;
+    }
+    10%{
+        top: 20%;
+        left: 30%;
+        transform: rotate(-30deg);
+    }
+    20%{
+        top: 30%;
+        left: 60%;
+        transform: rotate(30deg);
+    }
+    30%{
+        top: 50%;
+        left: 90%;
+        transform: rotate(60deg);
+    }
+    45%{
+        top: 85%;
+        left: 130%;
+        transform: rotate(-80deg);
+    }
+    60%{
+        top: 15%;
+        left: 150%;
+        transform: rotate(0deg);
+    }
+    70%{
+        top: 30%;
+        left: 170%;
+        transform: rotate(-10deg);
+        opacity: 1;
+    }
+    100%{
+        top: 40%;
+        left: 200%;
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+
+}
+
+/*
+    uguale all'animiazione rocket1
+    solo che è adattata per mobile
+*/
+@keyframes rocket1Mobile {
+    5%{
+        opacity: 1;
+    }
+    10%{
+        top: -170%;
+        left: 10%;
+        transform: rotate(30deg);
+    }
+    25%{
+        top: -100%;
+        left: 20%;
+        transform: rotate(-30deg);
+    }
+    40%{
+        top: -150%;
+        left: 30%;
+        transform: rotate(-60deg);
+    }
+    55%{
+        top: -170%;
+        left: 40%;
+        transform: rotate(80deg);
+    }
+    70%{
+        top: -115%;
+        left: 50%;
+        transform: rotate(0deg);
+    }
+    85%{
+        top: -130%;
+        left: 70%;
+        transform: rotate(10deg);
+        opacity: 1;
+    }
+    100%{
+        top: -140%;
+        left: 100%;
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+}
+
+/*
+    l'animazione rocket1 ricrea, per il GIOCATORE 1,
+    la comparsa di un razzo e il suo spostamento lungo tutto
+    lo spazio di gioco
+*/
+@keyframes rocket2 {
+    0%{
+        transform: rotate(180deg);
+    }
+    5%{
+        opacity: 1;
+    }
+    10%{
+        top: 20%;
+        right: 30%;
+        transform: rotate(210deg);
+    }
+    25%{
+        top: 30%;
+        right: 60%;
+        transform: rotate(150deg);
+    }
+    40%{
+        top: 50%;
+        right: 90%;
+        transform: rotate(120deg);
+    }
+    55%{
+        top: 85%;
+        right: 130%;
+        transform: rotate(260deg);
+    }
+    75%{
+        top: 15%;
+        right: 150%;
+        transform: rotate(180deg);
+    }
+    85%{
+        top: 30%;
+        right: 170%;
+        transform: rotate(190deg);
+        opacity: 1;
+    }
+    100%{
+        top: 40%;
+        right: 200%;
+        transform: rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/*
+    uguale all'animiazione rocket1
+    solo che è adattata per mobile
+*/
+@keyframes rocket2Mobile {
+    5%{
+        opacity: 1;
+    }
+    10%{
+        top: -170%;
+        right: 10%;
+        transform: rotate(150deg);
+    }
+    20%{
+        top: -100%;
+        right: 20%;
+        transform: rotate(210deg);
+    }
+    30%{
+        top: -150%;
+        right: 30%;
+        transform: rotate(240deg);
+    }
+    45%{
+        top: -170%;
+        right: 40%;
+        transform: rotate(100deg);
+    }
+    60%{
+        top: -115%;
+        right: 50%;
+        transform: rotate(180deg);
+    }
+    70%{
+        top: -130%;
+        right: 70%;
+        transform: rotate(170deg);
+        opacity: 1;
+    }
+    100%{
+        top: -140%;
+        right: 100%;
+        transform: rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/*
+    uguale all'animiazione attack2
+    solo che è adattata per mobile
+*/
+@keyframes attack2Mobile {
+
+    35%{
+        transform: translateX(-100px) translateY(100px) rotate(100deg) scale(50%);
+        filter: saturate(15);
+    }
+    60%{
+        ransform: rotate(-40deg) translateX(350px) scale(140%);
+    }
+}
+
+/*
+    uguale all'animiazione spin
+    solo che è adattata per mobile
+*/
+@keyframes spinMobile {
+    15% { transform: scale(50%) rotate(-360deg); }
+    30% { transform: scale(100%) rotate(-720deg); }
+    100%{ transform: scale(70%) rotate(-1440deg); }
+}
+
+
+
+/* queste sono le animazione per la versione CON JAVASCRIPT */
+/* queste sono le animazione per la versione CON JAVASCRIPT */
+
+@keyframes grenade1 {
+    from {
+        opacity: 1;
+        rotate: 0deg;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        rotate: 360deg;
+        left: 200%;
+    }
+
+}
+
+@keyframes grenade2 {
+    from {
+        opacity: 1;
+        rotate: 0deg;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        rotate: 360deg;
+        right: 200%;
+    }
+
+}
+
+@keyframes fire1 {
+    from{opacity: 1;}
+    75% {opacity: 1;}
+    100%{left: 200%; opacity: 0;}
+}
+
+@keyframes fire2 {
+    from{opacity: 1;}
+    75% {opacity: 1;}
+    100%{right: 200%; opacity: 0;}
+}
+
+@keyframes yo1 {
+    from{opacity: 1;}
+    75% {opacity: 1;}
+    100%{left: 200%; opacity: 0;}
+}
+
+@keyframes yo2 {
+    from{opacity: 1;}
+    75% {opacity: 1;}
+    100%{right: 200%; opacity: 0;}
+}
+
+@keyframes laser1 {
+    from{opacity: 1;}
+    75% {opacity: 1;}
+    100%{left: 200%; opacity: 0;}
+}
+
+@keyframes laser2 {
+    from{opacity: 1;}
+    75% {opacity: 1;}
+    100%{right: 200%; opacity: 0;}
+}
+
+@keyframes cSharp1 {
+    from{opacity: 1;}
+    75% {opacity: 1;}
+    100%{left: 200%; opacity: 0;}
+}
+
+@keyframes cSharp2 {
+    0%  {opacity: 1;}
+    75% {opacity: 1;}
+    100%{right: 200%; opacity: 0;}
+}
+
+
+/*
+	le seguenti animazioni
+	riguardano le animazioni di avvio
+*/
+
+
+@keyframes circleRotate {
+    from{
+        opacity: 0.2;
+        transform: rotate(0deg) translate(-80px);
+        background-color: #64bbec;
+    }
+    to{
+        opacity: 1;
+        background-color: #e20fe7;
+        transform: rotate(360deg) translate(-80px);
+    }
+}
+
+@keyframes loadingText {
+    0%{
+        content: "Loading";
+        text-shadow: 2px 2px 1px #64bbec;
+    }
+    25%{
+        content: "Loading.";
+    }
+    50%{
+        content: "Loading..";
+        text-shadow: 2px 2px 1px #e20fe7;
+    }
+    75%{
+        content: "Loading...";
+    }
+    100%{
+        content: "Loading....";
+        text-shadow: 2px 2px 1px #64bbec;
+    }
+
+}
+
+@keyframes resetSection {
+    from{ z-index: 10; opacity: 1; }
+    90% { opacity: 1;  }
+    99% { z-index: 10; }
+    100%{ z-index: 0;  }
+}
+
+@keyframes pulse {
+    0%  { transform: scale(100%); }
+    50% { transform: scale(120%); }
+    100%{ transform: scale(100%); }
+}

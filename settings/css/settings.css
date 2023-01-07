@@ -2,12 +2,12 @@
 /* IMPLEMENTAZIONE FONT */
 @font-face {
     font-family: "bold";
-    src: url(../../../font/RedHatDisplay-Bold.otf);
+    src: url(../../font/RedHatDisplay-Bold.otf);
 }
 
 @font-face {
     font-family: "regular";
-    src: url(../../../font/RedHatDisplay-Regular.otf);
+    src: url(../../font/RedHatDisplay-Regular.otf);
 }
 
 b{
@@ -20,7 +20,8 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url(../../img/background.jpg);
+    background-image: url(../../img/gtaVgroove.jpg);
+    background-position: center;
     background-size: cover;
 }
 
@@ -307,10 +308,9 @@ td:last-child > img{
     height: 30px;
 }
 
-/* width */
+/* qui modifichi la barra di scorrimento */
 ::-webkit-scrollbar {
-    width: 15px;
-   box-sizing: content-box; 
+    width: 15px; 
 }
   
 ::-webkit-scrollbar-track {

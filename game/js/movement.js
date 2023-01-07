@@ -1,15 +1,59 @@
-var image1 = document.querySelector(".player1");
-var image2 = document.querySelector(".player2");
+/* SETTAGGIO IMMAGINI E ABILITA' IN BASE ALLE INFORMAZIONI DELL' URL */
+var buttonImg1 = document.getElementById("img1");
+var buttonImg2 = document.getElementById("img2");
 
-var separetor = document.querySelector(".separetor");
+var url = document.URL;
+url = url.slice(url.search("html?"));
+url = url.slice(5);
 
-var laser1 = document.querySelectorAll('.laser1');
-var laser2 = document.querySelectorAll('.laser2');
+document.getElementById("resumeBtn").href = "./game.html?" + url;
+
+var player1 = String(url.split("&", 1));
+url = url.slice(player1.length + 1);
+
+var name1 = String(url.split("&", 1));
+url = url.slice(name1.length + 1);
+
+var name2 = String(url.split("&", 1));
+url = url.slice(name2.length + 1);
+
+var player2 = String(url.split("&", 1));
+url = url.slice(player2.length + 1);
+
+var name3 = String(url.split("&", 1));
+url = url.slice(name3.length + 1);
+
+var name4 = String(url.split("&", 1));
+url = url.slice(name4.length + 1);
+
+var background = url.slice(4);
+document.querySelector('body').style.backgroundImage = "url('../img/" + background + ".jpg')";
+
+player1 = player1.slice(4);
+player2 = player2.slice(4);
+
+buttonImg1.src = window.location.pathname.split(`game.html`)[0] + "img/" + player1 + ".png";
+buttonImg2.src = window.location.pathname.split(`game.html`)[0] + "img/" + player2 + ".png";
+
+name1 = name1.slice(4);
+name2 = name2.slice(4);
+name3 = name3.slice(4);
+name4 = name4.slice(4);
+
+var image1 = document.getElementById("player1");
+var image2 = document.getElementById("player2");
+
+var separator = document.getElementById("separator");
 
 var ability1 = document.querySelectorAll('.ability1');
 var ability2 = document.querySelectorAll('.ability2');
 var ability3 = document.querySelectorAll('.ability3');
 var ability4 = document.querySelectorAll('.ability4');
+
+var abilityBtn1 = document.getElementById('abilityBtn1');
+var abilityBtn2 = document.getElementById('abilityBtn2');
+var abilityBtn3 = document.getElementById('abilityBtn3');
+var abilityBtn4 = document.getElementById('abilityBtn4');
 
 /*
 Queste variabili consentono di resettare
@@ -17,8 +61,6 @@ lo style delle abilità finite le animazioni
 in modo da poter riavviare un animazione
 */
 var stop1, stop2, stop3, stop4;
-
-var nameAbility1, nameAbility2, nameAbility3, nameAbility4;
 
 /*
 possibility1 è il vettore di tutte le PRIME POSSIBILII
@@ -34,125 +76,70 @@ const possibility2 = ["laser", "rocket"];
 var animation1, animation2, animation3, animation4;
 
 //SETTAGGIO POSIZIONI INIZIALI DEI GIOCATORI
-image1.style.top = 40 + "%";
-image2.style.top = 40 + "%";
+image1.style.top = "40%";
+image2.style.top = "40%";
 
 image1.style.rotate = "0deg";
 image2.style.rotate = "0deg";
 
-image1.style.left = 40 + "%";
-image2.style.right = 40 + "%";
+image1.style.left = "10%";
+image2.style.right = "10%";
 
 //SETTI ANIMAZIONI E NOME ABILITA'
-animation1 = assegnazioneAnimation(ability1, possibility1, animation1, 1);
-animation2 = assegnazioneAnimation(ability2, possibility2, animation2, 1);
-animation3 = assegnazioneAnimation(ability3, possibility1, animation3, 2);
-animation4 = assegnazioneAnimation(ability4, possibility2, animation4, 2);
 
-nameAbility1 = assegnazioneName(ability1, possibility1, nameAbility1, 1);
-nameAbility2 = assegnazioneName(ability2, possibility2, nameAbility2, 1);
-nameAbility3 = assegnazioneName(ability3, possibility1, nameAbility3, 2);
-nameAbility4 = assegnazioneName(ability4, possibility2, nameAbility4, 2);
+/* name è IL NOME DELL' ABILITA' */
+var animation1 = assegna(ability1, name1, abilityBtn1, 1);
+var animation2 = assegna(ability2, name2, abilityBtn2, 1);
+var animation3 = assegna(ability3, name3, abilityBtn3, 2);
+var animation4 = assegna(ability4, name4, abilityBtn4, 2);
 
+function assegna(ability, name, abilityBtn, player) {
 
-//ASSEGNAZIONE CLASSE E ANIMAZIONE IN BASE ALL'ABILITA' SCELTA
-function assegnazioneAnimation(abilityArray, possibility, animation, player) {
+    var name, animation;
 
-    var source = abilityArray[0].src;
+    ability.forEach(val => {
+        val.src = window.location.pathname.split(`game.html`)[0] + "img/" + name + ".png";
+    });
 
-    //TRASFORMALO IN UNO CICLO WHILE!!
-    for (let i = 0; i < possibility.length; i++) {
-        if (source.includes(possibility[i])) {
+    abilityBtn.src = window.location.pathname.split(`game.html`)[0] + "img/" + name + "_ability.png";
 
-            abilityArray.forEach(val => {
-                val.classList.add(possibility[i]);
+    switch (true) {
+        case name == "yo":
 
-                //prende l'indirizzo del file e gli aggiunge il nome dell'immagine abilità
-                //così setta quella come abilità
-                val.src = window.location.pathname.split(`index.html`)[0] + "img/" + possibility[i] + ".png";
+            animation = "yo" + player + " 1.7s linear 1";
+            break;
 
-                /*.split(`index.html`)[0]
-                .split(`index.html`) ===> prende l'indirizzo della carterra corrente
-                                        e arriva fino a 'index.html'
-        
-                .split(`index.html`)[0] ===> quando c'è [0]
-                                        prende il testo PRIMA di 'index.html'
-        
-                .split(`index.html`)[0] ===> quando c'è [1]
-                                        prende il testo DOPO 'index.html'
-                */
-            });
+        case name == "fire":
 
-            switch (possibility[i]) {
-                case "grenade":
-                    animation = "grenade" + player + " infinite 2s linear";
-                    break;
+            animation = "fire" + player + " 1.7s linear 1";
+            break;
 
-                case "yo":
-                    animation = "fire" + player + " 1.7s linear";
-                    break;
+        case name == "grenade":
 
-                case "fire":
-                    animation = "fire" + player + " 1.7s linear";
-                    break;
+            animation = "grenade" + player + " 2s linear 1";
+            break;
 
-                case "laser":
-                    animation = "laser" + player + " 1.7s linear";
-                    break;
+        case name == "laser":
 
-                case "cSharp":
-                    animation = "cSharp" + player + " 1.7s linear";
-                    break;
+            animation = "laser" + player + " 1.7s linear 1";
 
-                default:
-                    break;
-            }
+            break;
 
-        }
+        case name == "cSharp":
+
+            animation = "cSharp" + player + " 1.7s linear 1";
+            break;
+
+        case name == "rocket":
+
+            animation = "rocket" + player + " 8s linear 1";
+            break;
+
+        default:
+            break;
     }
 
     return animation;
-
-}
-
-//ASSEGNAZIONE NOME ABILITA'
-function assegnazioneName(abilityArray, possibility, nameAbility, player) {
-
-    var source = abilityArray[0].src;
-
-    //TRASFORMALO IN UNO CICLO WHILE!!
-    for (let i = 0; i < possibility.length; i++) {
-        if (source.includes(possibility[i])) {
-
-            switch (possibility[i]) {
-                case "grenade":
-                    nameAbility = "grenade";
-                    break;
-
-                case "yo":
-                    nameAbility = "yo";
-                    break;
-
-                case "fire":
-                    nameAbility = "fire";
-                    break;
-
-                case "laser":
-                    nameAbility = "laser";
-                    break;
-
-                case "cSharp":
-                    nameAbility = "cSharp";
-                    break;
-
-                default:
-                    break;
-            }
-
-        }
-    }
-
-    return nameAbility;
 
 }
 
@@ -160,9 +147,8 @@ function assegnazioneName(abilityArray, possibility, nameAbility, player) {
 function move(player, type) {
 
     /* tolgo la sbarra di metà campo se non è ancora stata tolta */
-    if (parseInt(separetor.style.top) != 100) {
-        separetor.style.height = "0%";
-        separetor.style.top = "100%";
+    if (parseInt(separator.style.top) != 100) {
+        separator.style.display = "none";
     }
 
     if (player == 1) {
@@ -201,27 +187,26 @@ function settingStyle(image, type, player) {
 
             break;
 
+
         case 4:
             /*  left  */
             if (player == 1) {
-                if (parseInt(image.style.left) != 0) {
+                if (parseInt(image.style.left) != 10)
                     image.style.left = parseInt(image.style.left) - 5 + "%";
-                }
             } else {
-                if (parseInt(image.style.right) != 85)/*85 se vuoi solo fino a metà schermo intero*/ {
+                if (parseInt(image.style.right) != 75)//85 se vuoi solo fino a metà schermo intero
                     image.style.right = parseInt(image.style.right) + 5 + "%";
-                }
             }
             break;
 
         case 6:
             /*  right  */
             if (player == 1) {
-                if (parseInt(image.style.left) != 85)/*85 se vuoi solo fino a metà schermo intero*/ {
+                if (parseInt(image.style.left) != 75)//85 se vuoi solo fino a metà schermo intero
                     image.style.left = parseInt(image.style.left) + 5 + "%";
-                }
+
             } else {
-                if (parseInt(image.style.right) != 0)
+                if (parseInt(image.style.right) != 10)
                     image.style.right = parseInt(image.style.right) - 5 + "%";
             }
             break;
@@ -230,9 +215,9 @@ function settingStyle(image, type, player) {
             //ABILITA' 1 oppure ABILITA' 3
 
             if (player == 1)
-                setAbility(ability1, 1, nameAbility1, image);
+                setAbility(ability1, 1, name1, image);
             else
-                setAbility(ability3, 2, nameAbility3, image);
+                setAbility(ability3, 2, name3, image);
 
             break;
 
@@ -240,9 +225,9 @@ function settingStyle(image, type, player) {
             //ABILITA' 2 oppure ABILITA' 4
 
             if (player == 1)
-                setAbility(ability2, 1, nameAbility2, image);
+                setAbility(ability2, 1, name2, image);
             else
-                setAbility(ability4, 2, nameAbility4, image);
+                setAbility(ability4, 2, name4, image);
 
             break;
 
@@ -275,11 +260,11 @@ function firstAbility(abilityArray, player, image, time) {
 }
 
 // possibility1 e possibility2
-function setAbility(abilityArray, player, nameAbility, image) {
+function setAbility(abilityArray, player, name, image) {
 
     var source = abilityArray[0].src;
 
-    switch (nameAbility) {
+    switch (name) {
 
         case "grenade":
 
@@ -355,6 +340,25 @@ function setAbility(abilityArray, player, nameAbility, image) {
             break;
 
         case "rocket":
+
+            if (player == 1) {
+
+                abilityArray.forEach(val => {
+                    val.style.animation = animation2;
+                })
+
+                stop2 = setTimeout(ability2Reset, 8000);
+
+            } else {
+
+                abilityArray.forEach(val => {
+                    val.style.animation = animation4;
+                })
+
+                stop4 = setTimeout(ability4Reset, 8000);
+            }
+
+
             break;
 
         default:
@@ -391,29 +395,26 @@ function eseguiFor(array, stile, image, sfasamento) {
 function ability1Reset() {
     for (let i = 0; i < 4; i++)
         ability1[i].style.animation = null;
-    stopTimeout(stop1);
+    clearTimeout(stop1);
+}
+
+function ability2Reset() {
+    for (let i = 0; i < 4; i++)
+        ability2[i].style.animation = null;
+
+    clearTimeout(stop2);
 }
 
 function ability3Reset() {
     for (let i = 0; i < 4; i++)
         ability3[i].style.animation = null;
-    stopTimeout(stop2);
-}
-
-function ability2Reset() {
-    ability2.forEach(val => {
-        val.style.animation = null;
-    });
-    stopTimeout(stop3);
+    clearTimeout(stop3);
 }
 
 function ability4Reset() {
-    ability4.forEach(val => {
-        val.style.animation = null;
-    });
-    stopTimeout(stop4);
+    for (let i = 0; i < 4; i++)
+        ability4[i].style.animation = null;
+    clearTimeout(stop4);
 }
 
-function stopTimeout(timeoutStop) {
-    clearTimeout(timeoutStop);
-}
+

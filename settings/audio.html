@@ -6,18 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- STYLESHEET DI SETTINGS -->
+    <!-- STYLESHEET -->
     <link rel="stylesheet" href="./css/settings.css">
-    <link rel="stylesheet" href="../css/animation.css">
+    <link rel="stylesheet" href="../commonCss/animation.css">
 
     <!-- FONTS ICON -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- ICONA -->
-    <link rel="icon" href="../../icon.png">
-
-    <title>Impostazioni video</title>
+    <link rel="icon" href="../img/icon.png">
+    <title>Impostazioni audio</title>
 
 </head>
 
@@ -30,18 +29,17 @@
                 ogni a corrisponde a una voce delle impostazioni
                  e a una pagine diversa per tipo
             -->
-            <div>
-                Impostazioni
-            </div>
 
-            <a href="./audio.html" class="anchor">
+            <div>Impostazioni</div>
+
+            <a onclick="requestAnimFrame()">
                 <span class="material-symbols-rounded">
                     headphones
                 </span>
                 <span>Audio</span>
             </a>
 
-            <a>
+            <a href="./video.html" class="anchor">
                 <span class="material-symbols-rounded">
                     video_settings
                 </span>
@@ -84,9 +82,9 @@
             -->
             <div>
                 <span>
-                    Video
+                    Audio
                 </span>
-                <a href="../game.html" id="closeBtn">
+                <a href="../game/game.html" id="closeBtn">
                     <span class="material-symbols-rounded">
                         close
                     </span>
@@ -96,11 +94,12 @@
             <!-- finestra contenente le impostazioni -->
             <div id="optionWindow">
 
-                <!-- MESSAGGIO DA MOSTRARE -->
+                <!-- MESSAGGIO DI ANTEPRIMA -->
                 <div>
-                    Queste sono tutti i comandi che ti permettono di modificare le impostazioni video.
+                    Queste sono tutti i comandi che ti permettono di modificare le impostazioni audio.
                     <br>
-                    Puoi impostare
+                    Puoi modificare il livello dell'audio in base alle tue preferenze.
+                    <br>
                     Le impostazioni <b>sono ancora in vio di sviluppo</b> quindi si prega di non sovraccaricare il
                     sistema grazie.
                 </div>
@@ -112,38 +111,61 @@
                     -->
                     <div class="option">
                         <div>
-                            Impostazioni video
+                            Volume generale
                         </div>
                         <div>
-                            <!-- VISUALIZZA pt.2 settings.css -->
-                            <button class="lowHigh"></button>
+                            <span class="material-symbols-rounded">
+                                volume_off
+                            </span>
 
+                            <input type="range">
+
+                            <span class="material-symbols-rounded">
+                                volume_up
+                            </span>
                         </div>
                     </div>
 
                     <div class="option">
                         <div>
-                            Schermo intero
+                            Volume effetti sonori
                         </div>
                         <div>
-                            <button class="onOff"></button>
+                            <span class="material-symbols-rounded">
+                                volume_off
+                            </span>
+
+                            <input type="range">
+
+                            <span class="material-symbols-rounded">
+                                volume_up
+                            </span>
                         </div>
                     </div>
 
                     <div class="option">
                         <div>
-                            RTX
+                            Volume musica
                         </div>
                         <div>
-                            <button class="onOff"></button>
+                            <span class="material-symbols-rounded">
+                                volume_off
+                            </span>
+
+                            <input type="range">
+
+                            <span class="material-symbols-rounded">
+                                volume_up
+                            </span>
                         </div>
                     </div>
 
                     <div class="option">
                         <div>
-                            Fps
+                            Musica
                         </div>
                         <div>
+                            <!-- VISUALIZZA (pt.1 settings.css) -->
                             <button class="onOff"></button>
                         </div>
                     </div>
@@ -153,9 +175,11 @@
         </div>
     </main>
 
+    <!-- script che imposta l'attributo backgroundImage del body con l'immagine
+        fornita nel testo dell'url-->
+    <script src="js/background.js"></script>
+    <!-- ^^^ necessario solo se si usa la versione con java, questa non la è ^^^ -->
 </body>
-<!-- script che imposta l'attributo backgroundImage del body con l'immagine
-     fornita nel testo dell'url-->
-<script src="./js/background.js"></script>
+
 
 </html>
