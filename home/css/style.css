@@ -358,8 +358,9 @@ section > div , #ab1 > div > div, #ab2 > div > div{
     display: flex;
     width: 100%;
     justify-content: center;
+    align-items: center;
     flex-wrap: nowrap;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 #ab1 > div > div:first-child , #ab2 > div > div:first-child{
@@ -415,7 +416,7 @@ input[type="radio"]{
     display: none;
 }
 
-section > label:last-child{
+section > label:last-child, #location button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -503,6 +504,10 @@ form > section{
     display: flex;
 }
 
+#location .frecciaDX, #location .frecciaSX{
+    display: block;
+}
+
 section:nth-child(1):has(> label > input:checked)+section,
 section:nth-child(2):has(> label > input:checked)+section,
 section:nth-child(3):has(> label > input:checked)+section,
@@ -519,39 +524,44 @@ section:nth-child(4):has(> label > input:checked)+section {
 
 .containerLuogo {
     position: relative;
-    width: fit-content;
-    height: auto;
-    border-radius: 25px;
     display: flex;
     flex-direction: column;
-}
-
-#mainPageLuogo{
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-}
-
-.slidesLuogo {
-    padding: 25px;
-    display: none;
     width: 100%;
-    height: auto;
-    justify-content: center;
+    height: 90%;
+    background-color: green;
 }
 
+.containerLuogo > img {
+    max-width: 40%;
+    height: auto;
+    padding: 20px;
+}
 
-.slidesLuogo.visibile{
+.containerLuogo > a{
+    position: absolute;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 12px 12px 0;
+    background-image: linear-gradient(40deg,#fffc00 0%,#fc00ff 45%,#00fffc 100%);
+    cursor: pointer;
 }
 
-.slidesLuogo > img{
-    width: 50%;
-    height: auto;
-}
+.containerLuogo > a:first-of-type{ left: 70px; }
+
+.containerLuogo > a:last-of-type { right: 70px;}
+
+.containerLuogo > a > span{ font-size: 50px; }
 
 .frecciaSX, .frecciaDX {
+    display: none;
     cursor: pointer;
     width: auto;
     padding: 15px;
@@ -559,30 +569,40 @@ section:nth-child(4):has(> label > input:checked)+section {
     font-weight: bold;
     font-size: 20px;
     border-radius: 0 3px 3px 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-image: linear-gradient(40deg,#fffc00 0%,#fc00ff 45%,#00fffc 100%);
 }
 
 .demoLuoghi{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.demoLuoghi > div {
-    width: 12%;
-    height: auto;
-}
-
-.demoLuoghi img {
-    opacity: 0.6;
-    cursor: pointer;
     width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.demoLuoghi img:hover {
+.demoLuoghi > img {
+    max-width: 13%;
+    height: auto;
+    opacity: 0.8;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.demoLuoghi > img:hover {
     opacity: 1;
+}
+
+@media screen and (max-width: 1024px) {
+    .containerLuogo > img {
+        max-width: 60%;
+    }
+
+    .containerLuogo > a{
+        width: 35px;
+        height: 35px;
+    }
+
+    .containerLuogo > a:first-of-type{ left: 50px; }
+    .containerLuogo > a:last-of-type { right: 50px;}
 }
 
 @media screen and (max-width: 1510px) {
@@ -598,8 +618,59 @@ section:nth-child(4):has(> label > input:checked)+section {
 }
 
 @media screen and (max-width: 769px) {
-    #pl1, #pl2{
-        width: 500%;
-        justify-content: space-between;
+    #pl1 > span, #pl2 > span, #ab1 > span, #ab2 > span{
+        font-size: 20px;
+        top: 10px;
+    }
+    
+    section > img{
+        margin-top: 50px;
+    }
+
+    .frecciaDX, .frecciaSX{
+        display: block;
+    }
+
+    .card{
+        display: none;
+    }
+
+    .card.visibile{
+        display: flex;
+    }
+
+    #ab1 > div > div:last-child, #ab2 > div > div:last-child{
+        width: 66.6%;
+    }
+
+    #ab1 > div > div:first-child, #ab2 > div > div:first-child{
+        border: none;
+    }
+
+    #ab1 > div, #ab2 > div{
+        flex-direction: column;
+        border: none;
+    }
+
+    .demoLuoghi{
+        transform: scale(80%);
+    }
+
+    main{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    #registrazione {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    #registrazioneForm{
+        height: fit-content;
+        padding: 10px 0px 10px 0px;
     }
 }

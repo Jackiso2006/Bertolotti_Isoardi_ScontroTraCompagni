@@ -1,0 +1,413 @@
+
+/* IMPLEMENTAZIONE FONT */
+@font-face {
+    font-family: "bold";
+    src: url(../../../font/RedHatDisplay-Bold.otf);
+}
+
+@font-face {
+    font-family: "regular";
+    src: url(../../../font/RedHatDisplay-Regular.otf);
+}
+
+b{
+    font-family: "bold";
+}
+
+body{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(../../img/background.jpg);
+    background-size: cover;
+}
+
+main{
+    display: flex;
+    width: 800px;
+    height: 500px;
+    border: 10px solid;
+    animation: raimbowBorder 3s infinite linear;
+}
+
+button{
+    transition: transform 0.3s;
+}
+
+button:hover{
+    transform: scale(105%);
+}
+
+#setList{
+    display: flex;
+    flex-direction: column;
+    min-width: 25%;
+    min-height: 100%;
+    background-color: aliceblue;
+    border: 2px rgb(6, 6, 6) solid;
+    box-sizing: border-box;
+}
+
+#setList > a , #setList > div:first-child{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px rgb(6, 6, 6) solid;
+    font-family: "regular";
+    background: none;
+    font-size: 25px;
+    text-decoration: none;
+    color: rgb(6, 6, 6);
+    transition: background-color 0.4s;
+}
+
+#setList > div:first-child{
+    font-family: "bold";
+    justify-content: center;
+    height: 70px;
+}
+
+#setList > a:hover{
+    background-color: rgb(189, 189, 189);
+    cursor: pointer;
+}
+
+#setList > a > span:last-child{
+    border-bottom: 2px solid;
+    border-color: transparent;
+    transition: transform 0.3s , border-color 0.4s;
+}
+
+#setList > a:hover > span:last-child{
+    transform: translateX(15px);
+    border-color: rgb(6, 6, 6);
+}
+
+#setList > a > span{
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+#setDescription{
+    width: 75%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 2px rgb(6, 6, 6) solid;
+    border-left: none;
+    background-color: aliceblue;
+    box-sizing: border-box;
+}
+
+#closeMobile{
+    display: none;
+}
+
+#closeMobile > a{
+    color: rgb(6, 6, 6);
+}
+
+#closeBtn , #closeMobile > a{
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    color: rgb(6, 6, 6);
+    border-radius: 30%;
+    transform: scale(100%);
+    background: transparent;
+    transition: transform 0.2s, background 0.2s;
+}
+
+#closeBtn > span , #closeMobile span{
+    font-size: 40px;
+}
+
+#closeBtn:hover , #closeMobile > a:hover{
+    transform: scale(130%);
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+#setDescription > div:first-child{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px;
+    min-height: 70px;
+    font-family: "bold";
+    font-size: 23px;
+    border-bottom: 2px rgb(6, 6, 6) solid;
+}
+
+#optionWindow{
+    height: 100%;
+    overflow: auto;
+}
+
+#optionWindow button > span{
+    font-size: 30px;
+}
+
+#optionWindow > div{
+    padding: 15px;
+    font-family: "regular";
+    font-size: 20px;
+}
+
+#optionWindow > div:last-child{
+    padding: 0;
+}
+
+#optionWindow > div:first-child{
+    border-bottom: 2px rgb(6, 6, 6) solid;
+}
+
+/*  SCELTA OPZIONI IN GENERALE  */
+.option , .optionKey{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px;
+    border-bottom: 2px lightgrey solid;
+}
+
+.option > div{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.option > div , .optionKey > div{
+    padding: 0px 20px;
+}
+
+.option > div:first-child , .optionKey > div:first-child , .optionKey span{
+    font-family: "bold";
+}
+
+
+/*
+    pt.1 settings.css
+    .onOff è la classe che rappresenta tutti i bottoni con solo 2 opzioni
+    es. ON-OFF e in base se è focus o no il contenuto cambia con
+    la pseudo-classe ::before utilizzando il tag content:"";
+*/
+.onOff{
+    height: 35px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #24af24;
+    font-family: "bold";
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* contenuto bottone tipo ON - OFF*/
+.onOff::before{
+    content: "On";
+}
+
+.onOff:focus{
+    background-color: #e02424;
+}
+
+/* contenuto bottone tipo ON - OFF*/
+.onOff:focus::before{
+    content: "Off";
+}
+
+/* FINE PARTE RELATIVA ALLA SCELTA OPZIONI IN GENERALE  */
+
+/* parte relativa solamente a video.html */
+
+/*
+    pt.2 settings.css
+    .lowHigh è identica alla logica di .onOff
+    solo che il contenuto e lo sfondo sono differenti
+*/
+
+.lowHigh{
+    background-color: #63b4e5;
+    height: 35px;
+    width: 100%;
+    border-radius: 20px;
+    font-family: "bold";
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.lowHigh:focus{
+    background-color: #d017da;
+}
+
+.lowHigh::before{
+    content: "Bassa";
+}
+
+.lowHigh:focus::before{
+    content: "Alta";
+}
+
+/* FINE parte relativa solamente a video.html */
+
+/*  parte relativa solamente a audio.html */
+
+.option input[type="range"]{
+    width: 100%;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+/* FINE parte relativa a audio.html */
+
+/* parte relativa solamente a controlli.html */
+
+.optionKey > div{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.optionKey span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+    border: 2px rgb(6, 6, 6) solid;
+    border-radius: 5px;
+    background-color: lightgrey;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.optionKey span:hover{
+    transform: scale(140%);
+}
+
+/* FINE parte relativa a controlli.html */
+
+/* parte relativa solamente alla tabella finale di crediti.html */
+td > a > span.material-symbols-rounded{
+    font-size: 15px;
+}
+
+td:last-child{
+    display: flex;
+    align-items: center;
+}
+
+td:last-child > img{
+    height: 30px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+   box-sizing: content-box; 
+}
+  
+::-webkit-scrollbar-track {
+    background-color: rgb(230, 230, 230);
+    border-left: 1px black solid;
+}
+   
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(#64bbec, #e20fe7);
+    border-radius: 10px;
+    border: 1px rgb(6, 6, 6) solid;
+}
+  
+
+::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(#3c80a8, #ac08af);
+}
+
+/* fine parte relativa a crediti.html */
+
+@media screen and (max-width:1024px) {
+
+    main{
+        transform: scale(80%);
+    }
+
+}
+
+@media screen and (max-width:769px) {
+    
+    main{
+        flex-direction: column;
+    }
+
+    #setList{
+        flex-direction: row;
+        min-height: 15%;
+        align-items: center;
+        border-bottom: none;
+    }
+
+    #closeMobile{
+        height: 60px;
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #setList > div:first-child , #setDescription > div:first-child{
+        display: none;
+    }
+
+    #setList > a{
+        justify-content: center;
+        border: none;
+        width: 22%;
+        height: 100%;
+        transition: background-color 0.4s , transform 0.3s;
+    }
+
+    #setList > a > span:first-child{
+        margin: 0;
+        transition: transform 0.3s;
+    }
+
+    #setList > a:hover > span:first-child{
+        transform: translateY(8px);
+    }
+
+    #setList > a:hover > span:last-child{
+        transform: translateX(0px) translateY(8px);
+    }
+
+    #setDescription{
+        height: 85%;
+        width: 100%;
+        border: 2px rgb(6, 6, 6) solid;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+
+    #setList > a > span:first-child{
+        display: none;
+    }
+
+    #setList > a > span:last-child{
+        margin: 0;
+    }
+
+    #closeMobile{
+        width: 50px;
+        transform: scale(80%);
+    }
+
+    
+}

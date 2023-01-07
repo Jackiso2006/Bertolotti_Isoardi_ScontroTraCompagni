@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- STYLESHEET DI SETTINGS -->
+    <link rel="stylesheet" href="./css/settings.css">
+    <link rel="stylesheet" href="../css/animation.css">
+
+    <!-- FONTS ICON -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- ICONA -->
+    <link rel="icon" href="../../icon.png">
+
+    <title>Impostazioni video</title>
+
+</head>
+
+<body>
+
+    <main>
+        <!-- parte relativa alle voci delle impostazioni -->
+        <div id="setList">
+            <!--
+                ogni a corrisponde a una voce delle impostazioni
+                 e a una pagine diversa per tipo
+            -->
+            <div>
+                Impostazioni
+            </div>
+
+            <a href="./audio.html" class="anchor">
+                <span class="material-symbols-rounded">
+                    headphones
+                </span>
+                <span>Audio</span>
+            </a>
+
+            <a>
+                <span class="material-symbols-rounded">
+                    video_settings
+                </span>
+                <span>Video</span>
+            </a>
+
+            <a href="./controlli.html" class="anchor">
+                <span class="material-symbols-rounded">
+                    tune
+                </span>
+                <span>Controlli</span>
+            </a>
+
+            <a href="./crediti.html" class="anchor">
+                <span class="material-symbols-rounded">
+                    info
+                </span>
+                <span>Crediti</span>
+            </a>
+
+            <!--
+                questo div corrisponde al "bottone" PER MOBILE di chiusura pagina
+                e al ritorno alla pagina di gioco
+            -->
+            <div id="closeMobile">
+                <a href="" id="anchorMobile">
+                    <span class="material-symbols-rounded">
+                        close
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- parte relativa al contenuto e alle impostazioni concrete -->
+        <div id="setDescription">
+
+            <!--
+                questo div corrisponde al "bottone" PER PC di chiusura pagina
+                e al ritorno alla pagina di gioco
+            -->
+            <div>
+                <span>
+                    Video
+                </span>
+                <a href="../game.html" id="closeBtn">
+                    <span class="material-symbols-rounded">
+                        close
+                    </span>
+                </a>
+            </div>
+
+            <!-- finestra contenente le impostazioni -->
+            <div id="optionWindow">
+
+                <!-- MESSAGGIO DA MOSTRARE -->
+                <div>
+                    Queste sono tutti i comandi che ti permettono di modificare le impostazioni video.
+                    <br>
+                    Puoi impostare
+                    Le impostazioni <b>sono ancora in vio di sviluppo</b> quindi si prega di non sovraccaricare il
+                    sistema grazie.
+                </div>
+
+                <div>
+                    <!-- CONTROLLI CON SCELTA OPZIONI E SELEZIONE PREFERENZE -->
+                    <!--
+                        la classe .option corrisponde a una "classica" voce delle impostazioni
+                    -->
+                    <div class="option">
+                        <div>
+                            Impostazioni video
+                        </div>
+                        <div>
+                            <!-- VISUALIZZA pt.2 settings.css -->
+                            <button class="lowHigh"></button>
+
+                        </div>
+                    </div>
+
+                    <div class="option">
+                        <div>
+                            Schermo intero
+                        </div>
+                        <div>
+                            <button class="onOff"></button>
+                        </div>
+                    </div>
+
+                    <div class="option">
+                        <div>
+                            RTX
+                        </div>
+                        <div>
+                            <button class="onOff"></button>
+                        </div>
+                    </div>
+
+                    <div class="option">
+                        <div>
+                            Fps
+                        </div>
+                        <div>
+                            <button class="onOff"></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+<!-- script che imposta l'attributo backgroundImage del body con l'immagine
+     fornita nel testo dell'url-->
+<script src="./js/background.js"></script>
+
+</html>
