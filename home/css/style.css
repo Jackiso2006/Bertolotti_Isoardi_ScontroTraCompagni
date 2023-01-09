@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../../img/circuitBkg.jpg);
+    background-image: url(../../img/blackground_logo.png);
     background-position: center;
     background-size: 100% 100%;
     opacity: 0;
@@ -114,7 +114,7 @@ section p{
 }
 
 body{
-    background-image: url(../../img/circuitBkg.jpg);
+    background-image: url(../img/background.jpg);
     background-size: cover;
     height: 100vh;
 }
