@@ -8,7 +8,7 @@ url = url.slice(5);
 
 document.getElementById("resumeBtn").href = "./game.html?" + url;
 
-var player1 = String(url.split("&", 1));
+/*var player1 = String(url.split("&", 1));
 url = url.slice(player1.length + 1);
 
 var name1 = String(url.split("&", 1));
@@ -38,7 +38,12 @@ buttonImg2.src = window.location.pathname.split(`game.html`)[0] + "img/" + playe
 name1 = name1.slice(4);
 name2 = name2.slice(4);
 name3 = name3.slice(4);
-name4 = name4.slice(4);
+name4 = name4.slice(4); */
+
+name1 = "fire";
+name2 = "rocket";
+name3 = "grenade";
+name4 = "laser";
 
 var image1 = document.getElementById("player1");
 var image2 = document.getElementById("player2");
@@ -98,10 +103,10 @@ function assegna(ability, name, abilityBtn, player) {
     var name, animation;
 
     ability.forEach(val => {
-        val.src = window.location.pathname.split(`game.html`)[0] + "img/" + name + ".png";
+        val.src = window.location.pathname.split(`/game/game.html`)[0] + "/img/" + name + ".png";
     });
 
-    abilityBtn.src = window.location.pathname.split(`game.html`)[0] + "img/" + name + "_ability.png";
+    abilityBtn.src = window.location.pathname.split(`/game/game.html`)[0] + "/img/" + name + "_ability.png";
 
     switch (true) {
         case name == "yo":
