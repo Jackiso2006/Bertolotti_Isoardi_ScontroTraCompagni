@@ -17,6 +17,9 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/has.css">
+
+
     <link rel="icon" href="../img/icon.png">
     <title>Chose your character</title>
 </head>
@@ -24,12 +27,16 @@
 <body>
     <form action="../game/NOJAVA.html" method="get">
         <section id="pl1">
-            <img src="../img/scegliIlPersonaggio.png" style="max-width: 50%; height: auto;">
+            <img src="../img/avatarOrizzontale.png" style="max-width: 50%; height: auto;">
 
             <span>PLAYER 1</span>
 
             <div style="margin-top: 0px;">
-                <a class="frecciaDX"><</a>
+                <a class="freccia">
+                    <span class="material-symbols-rounded">
+                        west
+                    </span>
+                </a>
                 <label class="card desGabibbo visibile">
                     <input type="radio" name="pl1" value="gabibbo">
                     <div class="picture">
@@ -93,7 +100,11 @@
                         </p>
                     </div>
                 </label>
-                <a class="frecciaDX">></a>
+                <a class="freccia">
+                    <span class="material-symbols-rounded">
+                        east
+                    </span>
+                </a>
             </div>
 
             <label>
@@ -103,13 +114,17 @@
         </section>
 
         <section id="ab1">
-            <img src="../img/scegliLeAbilità.png" style="max-width: 50%; height: auto;">
+            <img src="../img/abilitaOrizzontale.png" style="max-width: 50%; height: auto;">
 
             <span>PLAYER 1</span>
 
             <div style="margin-top: 0px;">
                 <div>
-                    <a class="frecciaDX"><</a>
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            west
+                        </span>
+                    </a>
                     <label class="card desCSharp visibile">
                         <input type="radio" name="ab1" value="cSharp">
                         <div class="picture">
@@ -169,10 +184,18 @@
                             </p>
                         </div>
                     </label>
-                    <a class="frecciaDX">></a>
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            east
+                        </span>
+                    </a>
                 </div>
                 <div>
-                    <a class="frecciaDX"><</a>
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            west
+                        </span>
+                    </a>
                     <label class="card desLaser visibile">
                         <input type="radio" name="ab2" value="laser">
                         <div class="picture">
@@ -202,7 +225,11 @@
                             </p>
                         </div>
                     </label>
-                    <a class="frecciaDX">></a>
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            east
+                        </span>
+                    </a>
                 </div>
             </div>
 
@@ -213,13 +240,18 @@
         </section>
 
         <section id="pl2">
-            <img src="../img/scegliIlPersonaggio.png" style="max-width: 50%; height: auto;">
+            <img src="../img/avatarOrizzontale.png" style="max-width: 50%; height: auto;">
 
             <span>PLAYER 2</span>
 
             <div style="margin-top: 0px;">
 
-                <label class="card desGabibbo">
+                <a class="freccia">
+                    <span class="material-symbols-rounded">
+                        west
+                    </span>
+                </a>
+                <label class="card desGabibbo visibile">
                     <input type="radio" name="pl2" value="gabibbo">
                     <div class="picture">
                         <img src="../img/gabibbo.png">
@@ -282,6 +314,11 @@
                         </p>
                     </div>
                 </label>
+                <a class="freccia">
+                    <span class="material-symbols-rounded">
+                        east
+                    </span>
+                </a>
             </div>
 
             <label>
@@ -291,15 +328,20 @@
         </section>
 
         <section id="ab2">
-            <img src="../img/scegliLeAbilità.png" style="max-width: 50%; height: auto;">
+            <img src="../img/abilitaOrizzontale.png" style="max-width: 50%; height: auto;">
 
             <span>PLAYER 1</span>
 
             <div style="margin-top: 0px;">
-
+                
                 <div>
-                    <label class="card desCSharp">
-                        <input type="radio" name="ab1" value="cSharp">
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            west
+                        </span>
+                    </a>
+                    <label class="card desCSharp visibile">
+                        <input type="radio" name="ab3" value="cSharp">
                         <div class="picture">
                             <img src="../img/cSharp.png">
                         </div>
@@ -315,7 +357,7 @@
                     </label>
 
                     <label class="card desFire">
-                        <input type="radio" name="ab1" value="fire">
+                        <input type="radio" name="ab3" value="fire">
                         <div class="picture">
                             <img src="../img/fire.png">
                         </div>
@@ -331,7 +373,7 @@
                     </label>
 
                     <label class="card desGrenade">
-                        <input type="radio" name="ab1" value="grenade">
+                        <input type="radio" name="ab3" value="grenade">
                         <div class="picture">
                             <img src="../img/grenade.png">
                         </div>
@@ -345,7 +387,7 @@
                     </label>
 
                     <label class="card desYo">
-                        <input type="radio" name="ab1" value="yo">
+                        <input type="radio" name="ab3" value="yo">
                         <div class="picture">
                             <img src="../img/yo.png">
                         </div>
@@ -358,11 +400,20 @@
                             </p>
                         </div>
                     </label>
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            east
+                        </span>
+                    </a>
                 </div>
                 <div>
-
-                    <label class="card desLaser">
-                        <input type="radio" name="ab2" value="laser">
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            west
+                        </span>
+                    </a>
+                    <label class="card desLaser visibile">
+                        <input type="radio" name="ab4" value="laser">
                         <div class="picture">
                             <img src="../img/laser.png">
                         </div>
@@ -376,7 +427,7 @@
                     </label>
 
                     <label class="card desRocket">
-                        <input type="radio" name="ab2" value="rocket">
+                        <input type="radio" name="ab4" value="rocket">
                         <div class="picture">
                             <img src="../img/rocket.png">
                         </div>
@@ -390,6 +441,11 @@
                             </p>
                         </div>
                     </label>
+                    <a class="freccia">
+                        <span class="material-symbols-rounded">
+                            east
+                        </span>
+                    </a>
                 </div>
             </div>
 
@@ -400,7 +456,7 @@
         </section>
 
         <section id="location">
-            <img src="../img/scegliIlLuogo.png" style="max-width: 40%; height: auto;">
+            <img src="../img/luogoOrizzontale.png">
             <div class="containerLuogo">
 
                 <a>
@@ -408,7 +464,15 @@
                         west
                     </span>
                 </a>
+
                 <img src="../img/backDesert.jpg">
+                <img src="../img/blackSpace.jpg">
+                <img src="../img/citySquare.jpg">
+                <img src="../img/forestLake.jpg">
+                <img src="../img/gtaNewRoad.jpg">
+                <img src="../img/gtaVgroove.jpg">
+                <img src="../img/NYCbigRoad.jpg">
+                <img src="../img/springfild.jpg">
 
                 <a>
                     <span class="material-symbols-rounded">
@@ -417,19 +481,51 @@
                 </a>
 
                 <div class="demoLuoghi">
-                    <img src="../img/backDesert.jpg">
-                    <img src="../img/blackSpace.jpg">
-                    <img src="../img/citySquare.jpg">
-                    <img src="../img/forestLake.jpg">
-                    <img src="../img/gtaNewRoad.jpg">
-                    <img src="../img/gtaVgroove.jpg">
-                    <img src="../img/NYCbigRoad.jpg">
-                    <img src="../img/springfild.jpg">
+                    <label>
+                        <input type="radio" name="bkg" value="backDesert" checked>
+                        <img src="../img/backDesert.jpg">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="bkg" value="blackSpace">
+                        <img src="../img/blackSpace.jpg">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="bkg" value="citySquare">
+                        <img src="../img/citySquare.jpg">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="bkg" value="forestLake">
+                        <img src="../img/forestLake.jpg">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="bkg" value="gtaNewRoad">
+                        <img src="../img/gtaNewRoad.jpg">
+                    </label>
+                    
+                    <label>
+                        <input type="radio" name="bkg" value="gtaVgroove">
+                        <img src="../img/gtaVgroove.jpg">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="bkg" value="NYCbigRoad">
+                        <img src="../img/NYCbigRoad.jpg">
+                    </label>
+
+                    <label>
+                        <input type="radio" name="bkg" value="springfild">
+                        <img src="../img/springfild.jpg">
+                    </label>
+
                 </div>
             </div>
 
             <label>
-                <button type="submit">
+                <button type="submit" style="margin: 0; border: none;">
                     Conferma
                 </button>
             </label>

@@ -354,7 +354,7 @@ function setAbility(abilityArray, player, name, image) {
 
                 stop2 = setTimeout(ability2Reset, 8000);
 
-            } else {
+            } else {<
 
                 abilityArray.forEach(val => {
                     val.style.animation = animation4;

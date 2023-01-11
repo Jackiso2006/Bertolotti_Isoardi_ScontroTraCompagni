@@ -114,15 +114,14 @@ section p{
 }
 
 body{
-    background-image: url(../img/background.jpg);
+    background-image: url(../../img/circuitBkg.jpg);
     background-size: cover;
     height: 100vh;
 }
 
-main {
+main , body > div:not(#settings){
     position: absolute;
     z-index: 1;
-
     width: 100%;
     height: 100vh;
 }
@@ -302,8 +301,7 @@ header, section{
 
 #back:hover{
     transform: scale(120%);
-    filter: drop-shadow(0px 0px 10px #a364e9);
-    animation-play-state: running;
+    filter: drop-shadow(0px 0px 10px #af6aff);
 }
 
 .card{
@@ -335,10 +333,11 @@ header, section{
     z-index: 5;
     font-family: "ledFont";
     color: yellow;
-    font-size: 50px;
+    font-size: 5vh;
     top: 50px;
     right: 25px;
-    text-shadow: 0px 0px 8px yellow;
+    text-shadow: 0px 0px 2vh yellow;
+    font-weight: 1000;
     cursor: default;
 }
 
@@ -360,13 +359,13 @@ section > div , #ab1 > div > div, #ab2 > div > div{
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-    margin-top: 10px;
 }
 
 #ab1 > div > div:first-child , #ab2 > div > div:first-child{
     width: 66.6%;
     background-color: rgba(255, 0, 0, 0.4);
     border-right: 10px aliceblue solid;
+    box-sizing: border-box;
 }
 
 #ab1 > div > div:last-child , #ab2 > div > div:last-child{
@@ -416,7 +415,11 @@ input[type="radio"]{
     display: none;
 }
 
-section > label:last-child, #location button{
+section > img{
+    margin-top: 30px;
+}
+
+section > label:last-child{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -426,7 +429,28 @@ section > label:last-child, #location button{
     background-image: linear-gradient(40deg,#fffc00 0%,#fc00ff 45%,#00fffc 100%);
     border-radius: 10px;
     color: aliceblue;
-    border: 2px aliceblue solid;
+    font-family: "bold";
+    border: 4px aliceblue solid;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    transition: transform 0.3s , filter 0.3s;
+    cursor: pointer;
+}
+
+section > label:last-child:hover{
+    transform: scale(120%);
+    filter: drop-shadow(0px 0px 5px aliceblue);
+}
+
+#location > label > button{
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: aliceblue;
+    font-size: 20px;
+    font-family: "bold";
 }
 
 .picture{
@@ -504,14 +528,7 @@ form > section{
     display: flex;
 }
 
-#location .frecciaDX, #location .frecciaSX{
-    display: block;
-}
-
-section:nth-child(1):has(> label > input:checked)+section,
-section:nth-child(2):has(> label > input:checked)+section,
-section:nth-child(3):has(> label > input:checked)+section,
-section:nth-child(4):has(> label > input:checked)+section {
+section:has(> label > input:checked)+section{
     display: flex;
 }
 
@@ -522,6 +539,10 @@ section:nth-child(4):has(> label > input:checked)+section {
     display: none;
 }
 
+#location > img{
+    max-width: 30%; height: auto;
+}
+
 .containerLuogo {
     position: relative;
     display: flex;
@@ -529,92 +550,134 @@ section:nth-child(4):has(> label > input:checked)+section {
     align-items: center;
     width: 100%;
     height: 90%;
-    background-color: green;
+    margin: 0;
 }
 
 .containerLuogo > img {
     max-width: 40%;
     height: auto;
-    padding: 20px;
+    border: 5px aliceblue solid;
+    border-radius: 25px;
+    margin: 10px;
 }
 
 .containerLuogo > a{
     position: absolute;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    padding: 15px;
-    color: white;
+    width: 58px;
+    height: 58px;
+    color: aliceblue;
     font-weight: bold;
     font-size: 20px;
-    border-radius: 0 12px 12px 0;
+    border-radius: 50%;
+    border: 2px aliceblue solid;
     background-image: linear-gradient(40deg,#fffc00 0%,#fc00ff 45%,#00fffc 100%);
     cursor: pointer;
+    transition: transform 0.3s , filter 0.3s;
 }
 
 .containerLuogo > a:first-of-type{ left: 70px; }
 
 .containerLuogo > a:last-of-type { right: 70px;}
 
-.containerLuogo > a > span{ font-size: 50px; }
+.containerLuogo > a > span{
+    font-size: 40px;
+}
 
-.frecciaSX, .frecciaDX {
+.freccia {
     display: none;
     cursor: pointer;
-    width: auto;
     padding: 15px;
-    color: white;
+    color: aliceblue;
     font-weight: bold;
     font-size: 20px;
-    border-radius: 0 3px 3px 0;
+    border-radius: 50%;
+    border: 2px aliceblue solid;
     background-image: linear-gradient(40deg,#fffc00 0%,#fc00ff 45%,#00fffc 100%);
+    transition: transform 0.3s , filter 0.3s;
+}
+
+.freccia:hover , .containerLuogo > a:hover{
+    transform: scale(120%);
+    filter: drop-shadow(0px 0px 4px aliceblue);
 }
 
 .demoLuoghi{
-    width: 80%;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
-.demoLuoghi > img {
-    max-width: 13%;
+.demoLuoghi > label{
+    width: 10%;
+    margin: 14px;
+}
+
+.demoLuoghi > label > img {
+    width: 100%;
     height: auto;
-    opacity: 0.8;
     cursor: pointer;
-    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 5px solid;
+    border-color: rgba(211, 211, 211, 0.1);
+    opacity: 0.6;
+    transition: opacity 0.5s , border-color 0.5s , transform 0.5s;
 }
 
-.demoLuoghi > img:hover {
+.demoLuoghi > label > img:hover{
     opacity: 1;
 }
 
+@media screen and (max-width: 1510px) {
+    #ab1 > div, #ab2 > div , section > div{
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #ab1 > div > div:last-child , #ab2 > div > div:last-child{
+        width: 100%;
+    }
+
+    #ab1 > div > div:first-child , #ab2 > div > div:first-child{
+        width: 100%;
+        border-color: transparent;
+        border-bottom: 10px aliceblue solid;
+    }
+
+    .card{
+        min-width: 150px;
+    }
+
+    .card p{
+        font-size: 15px;   
+    }
+
+    .demoLuoghi > label{
+        width: 13%;
+    }
+
+}
+
 @media screen and (max-width: 1024px) {
+
     .containerLuogo > img {
         max-width: 60%;
     }
 
-    .containerLuogo > a{
-        width: 35px;
-        height: 35px;
+    .demoLuoghi > label {
+        width: 15%;
     }
 
-    .containerLuogo > a:first-of-type{ left: 50px; }
-    .containerLuogo > a:last-of-type { right: 50px;}
-}
+    .containerLuogo > a:first-of-type{ left: 30px; }
+    .containerLuogo > a:last-of-type { right: 30px;}
 
-@media screen and (max-width: 1510px) {
-    #ab1 > div, #ab2 > div{
-        transform: scale(80%);;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    form > section > div{
-        transform: scale(70%);
-    }
 }
 
 @media screen and (max-width: 769px) {
@@ -622,13 +685,11 @@ section:nth-child(4):has(> label > input:checked)+section {
         font-size: 20px;
         top: 10px;
     }
-    
-    section > img{
-        margin-top: 50px;
-    }
 
-    .frecciaDX, .frecciaSX{
-        display: block;
+    .freccia{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .card{
@@ -639,10 +700,6 @@ section:nth-child(4):has(> label > input:checked)+section {
         display: flex;
     }
 
-    #ab1 > div > div:last-child, #ab2 > div > div:last-child{
-        width: 66.6%;
-    }
-
     #ab1 > div > div:first-child, #ab2 > div > div:first-child{
         border: none;
     }
@@ -650,10 +707,6 @@ section:nth-child(4):has(> label > input:checked)+section {
     #ab1 > div, #ab2 > div{
         flex-direction: column;
         border: none;
-    }
-
-    .demoLuoghi{
-        transform: scale(80%);
     }
 
     main{
@@ -673,4 +726,38 @@ section:nth-child(4):has(> label > input:checked)+section {
         height: fit-content;
         padding: 10px 0px 10px 0px;
     }
+
+    #location > img{
+        max-width: 50%;
+    }
+
+    .containerLuogo > img {
+        max-width: 70%;
+    }
+
+    .demoLuoghi > label {
+        width: 23%;
+        margin: 8px 8px;
+    }
+
+    .containerLuogo > a{
+        transform: scale(75%);
+    }
+
+    .containerLuogo > a:hover{
+        transform: scale(100%);
+    }
+
+    .containerLuogo > a:first-of-type{ left: 10px; }
+    .containerLuogo > a:last-of-type { right: 10px;}
+
+    #registrazioneForm{
+        transform: scale(70%);
+        min-height: 250px;
+    }
+
+    #registrazioneForm > p{
+        width: 75%;
+    }
+
 }

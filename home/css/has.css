@@ -1,0 +1,21 @@
+.containerLuogo > img{
+    display: none;
+}
+
+.demoLuoghi > label > input:checked + img{
+    transform: scale(120%);
+    border-color: aliceblue;
+    opacity: 1;
+}
+
+
+.containerLuogo:has(> div > label:nth-child(1) > input:checked) > img:nth-of-type(1) ,
+.containerLuogo:has(> div > label:nth-child(2) > input:checked) > img:nth-of-type(2) ,
+.containerLuogo:has(> div > label:nth-child(3) > input:checked) > img:nth-of-type(3) ,
+.containerLuogo:has(> div > label:nth-child(4) > input:checked) > img:nth-of-type(4) ,
+.containerLuogo:has(> div > label:nth-child(5) > input:checked) > img:nth-of-type(5) ,
+.containerLuogo:has(> div > label:nth-child(6) > input:checked) > img:nth-of-type(6) ,
+.containerLuogo:has(> div > label:nth-child(7) > input:checked) > img:nth-of-type(7) ,
+.containerLuogo:has(> div > label:nth-child(8) > input:checked) > img:nth-of-type(8){
+    display: block;
+}
