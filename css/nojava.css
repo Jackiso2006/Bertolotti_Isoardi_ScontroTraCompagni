@@ -154,6 +154,99 @@ header button , header a{
     padding: 0px 5px;
 }
 
+.suggestWindow{
+    position: absolute;
+    z-index: 20;
+    top: -200px;
+    left: -100%;
+    width: 190px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: aliceblue;
+    border-radius: 15px;
+    border: 4px aliceblue solid;
+    font-size: 25px;
+    font-family: "bold";
+    background-image: linear-gradient(-45deg, #3c80a8, #ac08af);
+    box-shadow: 0px 0px 10px black , 0px 0px 10px black;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.suggestWindow::after {
+    content: "";
+    position: absolute;
+    border: 18px transparent solid;
+    /*
+    FRECCIA VERSO DESTRA
+    right: -39px;
+    bottom: 10px;
+    border-left-color: aliceblue; */
+    right: 25px;
+    bottom: 80px;
+    border-bottom-color: aliceblue;
+}
+
+.suggestWindow::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suggestWindow:has(:checked) > span{
+    display: none;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+#settingsBtn:hover + .suggestWindow{
+    opacity: 1;
+    top: 120px;
+    left: 4%;
+}
+
+#settingsBtn:hover + .suggestWindow::before{
+    content: "Vai alle impostazioni";
+}
+
+#pauseBtn:hover + .suggestWindow{
+    opacity: 1;
+    top: 120px;
+    left: 30%;
+}
+
+#pauseBtn:hover + .suggestWindow::before{
+    content: "Metti in pausa";
+}
+
+header > div:hover + .suggestWindow{
+    opacity: 1;
+    top: 120px;
+    left: 55%;
+}
+
+header > div:hover + .suggestWindow::before{
+    content: "Regola il  volume";
+}
+
+header > button:nth-last-child(2):hover + .suggestWindow{
+    opacity: 1;
+    top: 120px;
+    left: 80%;
+}
+
+header > button:nth-last-child(2):hover + .suggestWindow::before{
+    content: "Cambia il tema del gioco";
+}
+
 /*
 riesco a modificare le impostazioni base del tag <input type="range">
 browser tramite la pseudo-classe -webkit */
@@ -178,11 +271,11 @@ browser tramite la pseudo-classe -webkit */
     usando la pseudo-classe ::before e l'attributo (content:"")
     riesco a modificare il contenuto dell'elemento immediatamente prima 
 */
-header >:last-child > span::before{
+header > button:nth-last-child(2):focus > span::before{
     content: "light_mode";
 }
 
-header >:last-child:focus > span::before{
+header > button:nth-last-child(2) > span::before{
     content: "dark_mode";
 }
 
