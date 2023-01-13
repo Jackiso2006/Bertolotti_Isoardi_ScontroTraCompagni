@@ -4,17 +4,17 @@
 
 @font-face {
     font-family: "bold";
-    src: url(../../font/RedHatDisplay-Bold.otf);
+    src: url(../font/RedHatDisplay-Bold.otf);
 }
 
 @font-face {
     font-family: "regular";
-    src: url(../../font/RedHatDisplay-Regular.otf);
+    src: url(../font/RedHatDisplay-Regular.otf);
 }
 
 @font-face {
     font-family: "ledFont";
-    src: url(../../font/ledsledital.ttf);
+    src: url(../font/ledsledital.ttf);
 }
 
 /* qui modifichi la barra di scorrimento */
@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../../img/blackground_logo.png);
+    background-image: url(../img/blackground_logo.png);
     background-position: center;
     background-size: 100% 100%;
     opacity: 0;
@@ -114,7 +114,7 @@ section p{
 }
 
 body{
-    background-image: url(../../img/circuitBkg.jpg);
+    background-image: url(../img/circuitBkg.jpg);
     background-size: cover;
     height: 100vh;
 }
@@ -554,6 +554,7 @@ section:has(> label > input:checked)+section{
 }
 
 .containerLuogo > img {
+    display: none;
     max-width: 40%;
     height: auto;
     border: 5px aliceblue solid;
@@ -635,6 +636,23 @@ section:has(> label > input:checked)+section{
     opacity: 1;
 }
 
+.demoLuoghi > label > input:checked + img{
+    transform: scale(120%);
+    border-color: aliceblue;
+    opacity: 1;
+}
+
+.containerLuogo:has(> div > label:nth-child(1) > input:checked) > img:nth-of-type(1) ,
+.containerLuogo:has(> div > label:nth-child(2) > input:checked) > img:nth-of-type(2) ,
+.containerLuogo:has(> div > label:nth-child(3) > input:checked) > img:nth-of-type(3) ,
+.containerLuogo:has(> div > label:nth-child(4) > input:checked) > img:nth-of-type(4) ,
+.containerLuogo:has(> div > label:nth-child(5) > input:checked) > img:nth-of-type(5) ,
+.containerLuogo:has(> div > label:nth-child(6) > input:checked) > img:nth-of-type(6) ,
+.containerLuogo:has(> div > label:nth-child(7) > input:checked) > img:nth-of-type(7) ,
+.containerLuogo:has(> div > label:nth-child(8) > input:checked) > img:nth-of-type(8){
+    display: block;
+}
+
 @media screen and (max-width: 1510px) {
     #ab1 > div, #ab2 > div , section > div{
         flex-wrap: wrap;
@@ -671,14 +689,16 @@ section:has(> label > input:checked)+section{
         max-width: 60%;
     }
 
-    .demoLuoghi > label {
-        width: 15%;
+    .demoLuoghi > img {
+        max-width: 15%;
     }
 
     .containerLuogo > a:first-of-type{ left: 30px; }
     .containerLuogo > a:last-of-type { right: 30px;}
 
 }
+
+
 
 @media screen and (max-width: 769px) {
     #pl1 > span, #pl2 > span, #ab1 > span, #ab2 > span{

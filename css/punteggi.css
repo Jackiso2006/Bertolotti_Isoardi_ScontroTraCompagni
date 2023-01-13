@@ -4,7 +4,7 @@
 
 @font-face {
     font-family: "bold";
-    src: url(../../font/RedHatDisplay-Bold.otf);
+    src: url(../font/RedHatDisplay-Bold.otf);
 }
 
 *{
@@ -12,7 +12,7 @@
 }
 
 body{
-    background-image: url(../../img/circuitBkg.jpg);
+    background-image: url(../img/circuitBkg.jpg);
     background-size: cover;
     height: 100vh;
     margin: 0;

@@ -21,15 +21,15 @@
     <meta property="og:url" content="https://endorworks.com" />
 
     <!-- STYLESHEET -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="../commonCss/animation.css">
+    <link rel="stylesheet" href="./css/conJava.css">
+    <link rel="stylesheet" href="./css/animation.css">
 
     <!-- FONTS ICON -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- ICONA e TITLE SCHEDA-->
-    <link rel="icon" href="../img/icon.png">
+    <link rel="icon" href="./img/icon.png">
     <title>Gioco</title>
 
 </head>
@@ -99,10 +99,10 @@
             <a href="" id="optionAnchor">
                 Opzioni
             </a>
-            <a href="../home/index.html">
+            <a href="./home/index.html">
                 Home
             </a>
-            <a href="../home/punteggi.html">
+            <a href="./home/punteggi.html">
                 Classifica
             </a>
         </div>
@@ -130,13 +130,26 @@
             <div class="game_space">
 
                 <!-- BARRA DELLA VITA (momentaneamente non funzionante)-->
-                <div class="life"></div>
+                <div class="life">
+                    <div></div>
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
 
                 <!-- questo bottone rappresenta il giocatore 1
                     in base a delle azioni si può trasformare 
                     e riprodurre delle animazioni tramite css e javascript -->
                 <button id="player1">
-                    <img src="../img/gabibbo.png" id="img1">
+                    <img src="" id="img1">
                 </button>
 
                 <!-- serve ESCLUSIVAMENTE per ricreare l'animazione -->
@@ -152,17 +165,17 @@
                 YO!
                 -->
                 <!-- ELENCO PRIME ABILITA' (SOLO FIRE, YO, CSHARP e GRENADE) -->
-                <img src="../img/fire.png" class="ability1">
-                <img src="../img/fire.png" class="ability1">
-                <img src="../img/fire.png" class="ability1">
-                <img src="../img/fire.png" class="ability1">
+                <img src="" class="ability1">
+                <img src="" class="ability1">
+                <img src="" class="ability1">
+                <img src="" class="ability1">
 
 
                 <!-- ELENCO SECONE ABILITA' (SOLO LASER E RAZZO) -->
-                <img src="../img/rocket.png" class="ability2">
-                <img src="../img/rocket.png" class="ability2">
-                <img src="../img/rocket.png" class="ability2">
-                <img src="../img/rocket.png" class="ability2">
+                <img src="" class="ability2">
+                <img src="" class="ability2">
+                <img src="" class="ability2">
+                <img src="" class="ability2">
 
             </div>
 
@@ -177,14 +190,14 @@
                         <!-- quando premuto ricrea l'abilità -->
                         <!-- move(1,10) == move(player1,abilità numero 1) -->
                         <button onclick="move(1,10)">
-                            <img src="../img/fire_ability.png" id="abilityBtn1">
+                            <img src="" id="abilityBtn1">
                         </button>
 
                         <!-- questo bottone rappresenta la SECONDA ABILITA' (player1) -->
                         <!-- quando premuto ricrea l'abilità -->
                         <!-- move(1,20) == move(player1,abilità numero 2) -->
                         <button onclick="move(1,20)">
-                            <img src="../img/rocket_ability.png" id="abilityBtn2">
+                            <img src="" id="abilityBtn2">
                         </button>
 
                     </div>
@@ -254,35 +267,47 @@
         <script src="./js/tutorial.js"></script>
 
 
-        <!-- sezione relativa al primo giocatore -->
+        <!-- sezione relativa al secondo giocatore -->
         <section>
 
             <!-- area di gioco -->
             <div class="game_space">
 
                 <!-- BARRA DELLA VITA (momentaneamente non funzionante)-->
-                <div class="life"></div>
+                <div class="life">
+                    <div></div>
+                    <div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
 
                 <!-- questo bottone rappresenta il giocatore 1
                     in base a delle azioni si può trasformare 
                     e riprodurre delle animazioni tramite css e javascript -->
                 <button id="player2">
-                    <img src="../img/timmy.png" id="img2">
+                    <img src="" id="img2">
                 </button>
 
 
                 <!-- ELENCO PRIME ABILITA' (SOLO FIRE, YO, CSHARP e GRENADE) -->
-                <img src="../img/grenade.png" class="ability3">
-                <img src="../img/grenade.png" class="ability3">
-                <img src="../img/grenade.png" class="ability3">
-                <img src="../img/grenade.png" class="ability3">
+                <img src="" class="ability3">
+                <img src="" class="ability3">
+                <img src="" class="ability3">
+                <img src="" class="ability3">
 
 
                 <!-- ELENCO SECONDE ABILITA' (SOLO LASER, RAZZO) -->
-                <img src="../img/laser.png" class="ability4">
-                <img src="../img/laser.png" class="ability4">
-                <img src="../img/laser.png" class="ability4">
-                <img src="../img/laser.png" class="ability4">
+                <img src="" class="ability4">
+                <img src="" class="ability4">
+                <img src="" class="ability4">
+                <img src="" class="ability4">
 
             </div>
 
@@ -297,14 +322,14 @@
                         <!-- quando premuto ricrea l'abilità -->
                         <!-- move(2,10) == move(player2,abilità numero 1) -->
                         <button onclick="move(2,10)">
-                            <img src="../img/grenade.png" id="abilityBtn3">
+                            <img src="" id="abilityBtn3">
                         </button>
 
                         <!-- questo bottone rappresenta la SECONDA ABILITA' (player2) -->
                         <!-- quando premuto ricrea l'abilità -->
                         <!-- move(2,20) == move(player2,abilità numero 2) -->
                         <button onclick="move(2,20)">
-                            <img src="../img/laser.png" id="abilityBtn4">
+                            <img src="" id="abilityBtn4">
                         </button>
 
                     </div>
@@ -379,7 +404,6 @@
 
     <!-- questo script permette il movimento dei personaggi e l'esecuzione delle abilità -->
     <script src="./js/movement.js"></script>
-
 
     <!-- QUESTO SCRIPT SERVE PER CAMBIARE TEMA -->
     <script>
@@ -460,9 +484,12 @@
         var url = document.URL.split("?")[1];
         var settingsBtn = document.getElementById("settingsBtn");
         var optionAnchor = document.getElementById("optionAnchor");
+        var bkg = getComputedStyle(document.querySelector("body")).backgroundImage;
 
-        settingsBtn.href = "../settings/crediti.html?" + "bkg=NYCbigRoad" + "&ver=Sijava";
-        optionAnchor.href = "../settings/crediti.html?" + "bkg=NYCbigRoad" + "&ver=Sijava";
+        bkg = bkg.slice(0,-6).slice(-10);
+
+        settingsBtn.href = "./settings/crediti.html?" + "bkg=" + bkg + "&ver=Sijava";
+        optionAnchor.href = "./settings/crediti.html?" + "bkg=" + bkg + "&ver=Sijava";
 
 
         /* prima volta che è stata caricata la pagina non assegno nulla e dopo la assegno

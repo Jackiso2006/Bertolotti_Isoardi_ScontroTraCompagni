@@ -2,12 +2,12 @@
 /* IMPLEMENTAZIONE FONT */
 @font-face {
     font-family: "bold";
-    src: url(../../font/RedHatDisplay-Bold.otf);
+    src: url(../font/RedHatDisplay-Bold.otf);
 }
 
 @font-face {
     font-family: "regular";
-    src: url(../../font/RedHatDisplay-Regular.otf);
+    src: url(../font/RedHatDisplay-Regular.otf);
 }
 
 b{
@@ -20,7 +20,7 @@ body{
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url(../../img/gtaVgroove.jpg);
+    background-image: url(../img/gtaVgroove.jpg);
     background-position: center;
     background-size: cover;
 }

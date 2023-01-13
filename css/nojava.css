@@ -1,13 +1,12 @@
-
 /* IMPLEMENTAZIONE FONT */
 @font-face {
     font-family: "bold";
-    src: url(../../font/RedHatDisplay-Bold.otf);
+    src: url(../font/RedHatDisplay-Bold.otf);
 }
 
 @font-face {
     font-family: "regular";
-    src: url(../../font/RedHatDisplay-Regular.otf);
+    src: url(../font/RedHatDisplay-Regular.otf);
 }
 
 /* PARTE RELATIVA ALL'ANIMAZIONE INIZIALE */
@@ -20,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(../../img/blackground_logo.png);
+    background-image: url(../img/blackground_logo.png);
     background-position: center;
     background-size: 100% 100%;
     opacity: 0;
@@ -96,7 +95,7 @@ body {
     overflow: hidden;
     width: 100%;
     height: 100vh;
-    background-image: url("../../img/gtaVgroove.jpg");
+    background-image: url("../img/gtaVgroove.jpg");
     background-color: rgba(6, 6, 6, 0.6);
     background-position: center;
     background-size: cover;
@@ -111,7 +110,7 @@ header {
     justify-content: space-around;
     width: 100%;
     height: 120px;
-    background-image: url("../../img/blackground_logo.png");
+    background-image: url("../img/blackground_logo.png");
     background-size: contain;  
     transition: top 0.7s;
 }
@@ -299,17 +298,96 @@ section {
     top: 0%;
 }
 
-/*  BARRA DELLA VITA  */
+/* BARRA DELLA VITA */
 div.life {
-    position: absolute;
+    position: relative;
+    top: 15px;
     z-index: 3;
-    top: 20px;
-    width: 400px;
-    height: 10px;
-    border: 5px lightgrey solid;
-    border-radius: 10px;
-    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px;
+    height: 45px;
+    padding: 8px;
+    border-radius: 15px;
+    overflow: hidden;
 }
+
+div.life::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border-radius: 10px;
+    border: 3px aliceblue solid;
+    box-sizing: border-box;
+    background-color: rgb(6, 6, 6);
+}
+
+div.life::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    left: -8px;
+    width: 475px;
+    height: 475px;
+    background-repeat: no-repeat;
+    background-color: orange;
+    background-image: conic-gradient(#8B0000 , goldenrod , goldenrod , #8B0000);
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+div.life > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    font-family: "bold";
+    font-size: 23px;
+}
+
+div.life > div:first-child::before {
+    content: "100%";
+    color: #83FA21;
+    animation: counter 3s infinite alternate cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s;
+}
+
+div.life > div:last-child{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    padding-right: 5px;
+}
+
+div.life > div:last-child > div{
+    width: 23px;
+    height: 28px;
+    margin: 0px 3px;
+    border-radius: 5px;
+    border: 1px rgb(6, 6, 6) solid;
+    background-color: #83FA21;
+    transform: skewX(30deg);
+    animation: lifeChange 3s infinite alternate cubic-bezier(0.39, 0.575, 0.565, 1);
+    transform: scale(110%) skew(30deg);
+}
+
+div.life > div:last-child > div:nth-child(8){animation-delay: 0.1s;}
+div.life > div:last-child > div:nth-child(7){animation-delay: 0.2s;}
+div.life > div:last-child > div:nth-child(6){animation-delay: 0.3s;}
+div.life > div:last-child > div:nth-child(5){animation-delay: 0.4s;}
+div.life > div:last-child > div:nth-child(4){animation-delay: 0.5s;}
+div.life > div:last-child > div:nth-child(3){animation-delay: 0.6s;}
+div.life > div:last-child > div:nth-child(2){animation-delay: 0.7s;}
+div.life > div:last-child > div:nth-child(1){animation-delay: 0.8s;}
+
 
 /* CONTROLLY E JOYSTICK */
 .control {
@@ -487,17 +565,12 @@ div.life {
         height: 45%;
     }
 
-    .joystick , #player2{
+    .joystick , #player2 , div.life{
         transform: scale(70%);
     }
 
     #player1{
         transform: scale(70%) rotateY(180deg);
-    }
-
-    div.life{
-        width: 280px;
-        height: 7px;
     }
 
     .game_space > button > img[src $= "timmy.png"]{
@@ -589,8 +662,8 @@ div.life {
         width: 100%;
     }
 
-    section:first-child{
-        rotate: 180deg;
+    section:first-child , section:last-child div.life > div:first-child{
+        transform: rotate(180deg);
     }
 
     #separator{
@@ -601,19 +674,13 @@ div.life {
     }
     
     div.life{
-        height: 190px;
-        width: 5px;
-        border-width: 3.5px;
-        top: 30px;
+        transform: scale(60%) rotate(-90deg);
+        top: 150px;
     }
 
-    section:first-child div.life{
-        left: 20px;
-    }
+    section:first-child div.life{ left: -44%; }
 
-    section:last-child div.life{
-        right: 20px;
-    }
+    section:last-child div.life{ right: -44%; }
 
     .control{
         height: 140px;
