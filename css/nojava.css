@@ -120,6 +120,7 @@ header:hover {
 }
 
 header > div{
+    position: relative;
     width: fit-content;
     height: 100%;
     display: flex;
@@ -129,6 +130,7 @@ header > div{
 }
 
 header button , header a{
+    position: relative;
     border-radius: 50%;
     border: 4px aliceblue solid;
     padding: 5px;
@@ -157,8 +159,8 @@ header button , header a{
 .suggestWindow{
     position: absolute;
     z-index: 20;
-    top: -200px;
-    left: -100%;
+    top: -500%;
+    right: -200%;
     width: 190px;
     height: 80px;
     display: flex;
@@ -171,23 +173,9 @@ header button , header a{
     font-size: 25px;
     font-family: "bold";
     background-image: linear-gradient(-45deg, #3c80a8, #ac08af);
-    box-shadow: 0px 0px 10px black , 0px 0px 10px black;
+    cursor: default;
     opacity: 0;
     transition: opacity 0.3s;
-}
-
-.suggestWindow::after {
-    content: "";
-    position: absolute;
-    border: 18px transparent solid;
-    /*
-    FRECCIA VERSO DESTRA
-    right: -39px;
-    bottom: 10px;
-    border-left-color: aliceblue; */
-    right: 25px;
-    bottom: 80px;
-    border-bottom-color: aliceblue;
 }
 
 .suggestWindow::before{
@@ -199,53 +187,31 @@ header button , header a{
     justify-content: center;
 }
 
-.suggestWindow:has(:checked) > span{
-    display: none;
+.suggestWindow::after {
+    content: "";
+    position: absolute;
+    border: 18px transparent solid;
+    right: 25px;
+    bottom: 82px;
+    border-bottom-color: aliceblue;
 }
 
-input[type="radio"]{
-    display: none;
-}
-
-#settingsBtn:hover + .suggestWindow{
+header > button:hover > .suggestWindow , header > a:hover > .suggestWindow , header > div:hover > .suggestWindow{
     opacity: 1;
-    top: 120px;
-    left: 4%;
+    right: -18px;
+    top: 90px;
+    box-shadow: 0px 0px 10px 2px aliceblue;
 }
 
-#settingsBtn:hover + .suggestWindow::before{
-    content: "Vai alle impostazioni";
-}
+header > div:hover > .suggestWindow{ top: 120px; }
 
-#pauseBtn:hover + .suggestWindow{
-    opacity: 1;
-    top: 120px;
-    left: 30%;
-}
+#settingsBtn:hover > .suggestWindow::before{ content: "Vai alle impostazioni"; }
 
-#pauseBtn:hover + .suggestWindow::before{
-    content: "Metti in pausa";
-}
+#pauseBtn:hover > .suggestWindow::before{ content: "Metti in pausa"; }
 
-header > div:hover + .suggestWindow{
-    opacity: 1;
-    top: 120px;
-    left: 55%;
-}
+header > div:hover > .suggestWindow::before{ content: "Regola il  volume"; }
 
-header > div:hover + .suggestWindow::before{
-    content: "Regola il  volume";
-}
-
-header > button:nth-last-child(2):hover + .suggestWindow{
-    opacity: 1;
-    top: 120px;
-    left: 80%;
-}
-
-header > button:nth-last-child(2):hover + .suggestWindow::before{
-    content: "Cambia il tema del gioco";
-}
+#themeBtn:hover > .suggestWindow::before{ content: "Cambia il tema del gioco"; }
 
 /*
 riesco a modificare le impostazioni base del tag <input type="range">
@@ -271,11 +237,11 @@ browser tramite la pseudo-classe -webkit */
     usando la pseudo-classe ::before e l'attributo (content:"")
     riesco a modificare il contenuto dell'elemento immediatamente prima 
 */
-header > button:nth-last-child(2):focus > span::before{
+#themeBtn:focus > span::before{
     content: "light_mode";
 }
 
-header > button:nth-last-child(2) > span::before{
+#themeBtn > span::before{
     content: "dark_mode";
 }
 
@@ -658,7 +624,7 @@ div.life > div:last-child > div:nth-child(1){animation-delay: 0.8s;}
         height: 45%;
     }
 
-    .joystick , #player2 , div.life{
+    .joystick , #player2 , div.life , .suggestWindow{
         transform: scale(70%);
     }
 
@@ -702,7 +668,7 @@ div.life > div:last-child > div:nth-child(1){animation-delay: 0.8s;}
         height: 90px;
         border-radius: 0px 0px 30px 30px;
         transition: left 0.7s;
-        rotate: -90deg;
+        transform: rotate(-90deg);
         background-position: top;
     }
 
@@ -727,6 +693,10 @@ div.life > div:last-child > div:nth-child(1){animation-delay: 0.8s;}
     header button:hover , a:hover{
         filter: drop-shadow(0px 0px 15px black);
         transform: scale(80%) rotate(90deg);
+    }
+
+    .suggestWindow{
+        display: none;
     }
 
     #menu{

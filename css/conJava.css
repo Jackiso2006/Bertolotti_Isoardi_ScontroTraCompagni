@@ -139,6 +139,7 @@ header:hover {
 }
 
 div.volume{
+    position: relative;
     width: fit-content;
     height: 100%;
     display: flex;
@@ -148,6 +149,7 @@ div.volume{
 }
 
 header button , header a{
+    position: relative;
     border-radius: 50%;
     border: 4px aliceblue solid;
     padding: 5px;
@@ -174,8 +176,8 @@ header button , header a{
 .suggestWindow{
     position: absolute;
     z-index: 20;
-    top: -200px;
-    left: -100%;
+    top: -500%;
+    right: -200%;
     width: 190px;
     height: 80px;
     display: flex;
@@ -188,7 +190,7 @@ header button , header a{
     font-size: 25px;
     font-family: "bold";
     background-image: linear-gradient(-45deg, #3c80a8, #ac08af);
-    box-shadow: 0px 0px 10px black , 0px 0px 10px black;
+    cursor: default;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -206,63 +208,27 @@ header button , header a{
     content: "";
     position: absolute;
     border: 18px transparent solid;
-    /*
-    FRECCIA VERSO DESTRA
-    right: -39px;
-    bottom: 10px;
-    border-left-color: aliceblue; */
     right: 25px;
-    bottom: 80px;
+    bottom: 82px;
     border-bottom-color: aliceblue;
 }
 
-.suggestWindow:has(:checked) > span{
-    display: none;
-}
-
-input[type="radio"]{
-    display: none;
-}
-
-#settingsBtn:hover + .suggestWindow{
+header > button:hover > .suggestWindow , header > a:hover > .suggestWindow , header > div:hover > .suggestWindow{
     opacity: 1;
-    top: 120px;
-    left: 4%;
+    right: -18px;
+    top: 90px;
+    box-shadow: 0px 0px 8px aliceblue;
 }
 
-#settingsBtn:hover + .suggestWindow::before{
-    content: "Vai alle impostazioni";
-}
+header > div:hover > .suggestWindow{ top: 120px; }
 
-#pauseBtn:hover + .suggestWindow{
-    opacity: 1;
-    top: 120px;
-    left: 30%;
-}
+#settingsBtn:hover > .suggestWindow::before{ content: "Vai alle impostazioni"; }
 
-#pauseBtn:hover + .suggestWindow::before{
-    content: "Metti in pausa";
-}
+#pauseBtn:hover > .suggestWindow::before{ content: "Metti in pausa"; }
 
-header > div.volume:hover + .suggestWindow{
-    opacity: 1;
-    top: 120px;
-    left: 55%;
-}
+header > div:hover > .suggestWindow::before{ content: "Regola il  volume"; }
 
-header > div:hover + .suggestWindow::before{
-    content: "Regola il  volume";
-}
-
-header > #themeMode:hover + .suggestWindow{
-    opacity: 1;
-    top: 120px;
-    left: 80%;
-}
-
-header > #themeMode:hover + .suggestWindow::before{
-    content: "Cambia il tema del gioco";
-}
+#themeMode:hover > .suggestWindow::before{ content: "Cambia il tema del gioco"; }
 
 /*  BARRA DEL RANGE  */
 #volumeValue::-webkit-slider-runnable-track {
@@ -469,7 +435,7 @@ div.life > div:last-child > div{
     border: 1px rgb(6, 6, 6) solid;
     background-color: #83FA21;
     transform: skewX(30deg);
-    animation: lifeChange 3s a infinite alternate cubic-bezier(0.39, 0.575, 0.565, 1);
+    animation: lifeChange 3s infinite alternate cubic-bezier(0.39, 0.575, 0.565, 1);
     transform: scale(110%) skew(30deg);
 }
 
@@ -757,7 +723,7 @@ div.life > div:last-child > div:nth-child(1){animation-delay: 0.8s;}
         height: 45%;
     }
 
-    .joystick , #player2 , div.life{
+    .joystick , #player2 , div.life , .suggestWindow{
         transform: scale(70%);
     }
 
@@ -832,6 +798,10 @@ div.life > div:last-child > div:nth-child(1){animation-delay: 0.8s;}
     header button:hover , a:hover{
         filter: drop-shadow(0px 0px 15px black);
         transform: scale(80%) rotate(90deg);
+    }
+
+    .suggestWindow{
+        display: none;
     }
     
     #menu{
