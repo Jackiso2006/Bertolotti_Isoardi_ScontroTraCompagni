@@ -161,6 +161,8 @@ function move(player, type) {
     }
 }
 
+
+/* funzione che permette lo spostamento tramite tasti */
 document.onkeydown = function (e) {
 
     switch (true) {
