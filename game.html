@@ -73,7 +73,7 @@
                     volume_up
                 </span>
             </div>
-            
+
             <span class="suggestWindow"></span>
 
         </div>
@@ -492,10 +492,13 @@
         var optionAnchor = document.getElementById("optionAnchor");
         var bkg = getComputedStyle(document.querySelector("body")).backgroundImage;
 
-        bkg = bkg.slice(0,-6).slice(-10);
+        bkg = bkg.slice(0, -6).slice(-10);
 
-        settingsBtn.href = "./settings/crediti.html?" + "bkg=" + bkg + "&ver=Sijava";
-        optionAnchor.href = "./settings/crediti.html?" + "bkg=" + bkg + "&ver=Sijava";
+        if (url == undefined)
+            url = "pl1=trevor&ab1=cSharp&ab2=rocket&pl2=gabibbo&ab3=grenade&ab4=laser&bkg=blackSpace"
+
+        settingsBtn.href = "./settings/crediti.html?" + url + "&ver=Sijava";
+        optionAnchor.href = "./settings/crediti.html?" + url + "&ver=Sijava";
 
 
         /* prima volta che è stata caricata la pagina non assegno nulla e dopo la assegno
