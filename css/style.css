@@ -451,6 +451,7 @@ section > label:last-child:hover{
     color: aliceblue;
     font-size: 20px;
     font-family: "bold";
+    cursor: pointer;
 }
 
 .picture{
