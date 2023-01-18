@@ -256,8 +256,8 @@ body:has(header > #pauseBtn:focus , #menu:hover){
     background-blend-mode: darken;
 }
 
-body:has(header > #pauseBtn:focus) div.life > div::before , body:has(header > #pauseBtn:focus) div.life > div::after , body:has(header > #pauseBtn:focus) div.life > div > div{
-    animation-play-state: paused;
+body:has(header > #pauseBtn:focus) div.life > div::before , body:has(header > #pauseBtn:focus) div.life > div::after , body:has(header > #pauseBtn:focus) div.life > div > div , body:has(header > #pauseBtn:focus) *:not(#menu > div:first-child , #menu){
+    animation-play-state: paused !important;
 }
 
 /* se body ha il bottone in :focus allora apllica ""A BODY > MAIN"" ...*/
