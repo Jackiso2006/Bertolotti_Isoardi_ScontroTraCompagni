@@ -1,6 +1,8 @@
 /* SETTAGGIO IMMAGINI E ABILITA' IN BASE ALLE INFORMAZIONI DELL' URL */
 var buttonImg1 = document.getElementById("img1");
 var buttonImg2 = document.getElementById("img2");
+var pauseBtn = document.getElementById("pauseBtn");
+var themeMode = document.getElementById("themeMode");
 
 var url = document.URL;
 url = url.slice(url.search("html?"));
@@ -238,6 +240,15 @@ document.onkeydown = function (e) {
             move(2, 20)
             break;
 
+        /* compare il menu */
+        case e.key == "Escape":
+            pauseBtn.focus();
+            break;
+
+        /* cambia tema */
+        case e.key == String.fromCharCode(92):
+            themeMode.click();
+            break;
         default:
             break;
     }
