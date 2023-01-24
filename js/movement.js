@@ -164,8 +164,7 @@ function move(player, type) {
 }
 
 
-/* funzione che permette lo spostamento tramite tasti */
-document.onkeydown = function (e) {
+/document.onkeydown = function (e) {
 
     switch (true) {
         case e.key == "8":
@@ -252,7 +251,8 @@ document.onkeydown = function (e) {
         default:
             break;
     }
-}
+}/* funzione che permette lo spostamento tramite tasti */
+
 
 function settingStyle(image, type, player) {
 
