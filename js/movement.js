@@ -164,7 +164,7 @@ function move(player, type) {
 }
 
 
-/document.onkeydown = function (e) {
+document.onkeydown = function (e) {
 
     switch (true) {
         case e.key == "8":
