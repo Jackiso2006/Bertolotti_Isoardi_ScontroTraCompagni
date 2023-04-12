@@ -1,0 +1,346 @@
+@font-face {
+    font-family: "regular";
+    src: url(../font/RedHatDisplay-Regular.otf);
+}
+
+/*
+VECCHIO CSS 
+VECCHIO CSS 
+VECCHIO CSS 
+VECCHIO CSS 
+VECCHIO CSS 
+VECCHIO CSS 
+
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-image: url(../img/circuitBkg.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+header > img{
+    margin-top: 25px;
+    width: 30%;
+    height: auto;
+    animation: logoShadow infinite 2s linear;
+}
+
+header, section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+}
+
+header{height: 27%;}
+
+section{height: 73%;}
+
+#podio{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#podio > div > span > span{
+    animation: colorRotate 2s infinite linear;
+    font-size: 20px;
+    text-shadow: 0px 0px 3px black;
+}
+
+#primo, #secondo, #terzo{
+    position: relative;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 26%;
+    justify-content: flex-start;
+    padding: 30px;
+    gap: 10px;
+    align-items: center;
+}
+
+#terzo{
+    height: 40%;
+    background-color: #CD7F32;
+}
+
+#secondo{
+    height: 60%;
+    background-color: #C0C0C0;
+}
+
+#primo{
+    height: 80%;
+    background-color: #FFD700;
+}
+
+#podio > div > img:first-child{
+    height: auto;
+    width: 50%;
+    animation: pulse infinite 3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+#podio > div > img:last-child{
+    top: 10px;
+    right: 0px;
+    z-index: 2;
+    position: absolute;
+    width: 35%;
+    filter: drop-shadow(0px 0px 8px black);
+}
+
+
+@media screen and (max-width: 991.98px){
+    #podio{
+        height: 80vh;
+        width: 75%;
+    }
+
+    #primo, #secondo, #terzo{
+        width: 20%;
+    }
+
+    #podio > div > img:first-child{
+        width: 100%;
+        margin-bottom: 10px;
+    } 
+
+    header > img{
+        width: 60%;
+    }
+
+}
+
+@keyframes logoShadow {
+    0%{ filter: drop-shadow(0px 0px 10px #af6aff); }
+    50%{ filter: drop-shadow(0px 0px 0px #af6aff) }
+    100%{ filter: drop-shadow(0px 0px 10px #af6aff) }
+}
+
+@keyframes pulse {
+    0%{transform: scale(100%);}
+    50%{transform: scale(120%);}
+    100%{transform: scale(100%);}
+}
+
+@keyframes colorRotate {
+    from {
+      color: red;
+    }
+    20% {
+      color: rgb(255, 196, 0);
+    }
+    40% {
+      color: green;
+    }
+    60% {
+      color: blue;
+    }
+    80% {
+        color: indigo;
+    }
+    100%{
+        color: red;
+    }
+} 
+@keyframes pulse {
+    0%{transform: scale(100%);}
+    50%{transform: scale(120%);}
+    100%{transform: scale(100%);}
+}
+
+*/
+
+
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url(../img/circuitBkg.jpg);
+    background-size: cover;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 2vh;
+    box-sizing: border-box;
+    width: 100%;
+    height: 9vh;
+    font-family: "regular";
+    font-weight: bold;
+    font-size: 4vh;
+    color: aliceblue;
+    border-bottom: 0.4vh #b7b7b7 solid;
+    background-color: rgb(17, 17, 17);
+}
+
+footer > div , header > div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: "regular";
+    width: 5vh;
+    font-size: 2vh;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+footer > div:hover,  header > a:hover{
+    transform: scale(108%);
+}
+
+header > a{
+    transition: transform 0.3s;
+}
+
+footer > div > a, footer > div > button , header > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0.6vh;
+    width: 5vh;
+    height: 5vh;
+    color: aliceblue;
+    text-decoration: none;
+    box-sizing: content-box;
+    border-radius: 50%;
+    border: 0.4vh #b7b7b7 solid;
+    background-image: linear-gradient(40deg, #fffc00 0%, #fc00ff 45%, #00fffc 100%);
+    cursor: pointer;
+}
+
+footer > div > a > span, footer > div > button > span , header > a > span{
+    font-size: 4.5vh !important;
+}
+
+#settings > img{
+    width: 6vh;
+    height: 6vh;
+}
+
+#settings:hover{
+    transform: scale(110%);
+}
+
+#settings{
+    display: flex;
+    width: 6vh;
+    height: 6vh;
+    border: 0.4vh #967416 solid;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+main{
+    height: 73.25vh;
+    margin: 3vh;
+    display: flex;
+    box-sizing: border-box;
+    border: 0.6vh #b7b7b7 solid;
+    border-radius: 5vh;
+    width: 80%;
+    overflow: hidden;
+}
+
+main > div{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: rebeccapurple;
+    /* box-sizing: border-box;
+    padding: 0 1vh; */
+    overflow-y: auto;
+}
+
+main > div > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: orange;
+    border-right: 2px aliceblue solid;
+}
+
+#position{
+    width: 10%;
+    background-color: grey;
+}
+
+#player{
+    width: 55%;
+}
+
+#score{
+    background-color: grey;
+    width: 25%;
+}
+
+#skin{
+    width: 10%;
+    border-right: none;
+}
+
+#skin img{
+    width: 3.6vh;
+    height: 3.6vh;
+}
+
+main > div > div > div:first-child{
+    height: 5vh;
+    margin-top: 0px;
+    font-size: 2.5vh;
+    background-color: #111111;
+    color: aliceblue;
+}
+
+main > div > div > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 4vh;
+    width: 100%;
+    font-family: "regular";
+    font-size: 2vh;
+    font-weight: bold;
+    background-color: #474554;
+}
+
+main > div > div > div:nth-child(2n+3){
+    background-color: #443141;
+}
+
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 45%;
+    height: 11.5vh;
+    border-radius: 3vh 3vh 0px 0px;
+    border: 0.4vh #b7b7b7 solid;
+    color: #b7b7b7;
+    border-bottom: none;
+    background-color: rgb(17, 17, 17);
+}
+
+@media screen and (max-width: 769px) {
+    main > div > div > div{
+        font-size: 1.8vh;
+    }
+
+    footer{
+        width: 65%;
+    }
+}
