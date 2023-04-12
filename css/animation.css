@@ -131,7 +131,6 @@
         transform: rotate(0deg);
         opacity: 0;
     }
-
 }
 
 /*
@@ -322,7 +321,6 @@
         rotate: 360deg;
         left: 200%;
     }
-
 }
 
 @keyframes grenade2 {
@@ -338,7 +336,6 @@
         rotate: 360deg;
         right: 200%;
     }
-
 }
 
 @keyframes fire1 {
@@ -428,7 +425,6 @@
         content: "Loading....";
         text-shadow: 2px 2px 1px #64bbec;
     }
-
 }
 
 @keyframes resetSection {
@@ -444,64 +440,9 @@
     100%{ transform: scale(100%); }
 }
 
-/* per la vita */
-@keyframes counter {
-0%  { content: '100%'; color: #83FA21; }
-2%  { content: '98%'; }
-4%  { content: '96%'; }
-6%  { content: '94%'; }
-8%  { content: '92%'; }
-10% { content: '90%'; }
-12% { content: '88%'; }
-14% { content: '86%'; }
-16% { content: '84%'; }
-18% { content: '82%'; }
-20% { content: '80%'; }
-22% { content: '78%'; }
-24% { content: '76%'; }
-26% { content: '74%'; }
-28% { content: '72%'; }
-30% { content: '70%'; }
-32% { content: '68%'; }
-34% { content: '66%'; }
-36% { content: '64%'; }
-38% { content: '62%'; }
-40% { content: '60%'; }
-42% { content: '58%'; }
-44% { content: '56%'; color: goldenrod;}
-46% { content: '54%'; }
-48% { content: '52%'; }
-50% { content: '50%'; }
-52% { content: '48%'; }
-54% { content: '46%'; }
-56% { content: '44%'; }
-58% { content: '42%'; }
-60% { content: '40%'; }
-62% { content: '38%'; }
-64% { content: '36%'; }
-66% { content: '34%'; }
-68% { content: '32%'; }
-70% { content: '30%'; }
-72% { content: '28%'; color: #8B0000;}
-74% { content: '26%'; }
-76% { content: '24%'; }
-78% { content: '22%'; }
-80% { content: '20%'; }
-82% { content: '18%'; }
-84% { content: '16%'; }
-86% { content: '14%'; }
-88% { content: '12%'; }
-90% { content: '10%'; color: #494949;}
-92% { content: '8%';  }
-94% { content: '6%';  }
-96% { content: '4%';  }
-98% { content: '2%';  }
-100%{ content: '0%';  color: #494949;}
-}
-
 @keyframes lifeChange {
     0%   { background-color: #83FA21;   transform: scale(110%) skewX(30deg); }
     33.3%{ background-color: goldenrod; transform: scale(100%) skewX(30deg); }
     66.6%{ background-color: #8B0000;   transform: scale(90%)  skewX(30deg); }
-    100%  { background-color: #494949;   transform: scale(90%)  skewX(30deg); }
+    100% { background-color: #494949;   transform: scale(90%)  skewX(30deg); }
 }

@@ -21,8 +21,22 @@
     <meta property="og:url" content="https://endorworks.com" />
 
     <!-- STYLESHEET -->
-    <link rel="stylesheet" href="./css/conJava.css">
+    <link rel="stylesheet" href="./css/game.css">
     <link rel="stylesheet" href="./css/animation.css">
+
+    <script src="./js/data.js" defer></script>
+
+    <!-- SCRIPT DEL TUTORIAL -->
+    <script src="./js/tutorial.js" defer></script>
+
+    <!--
+    questo script imposta la riproduzione dell'animazione di caricamento SOLAMENTE
+    la prima volta che è stata ricaricata la pagina
+    -->
+    <script src="./js/script.js" defer></script>
+
+    <!-- questo script permette il movimento dei personaggi e l'esecuzione delle abilità -->
+    <script src="./js/movement.js" defer></script>
 
     <!-- FONTS ICON -->
     <link rel="stylesheet"
@@ -40,7 +54,7 @@
     <header class="lightHeader">
 
         <!-- "bottone" che permette di andare alla pagina delle impostazioni -->
-        <a href="" id="settingsBtn" class="lightMode">
+        <a href="./settings/crediti.html?ver=gamePg" id="settingsBtn" class="lightMode">
             <span class="material-symbols-rounded">
                 settings
             </span>
@@ -79,7 +93,7 @@
         </div>
 
         <!-- bottone che quando viene premuto permette di cambiare tema alla pagina -->
-        <button id="themeMode" onclick="change()" class="lightMode">
+        <button id="themeMode" class="lightMode">
             <span class="material-symbols-rounded" id="themeIcon">
                 light_mode
             </span>
@@ -88,41 +102,14 @@
 
     </header>
 
-    <!-- finestra del menu -->
-    <div id="menu">
-        <div>
-            <span class="material-symbols-rounded">
-                pause
-            </span>
-            <span>
-                PAUSA
-            </span>
-        </div>
-        <div>
-            <a href="./game.html" id="resumeBtn">
-                Riprendi
-            </a>
-            <a href="./settings/crediti.html?&ver=Sijava" id="optionAnchor">
-                Opzioni
-            </a>
-            <a href="./index.html">
-                Home
-            </a>
-            <a href="./punteggi.html">
-                Classifica
-            </a>
-        </div>
-    </div>
-    <!-- FINE finestra del menu -->
-
     <!-- html della finestra del tutorial -->
     <div id="tutorial" class="tutorialLight">
         <div id="messageTutorial">
 
         </div>
         <div id="formTutorial" class="tutorialLight">
-            <button id="skip" onclick="skip()">Salta tutorial</button>
-            <button id="next" onclick="next()">Prossimo (5)</button>
+            <button id="skip">Salta tutorial</button>
+            <button id="next">Prossimo (5)</button>
         </div>
     </div>
     <!-- FINE html della finestra del tutorial -->
@@ -137,7 +124,7 @@
 
                 <!-- BARRA DELLA VITA (momentaneamente non funzionante)-->
                 <div class="life">
-                    <div></div>
+                    <div>100%</div>
                     <div>
                         <div></div>
                         <div></div>
@@ -150,17 +137,14 @@
                         <div></div>
                     </div>
                 </div>
+                
+                <div class="name"></div>
 
                 <!-- questo bottone rappresenta il giocatore 1
                     in base a delle azioni si può trasformare 
                     e riprodurre delle animazioni tramite css e javascript -->
-                <button id="player1">
-                    <img src="" id="img1">
-                </button>
 
-                <!-- serve ESCLUSIVAMENTE per ricreare l'animazione -->
-                <!-- altrimente normalmente verrebbe tolto e messo nella zone delle abilità (qui sotto) -->
-                <img src="./img/rocket.png">
+                <img src="" id="img1">
 
                 <!--
                 METTI "YO" CHE SONO UNO SOPRA L'ALTRO
@@ -268,11 +252,6 @@
         <!-- LINEA BIANCA CHE SEPARA GIOCATORE 1 E GIOCATORE 2 -->
         <div id="separator"></div>
 
-
-        <!-- SCRIPT DEL TUTORIAL -->
-        <script src="./js/tutorial.js"></script>
-
-
         <!-- sezione relativa al secondo giocatore -->
         <section>
 
@@ -281,7 +260,7 @@
 
                 <!-- BARRA DELLA VITA (momentaneamente non funzionante)-->
                 <div class="life">
-                    <div></div>
+                    <div>100%</div>
                     <div>
                         <div></div>
                         <div></div>
@@ -294,13 +273,12 @@
                     </div>
                 </div>
 
+                <div class="name"></div>
+
                 <!-- questo bottone rappresenta il giocatore 1
                     in base a delle azioni si può trasformare 
                     e riprodurre delle animazioni tramite css e javascript -->
-                <button id="player2">
-                    <img src="" id="img2">
-                </button>
-
+                <img src="" id="img2">
 
                 <!-- ELENCO PRIME ABILITA' (SOLO FIRE, YO, CSHARP e GRENADE) -->
                 <img src="" class="ability3">
@@ -407,114 +385,6 @@
             <div class="miniCircle"></div>
         </div>
     </section>
-
-    <!-- questo script permette il movimento dei personaggi e l'esecuzione delle abilità -->
-    <script src="./js/movement.js"></script>
-
-    <!-- QUESTO SCRIPT SERVE PER CAMBIARE TEMA -->
-    <script>
-
-        var theme = document.getElementById("themeMode");
-        var icon = document.getElementById("themeIcon");
-
-        var joystick = document.querySelectorAll(".joystick");
-        var header = document.querySelector('header');
-        var pauseBtn = document.getElementById('pauseBtn');
-        var volumeBtn = document.getElementById('volumeBtn');
-        var volumeRange = document.getElementById('volumeRange');
-        var settingsBtn = document.getElementById('settingsBtn');
-
-        var formTutorial = document.getElementById("formTutorial");
-        var tutorialWindow = document.getElementById("tutorial");
-
-        const changeModeArr = [pauseBtn, volumeBtn, volumeRange, theme, settingsBtn];
-
-        function change() {
-            if (icon.textContent.includes("light")) {
-
-                icon.textContent = "dark_mode";
-
-                changeModeArr.forEach(val => {
-                    val.classList.replace("lightMode", "darkMode");
-                });
-
-                joystick[0].classList.replace("lightMode", "darkMode");
-                joystick[1].classList.replace("lightMode", "darkMode");
-
-                header.classList.replace("lightHeader", "darkHeader");
-
-                tutorialWindow.classList.replace("tutorialLight", "tutorialDark");
-                formTutorial.classList.replace("tutorialLight", "tutorialDark");
-
-                document.getElementById("next").style.color = "aliceblue";
-                document.getElementById("next").style.borderColor = "aliceblue";
-
-                document.getElementById("skip").style.color = "aliceblue";
-                document.getElementById("skip").style.borderColor = "aliceblue";
-
-            } else {
-                icon.textContent = "light_mode";
-
-                changeModeArr.forEach(val => {
-                    val.classList.replace("darkMode", "lightMode");
-                });
-
-                joystick[0].classList.replace("darkMode", "lightMode");
-                joystick[1].classList.replace("darkMode", "lightMode");
-
-                header.classList.replace("darkHeader", "lightHeader");
-
-                tutorialWindow.classList.replace("tutorialDark", "tutorialLight");
-                formTutorial.classList.replace("tutorialDark", "tutorialLight");
-
-                document.getElementById("next").style.color = "black";
-                document.getElementById("next").style.borderColor = "black";
-
-                document.getElementById("skip").style.color = "black";
-                document.getElementById("skip").style.borderColor = "black";
-
-            }
-        }
-
-    </script>
-
-
-    <!--
-    script che imposta l'attributo href di settingsBtn in modo che inserisca
-    nell'URL il backgroundImage dello sfondo 
-    INOLTRE
-    questo script imposta la riproduzione dell'animazione di caricamento SOLAMENTE
-    la prima volta che è stata ricaricata la pagina -->
-    <script>
-
-        var url = document.URL.split("?")[1];
-        var settingsBtn = document.getElementById("settingsBtn");
-        var optionAnchor = document.getElementById("optionAnchor");
-        var bkg = getComputedStyle(document.querySelector("body")).backgroundImage;
-
-        bkg = bkg.slice(0, -6).slice(-10);
-
-        if (url == undefined)
-            url = "pl1=trevor&ab1=cSharp&ab2=rocket&pl2=gabibbo&ab3=grenade&ab4=laser&bkg=blackSpace"
-
-        settingsBtn.href = "./settings/crediti.html?" + url + "&ver=Sijava";
-        optionAnchor.href = "./settings/crediti.html?" + url + "&ver=Sijava";
-
-
-        /* prima volta che è stata caricata la pagina non assegno nulla e dopo la assegno
-           così quando riesegue il controllo vede che è già stata assegnata allo  non
-           riproduce l'animazione iniziale */
-
-        if (sessionStorage.alreadyLoaded == undefined)
-            sessionStorage.alreadyLoaded = "true";
-        else {
-            document.getElementById("tutorial").style.display = "none";
-            document.getElementById("sectionAnimation").style.display = "none";
-            azzera();
-        }
-
-    </script>
-
 </body>
 
 </html>

@@ -138,6 +138,14 @@ header, section{
     width: 100%;
 }
 
+main > section{
+    display: none;
+}
+
+main > section:first-child{
+    display: flex;
+}
+
 #registrazioneForm{
     display: flex;
     flex-direction: column;
@@ -150,11 +158,6 @@ header, section{
     color: aliceblue;
     background-image: linear-gradient(-45deg, #3c80a8, #ac08af);
     filter: drop-shadow(0px 0px 10px #a364e9);
-}
-
-/* serve per risolvere il bug di sfocatura */
-#registrazioneForm:has(:focus) > p{
-    transform: none;
 }
 
 #registrazioneForm > p{
@@ -246,7 +249,7 @@ header, section{
     border-left-color: aliceblue;
 }
 
-#settings > span > label{
+#settings > span > span{
     position: fixed;
     top: 10px;
     right: 10px;
@@ -264,13 +267,9 @@ header, section{
     transition: transform 0.2s, background 0.2s;
 }
 
-#settings > span > label:hover{
+#settings > span > span:hover{
     transform: scale(145%);
     background-color: rgba(255, 0, 0, 0.6);
-}
-
-#settings:has(:checked) > span{
-    display: none;
 }
 
 #back{
@@ -315,7 +314,7 @@ header, section{
     border-radius: 20px;
     margin: 15px;
     border: 10px transparent solid;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 
@@ -328,32 +327,32 @@ header, section{
     border-radius: 10px;
 }
 
-#pl1 > span, #pl2 > span, #ab1 > span, #ab2 > span{
+#pl > span, #ab > span{
     position: fixed;
     z-index: 5;
     font-family: "ledFont";
     color: yellow;
-    font-size: 5vh;
-    top: 50px;
-    right: 25px;
+    font-size: 47px;
+    top: 5vh;
+    right: 3vh;
     text-shadow: 0px 0px 2vh yellow;
     font-weight: 1000;
     cursor: default;
 }
 
-#pl1, #pl2{
+#pl{
     width: 100%;
     flex-direction: column;
     margin: 0px;
 }
 
-#ab1, #ab2, #location{
+#ab, #location{
     width: 100%;
     flex-direction: column;
     margin: 0px;
 }
 
-section > div , #ab1 > div > div, #ab2 > div > div{
+section > div , #ab > div > div{
     display: flex;
     width: 100%;
     justify-content: center;
@@ -361,27 +360,23 @@ section > div , #ab1 > div > div, #ab2 > div > div{
     flex-wrap: nowrap;
 }
 
-#ab1 > div > div:first-child , #ab2 > div > div:first-child{
+#ab > div > div:first-child{
     width: 66.6%;
     background-color: rgba(255, 0, 0, 0.4);
     border-right: 10px aliceblue solid;
     box-sizing: border-box;
 }
 
-#ab1 > div > div:last-child , #ab2 > div > div:last-child{
+#ab > div > div:last-child{
     width: 33.3%;
     background-color: rgba(0, 255, 0, 0.4);
-}
-
-#ab1:has(> label > input:checked){
-    display: none;
 }
 
 .card img{
     max-width: 50%;
 }
 
-.picture img{
+.card img{
     max-width: 70%;
     height: auto;
     filter: drop-shadow(0px 10px 10px black);
@@ -391,23 +386,27 @@ section > div , #ab1 > div > div, #ab2 > div > div{
     text-align: center;
 }
 
-.desGabibbo{
+#gabibbo{
     background-color: #c14248;
 }
 
-.desIncrocio{
+#timmy{
     background-color: #4a485e;
 }
 
-.desGerry{
+#timmy > div > img{
+    max-width: 50%;
+}
+
+#gerry{
     background-color: #66a672;
 }
 
-.desTrevor{
+#trevor{
     background-color: #e6c559;
 }
 
-.desSarim{
+#sarim{
     background-color: #336975;
 }
 
@@ -419,7 +418,7 @@ section > img{
     margin-top: 30px;
 }
 
-section > label:last-child{
+section > button, section > a{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -433,11 +432,12 @@ section > label:last-child{
     border: 4px aliceblue solid;
     margin-top: 20px;
     margin-bottom: 10px;
+    text-decoration: none;
     transition: transform 0.3s , filter 0.3s;
     cursor: pointer;
 }
 
-section > label:last-child:hover{
+section > button:hover, section > a:hover{
     transform: scale(120%);
     filter: drop-shadow(0px 0px 5px aliceblue);
 }
@@ -451,10 +451,9 @@ section > label:last-child:hover{
     color: aliceblue;
     font-size: 20px;
     font-family: "bold";
-    cursor: pointer;
 }
 
-.picture{
+.card > div:first-of-type{
     position: absolute;
     z-index: 2;
     display: flex;
@@ -468,17 +467,13 @@ section > label:last-child:hover{
     transition: all 0.4s;
 }
 
-label:hover > div.picture{
+label:hover > div:first-of-type , .checked > div:first-of-type{
     top: 300px;
     height: 100px;
 }
 
-label:hover > .picture > img{
+label:hover > div > img , .checked > div > img{
     transform: scale(40%);
-}
-
-label:has(:checked){
-    border-color: aliceblue;
 }
 
 img{
@@ -491,60 +486,57 @@ img{
     gap: 5px;
 }
 
-.desCSharp{
+.checked{
+    border-color: aliceblue;
+    box-shadow: 0px 0px 30px 0px aliceblue;
+    animation: checkedPulse 1.5s linear infinite;
+}
+
+#location .checked{
+    animation: none;
+    transition: box-shadow 0.3s;
+}
+
+@keyframes checkedPulse {
+    0%  {box-shadow: 0px 0px 10px 0px aliceblue;}
+    50% {box-shadow: 0px 0px 30px 5px aliceblue;}
+    100%{box-shadow: 0px 0px 10px 0px aliceblue;}
+}
+
+#cSharp{
     color: aliceblue;
     background-color: #6d5393;
 }
 
-.desFire{
+#fire{
     color: aliceblue;
     background-color: #9c3516;
 }
 
-.desLaser{
+#laser{
     background-color: #32cd32;
 }
 
-.desGrenade{
+#grenade{
     color: aliceblue;
     background-color: #272723;
 }
 
-.desYo{
+#yo{
     color: aliceblue;
     background-color: #3a2a03;
 }
 
-.desRocket{
+#rocket{
     color: aliceblue;
     background-color: #2c2a22;
-}
-
-
-form > section{
-    display: none;
-}
-
-#pl1{
-    display: flex;
-}
-
-section:has(> label > input:checked)+section{
-    display: flex;
-}
-
-#pl1:has(> label > input:checked),
-#ab1:has(> label > input:checked),
-#pl2:has(> label > input:checked),
-#ab2:has(> label > input:checked){
-    display: none;
 }
 
 #location > img{
     max-width: 30%; height: auto;
 }
 
-.containerLuogo {
+#containerLuogo {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -554,8 +546,7 @@ section:has(> label > input:checked)+section{
     margin: 0;
 }
 
-.containerLuogo > img {
-    display: none;
+#containerLuogo > img {
     max-width: 40%;
     height: auto;
     border: 5px aliceblue solid;
@@ -563,7 +554,7 @@ section:has(> label > input:checked)+section{
     margin: 10px;
 }
 
-.containerLuogo > a{
+#containerLuogo > a{
     position: absolute;
     z-index: 2;
     display: flex;
@@ -581,11 +572,11 @@ section:has(> label > input:checked)+section{
     transition: transform 0.3s , filter 0.3s;
 }
 
-.containerLuogo > a:first-of-type{ left: 70px; }
+#containerLuogo > a:first-of-type{ left: 70px; }
 
-.containerLuogo > a:last-of-type { right: 70px;}
+#containerLuogo > a:last-of-type { right: 70px;}
 
-.containerLuogo > a > span{
+#containerLuogo > a > span{
     font-size: 40px;
 }
 
@@ -602,12 +593,12 @@ section:has(> label > input:checked)+section{
     transition: transform 0.3s , filter 0.3s;
 }
 
-.freccia:hover , .containerLuogo > a:hover{
+.freccia:hover , #containerLuogo > a:hover{
     transform: scale(120%);
     filter: drop-shadow(0px 0px 4px aliceblue);
 }
 
-.demoLuoghi{
+#demoLuoghi{
     width: 100%;
     display: flex;
     align-items: center;
@@ -616,12 +607,12 @@ section:has(> label > input:checked)+section{
     margin-top: 10px;
 }
 
-.demoLuoghi > label{
+#demoLuoghi > label{
     width: 10%;
     margin: 14px;
 }
 
-.demoLuoghi > label > img {
+#demoLuoghi > label > img {
     width: 100%;
     height: auto;
     cursor: pointer;
@@ -633,38 +624,31 @@ section:has(> label > input:checked)+section{
     transition: opacity 0.5s , border-color 0.5s , transform 0.5s;
 }
 
-.demoLuoghi > label > img:hover{
+#demoLuoghi > label > img:hover{
     opacity: 1;
 }
 
-.demoLuoghi > label > input:checked + img{
-    transform: scale(120%);
+#demoLuoghi > .checked > img{
+    transform: scale(115%);
     border-color: aliceblue;
     opacity: 1;
 }
 
-.containerLuogo:has(> div > label:nth-child(1) > input:checked) > img:nth-of-type(1) ,
-.containerLuogo:has(> div > label:nth-child(2) > input:checked) > img:nth-of-type(2) ,
-.containerLuogo:has(> div > label:nth-child(3) > input:checked) > img:nth-of-type(3) ,
-.containerLuogo:has(> div > label:nth-child(4) > input:checked) > img:nth-of-type(4) ,
-.containerLuogo:has(> div > label:nth-child(5) > input:checked) > img:nth-of-type(5) ,
-.containerLuogo:has(> div > label:nth-child(6) > input:checked) > img:nth-of-type(6) ,
-.containerLuogo:has(> div > label:nth-child(7) > input:checked) > img:nth-of-type(7) ,
-.containerLuogo:has(> div > label:nth-child(8) > input:checked) > img:nth-of-type(8){
-    display: block;
+#pl{
+    display: flex;
 }
 
 @media screen and (max-width: 1510px) {
-    #ab1 > div, #ab2 > div , section > div{
+    #ab > div, section > div{
         flex-wrap: wrap;
         width: 100%;
     }
 
-    #ab1 > div > div:last-child , #ab2 > div > div:last-child{
+    #ab > div > div:last-child{
         width: 100%;
     }
 
-    #ab1 > div > div:first-child , #ab2 > div > div:first-child{
+    #ab > div > div:first-child{
         width: 100%;
         border-color: transparent;
         border-bottom: 10px aliceblue solid;
@@ -678,33 +662,28 @@ section:has(> label > input:checked)+section{
         font-size: 15px;   
     }
 
-    .demoLuoghi > label{
+    #demoLuoghi > label{
         width: 13%;
     }
-
 }
 
 @media screen and (max-width: 1024px) {
 
-    .containerLuogo > img {
+    #containerLuogo > img {
         max-width: 60%;
     }
 
-    .demoLuoghi > img {
+    #demoLuoghi > img {
         max-width: 15%;
     }
 
-    .containerLuogo > a:first-of-type{ left: 30px; }
-    .containerLuogo > a:last-of-type { right: 30px;}
-
+    #containerLuogo > a:first-of-type{ left: 30px; }
+    #containerLuogo > a:last-of-type { right: 30px;}
 }
 
-
-
 @media screen and (max-width: 769px) {
-    #pl1 > span, #pl2 > span, #ab1 > span, #ab2 > span{
-        font-size: 20px;
-        top: 10px;
+    #pl > span, #ab > span{
+        font-size: 30px;
     }
 
     .freccia{
@@ -712,28 +691,26 @@ section:has(> label > input:checked)+section{
         align-items: center;
         justify-content: center;
     }
-
+    
     .card{
         display: none;
     }
 
-    .card.visibile{
+    div > label:first-of-type{
         display: flex;
     }
 
-    #ab1 > div > div:first-child, #ab2 > div > div:first-child{
+    label.checked{
+        border-color: transparent;
+    }
+
+    #ab > div > div:first-child{
         border: none;
     }
 
-    #ab1 > div, #ab2 > div{
+    #ab > div{
         flex-direction: column;
         border: none;
-    }
-
-    main{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
     }
 
     #registrazione {
@@ -752,25 +729,25 @@ section:has(> label > input:checked)+section{
         max-width: 50%;
     }
 
-    .containerLuogo > img {
+    #containerLuogo > img {
         max-width: 70%;
     }
 
-    .demoLuoghi > label {
+    #demoLuoghi > label {
         width: 23%;
         margin: 8px 8px;
     }
 
-    .containerLuogo > a{
+    #containerLuogo > a{
         transform: scale(75%);
     }
 
-    .containerLuogo > a:hover{
+    #containerLuogo > a:hover{
         transform: scale(100%);
     }
 
-    .containerLuogo > a:first-of-type{ left: 10px; }
-    .containerLuogo > a:last-of-type { right: 10px;}
+    #containerLuogo > a:first-of-type{ left: 10px; }
+    #containerLuogo > a:last-of-type { right: 10px;}
 
     #registrazioneForm{
         transform: scale(70%);
@@ -780,5 +757,13 @@ section:has(> label > input:checked)+section{
     #registrazioneForm > p{
         width: 75%;
     }
+}
 
+@media screen and (max-width: 576px) {
+    #pl > span, #ab > span{
+        top: auto;
+        right: auto;
+        bottom: 5vh;
+        left: 3vh;
+    }
 }

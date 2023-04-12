@@ -1,22 +1,5 @@
-var step = -1;
-var tutorial = document.getElementById("tutorial");
-var message = document.getElementById("messageTutorial");
-var separator = document.getElementById("separator");
-var nextBtn = document.getElementById("next");
-var header = document.querySelector('header');
+let device = window.matchMedia("(max-width: 769px)");
 
-var pauseBtn = document.getElementById('pauseBtn');
-var volumeBtn = document.getElementById('volumeBtn');
-var volumeRange = document.getElementById('volumeRange');
-var theme = document.getElementById("themeMode");
-var settingsBtn = document.getElementById("settingsBtn");
-
-const allType = [pauseBtn, volumeBtn, volumeRange, theme, settingsBtn];
-
-
-const device = window.matchMedia("(max-width: 769px)");
-
-//aggiungo
 device.addListener(changePosition);
 
 //verifico se il device è telefono o pc e attribuiscono le posizioni
@@ -29,8 +12,7 @@ function changePosition(device) {
         separator.style.width = "100%";
         separator.style.left = "0%";
 
-
-        switch (step) {
+        switch (tutStep) {
             case -1:
                 separator.style.transition = "width 0.7s linear 1s, left 0.7s linear 1s";
                 separator.style.width = "0%";
@@ -82,7 +64,7 @@ function changePosition(device) {
         separator.style.top = "0%";
         separator.style.left = "49.8%";
 
-        switch (step) {
+        switch (tutStep) {
             case -1:
                 separator.style.transition = "top 0.7s linear 1s, height 0.7s linear 1s";
                 separator.style.height = "0%";
@@ -136,30 +118,29 @@ function azzera() {
 
     header.style = null;
     separator.style = null;
-
 }
 
 next();
 
 function next() {
 
-    step++;
+    tutStep++;
 
-    if (step == 6)
+    if (tutStep == 6)
         skip();
 
-    nextBtn.textContent = "Prossimo (" + (5 - step) + ")";
+    nextBtn.textContent = "Prossimo (" + (5 - tutStep) + ")";
 
-    switch (step) {
+    switch (tutStep) {
         case 0:
             /*  pt.1
-            ogni volta che viene schiacciato "Prossimo" step aumenta e cambia
+            ogni volta che viene schiacciato "Prossimo" tutStep aumenta e cambia
             il messaggio e lo stile della finestra .tutorial  */
             changePosition(device);
             message.innerHTML = "Se provi a puntare il cursore verso la parte alta dello schermo (in giallo) puoi uscire e tornare alla home.";
 
-            document.querySelector('header').style.backgroundImage = "none";
-            document.querySelector('header').style.backgroundColor = "yellow";
+            header.style.backgroundImage = "none";
+            header.style.backgroundColor = "yellow";
 
             allType.forEach(val => {
                 val.style.backgroundColor = "transparent";
@@ -201,14 +182,15 @@ function next() {
 
 }
 
+document.getElementById("skip").onclick = skip;
+nextBtn.onclick = next;
 
 /*  la finestra del tutorial scompare  */
 function skip() {
 
     azzera();
-    step = -1;
+    tutStep = -1;
     changePosition(device);
 
-    tutorial.style = null;
-    tutorial.style.display = "none";
+    tutorial.remove();
 }

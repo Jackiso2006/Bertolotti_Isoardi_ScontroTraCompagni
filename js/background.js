@@ -1,32 +1,21 @@
-var closeBtn = document.getElementById("closeBtn");
-var closeMobile = document.getElementById("anchorMobile");
-const anchor = document.querySelectorAll(".anchor");
+let closeBtn = document.getElementById("closeBtn");
+let closeMobile = document.getElementById("anchorMobile");
 
-var url = document.URL.split("?")[1];
+let gamePage = document.URL.slice(-10);
 
-var gamePage = document.URL.slice(-10);
-var background = document.URL.slice(-25).slice(4, -11);
 
-if (gamePage == "ver=Sijava") {
-    closeBtn.href = "../game.html?" + url.slice(0, -11);
-    closeMobile.href = "../game.html?" + url.slice(0, -11);
-    document.querySelector("body").style.backgroundImage = "url('../img/" + background + ".jpg')";
-
-} else if (gamePage == "ver=Nojava") {
-    closeBtn.href = "../NOJAVA.html?" + url.slice(0, -11);
-    closeMobile.href = "../NOJAVA.html?" + url.slice(0, -11);
-}
-else if (gamePage == "ver=Homepg"){
+if (gamePage == "ver=gamePg") {
+    closeBtn.href = "../game.html";
+    closeMobile.href = "../game.html";
+    document.body.style.backgroundImage = "url('../img/" + localStorage.getItem("bkg") + ".jpg')";
+} else if (gamePage == "ver=homePg") {
     closeBtn.href = "../index.html";
     closeMobile.href = "../index.html";
-    document.querySelector("body").style.backgroundImage = "url('../img/" + background + ".jpg')";
-}
-else {
+
+} else if (gamePage == "ver=scelta") {
     closeBtn.href = "../scelta.html";
     closeMobile.href = "../scelta.html";
-    document.querySelector("body").style.backgroundImage = "url('../img/" + background + ".jpg')";
+} else {
+    closeBtn.href = "../punteggi.html";
+    closeMobile.href = "../punteggi.html";
 }
-
-anchor.forEach(val => {
-    val.href = val.href + "?" + url;
-})

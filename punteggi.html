@@ -13,22 +13,30 @@
     <meta property="og:site_name" content="endor.works">
     <meta property="og:url" content="https://endorworks.com">
 
-    <link rel="stylesheet" href="./css/punteggi.css">
+    <script src="./js/leaderboard.js" defer></script>
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="./css/punteggi.css">
 
     <link rel="icon" href="./img/icon.png">
     <title>Classifica</title>
 </head>
 
 <body>
+    <!--
+    <a href="./index.html">
+        <span class="material-symbols-rounded">
+            west
+        </span>
+    </a>
     <header>
         <img src="./img/logo.png">
     </header>
     <section>
         <div id="podio">
             <div id="secondo">
-                <!--mettere poi la foto del personaggio utilizzato per fare il record-->
                 <img src="./img/gabibbo.png">
                 <span>Gabibbo player69</span>
                 <span>Score : <span>5381</span></span>
@@ -47,12 +55,73 @@
                 <img src="./img/third.png">
             </div>
         </div>
-    </section>
-    <a href="./index.html">
-        <span class="material-symbols-rounded">
-            west
-        </span>
-    </a>
+    </section> -->
+    <!-- ^^^ VECCHIO HTML ^^^^ -->
+    <header>
+        <a href="./index.html">
+            <span class="material-symbols-rounded">
+                home
+            </span>
+        </a>
+
+        Classifica giocatori
+
+        <div>
+            <a href="./settings/crediti.html?ver=scelta" id="settings">
+                <img src="./img/settings.png">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div>
+            <div id="position">
+                <div>
+                    #
+                </div>
+            </div>
+            <div id="player">
+                <div>
+                    Nome giocatore
+                </div>
+            </div>
+            <div id="score">
+                <div>
+                    Punteggio
+                </div>
+            </div>
+            <div id="skin">
+                <div>
+                    Skin
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <button>
+                <span class="material-symbols-rounded">
+                    search
+                </span>
+            </button>
+            CERCA
+        </div>
+        <div>
+            <button>
+                <span class="material-symbols-rounded">
+                    leaderboard
+                </span>
+            </button>
+            TOP&nbsp;3
+        </div>
+        <div>
+            <button>
+                <span class="material-symbols-rounded">
+                    replay
+                </span>
+            </button>
+            RIGIOCA
+        </div>
+    </footer>
 </body>
 
 </html>
