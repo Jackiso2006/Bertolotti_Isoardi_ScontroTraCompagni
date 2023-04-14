@@ -35,30 +35,15 @@
             let pl2 = document.querySelectorAll("#registrazione > input")[1];
             let errore = "";
 
-            if (pl1.value == "")
-                errore = "Inserisci il nome del giocatore 1!";
-
-            if (pl2.value == "") {
-                if (errore != "")
-                    errore += "\nInserisci il nome del giocatore 2!";
-                else
-                    errore = "Inserisci il nome del giocatore 1!";
-            }
-
-            if (errore != "") {
+            if (pl1.value == pl2.value) {
+                errore = "Inserisci due nomi diversi!";
                 alert(errore);
-            } else {
-                if (pl1.value == pl2.value) {
-                    errore = "Inserisci due nomi diversi!";
-                    alert(errore);
-                }
             }
 
             if (errore == "") {
                 localStorage.setItem("player1", pl1.value);
                 localStorage.setItem("player2", pl2.value);
             }
-
 
             return errore == "";
         }
@@ -96,8 +81,8 @@
                 <p>Inserisci il nome che verrà visualizzato sulla classifica, <br>
                     se sarai in grado di battere i tuoi avversari</p>
                 <div id="registrazione">
-                    <input type="text" placeholder="Giocatore 1 ...">
-                    <input type="text" placeholder="Giocatore 2 ...">
+                    <input type="text" placeholder="Giocatore 1 ..." required>
+                    <input type="text" placeholder="Giocatore 2 ..." required>
                 </div>
                 <button type="submit">
                     INIZIA!
