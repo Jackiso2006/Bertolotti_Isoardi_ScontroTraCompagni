@@ -106,6 +106,8 @@
                     Puoi impostare
                     Le impostazioni <b>sono ancora in vio di sviluppo</b> quindi si prega di non sovraccaricare il
                     sistema grazie.
+                    <br>
+                    Le voci con "<span style="color: red;">*</span>" non sono ancora funzionanti!!
                 </div>
 
                 <div>
@@ -114,13 +116,23 @@
                         la classe .option corrisponde a una "classica" voce delle impostazioni
                     -->
                     <div class="option">
-                        <div>
+                        <div class="temporany">
                             Impostazioni video
                         </div>
                         <div>
-                            <!-- VISUALIZZA pt.2 settings.css -->
-                            <button class="lowHigh"></button>
-
+                            <button class="lowHigh high">Alta</button>
+                            <script>
+                                let lowHigh = document.querySelector(".lowHigh");
+                                lowHigh.addEventListener("click", function(){
+                                    if (lowHigh.textContent == "Alta") {
+                                        lowHigh.textContent = "Bassa";
+                                        lowHigh.classList.replace("high", "low");
+                                    } else {
+                                        lowHigh.textContent = "Alta";
+                                        lowHigh.classList.replace("low", "high");
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
 
@@ -129,28 +141,52 @@
                             Schermo intero
                         </div>
                         <div>
-                            <button class="onOff"></button>
+                            <button class="onOff off" id="fullscreenBtn">Off</button>
+                            <script>
+                                let btn = document.getElementById("fullscreenBtn");
+                                let htmlTag = document.documentElement;
+                                btn.addEventListener("click", function () {
+                                    if (btn.textContent == "Off") {
+                                        /* ATTIVA */
+                                        if (htmlTag.requestFullscreen)
+                                            htmlTag.requestFullscreen();
+                                        else if (htmlTag.webkitRequestFullscreen) /* Safari */
+                                            htmlTag.webkitRequestFullscreen();
+                                        else if (htmlTag.msRequestFullscreen) /* IE11 */
+                                            htmlTag.msRequestFullscreen();
+                                    } else {
+                                        /* DISATTIVA */
+
+                                        if (document.exitFullscreen) {
+                                            document.exitFullscreen();
+                                        } else if (document.webkitExitFullscreen) { /* Safari */
+                                            document.webkitExitFullscreen();
+                                        } else if (document.msExitFullscreen) { /* IE11 */
+                                            document.msExitFullscreen();
+                                        }
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
 
                     <div class="option">
-                        <div>
+                        <div class="temporany">
                             RTX
                         </div>
                         <div>
-                            <button class="onOff"></button>
+                            <button class="onOff off">Off</button>
                         </div>
                     </div>
 
                     <div class="option">
-                        <div>
+                        <div class="temporany">
                             Fps
                         </div>
                         <div>
-                            <button class="onOff"></button>
+                            <button class="onOff off">Off</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
