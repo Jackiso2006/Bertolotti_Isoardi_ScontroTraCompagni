@@ -440,9 +440,10 @@
     100%{ transform: scale(100%); }
 }
 
-@keyframes lifeChange {
+/* ANIMIAZIONE PER VITA SIMILE A DOOM */
+/* @keyframes lifeChange {
     0%   { background-color: #83FA21;   transform: scale(110%) skewX(30deg); }
     33.3%{ background-color: goldenrod; transform: scale(100%) skewX(30deg); }
     66.6%{ background-color: #8B0000;   transform: scale(90%)  skewX(30deg); }
     100% { background-color: #494949;   transform: scale(90%)  skewX(30deg); }
-}
+} */

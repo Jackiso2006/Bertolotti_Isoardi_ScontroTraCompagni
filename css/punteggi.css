@@ -3,162 +3,25 @@
     src: url(../font/RedHatDisplay-Regular.otf);
 }
 
-/*
-VECCHIO CSS 
-VECCHIO CSS 
-VECCHIO CSS 
-VECCHIO CSS 
-VECCHIO CSS 
-VECCHIO CSS 
-
-
-body {
-    margin: 0;
-    height: 100vh;
-    background-image: url(../img/circuitBkg.jpg);
-    background-size: cover;
-    overflow: hidden;
+::-webkit-scrollbar {
+    width: 2vh; 
 }
-
-header > img{
-    margin-top: 25px;
-    width: 30%;
-    height: auto;
-    animation: logoShadow infinite 2s linear;
+  
+::-webkit-scrollbar-track {
+    background-color: rgb(17, 17, 17);
 }
+   
 
-header, section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    width: 100%;
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(#64bbec, #e20fe7);
+    border-radius: 2vh;
+    border: 0.1vh rgb(17, 17, 17) solid;
 }
+  
 
-header{height: 27%;}
-
-section{height: 73%;}
-
-#podio{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
+::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(#3c80a8, #ac08af);
 }
-
-#podio > div > span > span{
-    animation: colorRotate 2s infinite linear;
-    font-size: 20px;
-    text-shadow: 0px 0px 3px black;
-}
-
-#primo, #secondo, #terzo{
-    position: relative;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    width: 26%;
-    justify-content: flex-start;
-    padding: 30px;
-    gap: 10px;
-    align-items: center;
-}
-
-#terzo{
-    height: 40%;
-    background-color: #CD7F32;
-}
-
-#secondo{
-    height: 60%;
-    background-color: #C0C0C0;
-}
-
-#primo{
-    height: 80%;
-    background-color: #FFD700;
-}
-
-#podio > div > img:first-child{
-    height: auto;
-    width: 50%;
-    animation: pulse infinite 3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-}
-
-#podio > div > img:last-child{
-    top: 10px;
-    right: 0px;
-    z-index: 2;
-    position: absolute;
-    width: 35%;
-    filter: drop-shadow(0px 0px 8px black);
-}
-
-
-@media screen and (max-width: 991.98px){
-    #podio{
-        height: 80vh;
-        width: 75%;
-    }
-
-    #primo, #secondo, #terzo{
-        width: 20%;
-    }
-
-    #podio > div > img:first-child{
-        width: 100%;
-        margin-bottom: 10px;
-    } 
-
-    header > img{
-        width: 60%;
-    }
-
-}
-
-@keyframes logoShadow {
-    0%{ filter: drop-shadow(0px 0px 10px #af6aff); }
-    50%{ filter: drop-shadow(0px 0px 0px #af6aff) }
-    100%{ filter: drop-shadow(0px 0px 10px #af6aff) }
-}
-
-@keyframes pulse {
-    0%{transform: scale(100%);}
-    50%{transform: scale(120%);}
-    100%{transform: scale(100%);}
-}
-
-@keyframes colorRotate {
-    from {
-      color: red;
-    }
-    20% {
-      color: rgb(255, 196, 0);
-    }
-    40% {
-      color: green;
-    }
-    60% {
-      color: blue;
-    }
-    80% {
-        color: indigo;
-    }
-    100%{
-        color: red;
-    }
-} 
-@keyframes pulse {
-    0%{transform: scale(100%);}
-    50%{transform: scale(120%);}
-    100%{transform: scale(100%);}
-}
-
-*/
-
 
 body {
     margin: 0;
@@ -250,33 +113,25 @@ main{
     display: flex;
     box-sizing: border-box;
     border: 0.6vh #b7b7b7 solid;
-    border-radius: 5vh;
+    border-radius: 5vh 0 0 5vh;
     width: 80%;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 main > div{
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: rebeccapurple;
-    /* box-sizing: border-box;
-    padding: 0 1vh; */
-    overflow-y: auto;
 }
 
 main > div > div{
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-sizing: border-box;
-    background-color: orange;
-    border-right: 2px aliceblue solid;
 }
 
 #position{
     width: 10%;
-    background-color: grey;
 }
 
 #player{
@@ -284,7 +139,6 @@ main > div > div{
 }
 
 #score{
-    background-color: grey;
     width: 25%;
 }
 
@@ -294,13 +148,14 @@ main > div > div{
 }
 
 #skin img{
-    width: 3.6vh;
-    height: 3.6vh;
+    width: 2.667vh;
+    height: 2.667vh;
 }
 
 main > div > div > div:first-child{
-    height: 5vh;
+    min-height: 6vh;
     margin-top: 0px;
+    padding: 0;
     font-size: 2.5vh;
     background-color: #111111;
     color: aliceblue;
@@ -310,16 +165,40 @@ main > div > div > div{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 4vh;
+    box-sizing: border-box;
+    padding: 1vh;
     width: 100%;
     font-family: "regular";
     font-size: 2vh;
+    border-right: 0.4vh aliceblue solid;
     font-weight: bold;
     background-color: #474554;
 }
 
 main > div > div > div:nth-child(2n+3){
     background-color: #443141;
+}
+
+.top1{
+    color: gold;
+    text-decoration: underline;
+    text-decoration-thickness: 0.3vh;
+}
+
+.top2{
+    color: silver;
+    text-decoration: underline;
+    text-decoration-thickness: 0.3vh;
+}
+
+.top3{
+    color: #cd7f32;
+    text-decoration: underline;
+    text-decoration-thickness: 0.3vh;
+}
+
+.ris{
+    background-color: rgb(180, 139, 27) !important;
 }
 
 footer{
@@ -335,12 +214,118 @@ footer{
     background-color: rgb(17, 17, 17);
 }
 
+#search{
+    z-index: 2;
+    position: absolute;
+    right: 8vh;
+    top: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 35vh;
+    height: 13vh;
+    padding: 1.5vh;
+    color: aliceblue;
+    font-family: "regular";
+    font-size: 2vh;
+    border: 0.5vh aliceblue solid;
+    border-radius: 2vh;
+    background-color: rgb(17, 17, 17);
+}
+
+#search > div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30%;
+}
+
+#search input{
+    font-family: "regular";
+    font-size: 1.8vh;
+    padding: 0.5vh;
+}
+
+#search > div > span{
+    padding: 0;
+    font-size: 3vh;
+    border-radius: 30%;
+    transform: scale(100%);
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+#search > div > span:hover{
+    transform: scale(120%);
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
 @media screen and (max-width: 769px) {
     main > div > div > div{
-        font-size: 1.8vh;
+        font-size: 1.8vh !important;
     }
-
+    
+    #skin img{
+        width: 2.34vh;
+        height: 2.34vh;
+    }
+    
     footer{
         width: 65%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    main{
+        width: 90%;
+    }
+
+    main > div > div > div{
+        font-size: 1.5vh !important;
+    }
+    
+    #skin img{
+        width: 1.92vh;
+        height: 1.92vh;
+    }
+    
+    header{
+        box-sizing: border-box;
+        padding: 0 1vh;
+        font-size: 3vh;
+    }
+
+    #search{
+        right: 1vh;
+        transform: scale(70%);
+    }
+}
+
+
+@keyframes logoShadow {
+    0%{ filter: drop-shadow(0px 0px 10px #af6aff); }
+    50%{ filter: drop-shadow(0px 0px 0px #af6aff) }
+    100%{ filter: drop-shadow(0px 0px 10px #af6aff) }
+}
+
+@keyframes pulse {
+    0%{transform: scale(100%);}
+    50%{transform: scale(120%);}
+    100%{transform: scale(100%);}
+}
+
+@keyframes colorRotate {
+    0% {
+      color: red;
+    }
+    33% {
+      color: rgb(255, 255, 0);
+    }
+    66% {
+      color: rgb(0, 255, 0);
+    }
+    100%{
+        color: red;
     }
 }

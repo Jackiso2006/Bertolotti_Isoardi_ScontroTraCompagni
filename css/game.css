@@ -294,7 +294,7 @@ header > div:hover > .suggestWindow::before{ content: "Regola il  volume"; }
     animation: raimbowBorder 3s infinite linear;
 }
 
-#menu a{
+#menu a , #menu button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -303,6 +303,9 @@ header > div:hover > .suggestWindow::before{ content: "Regola il  volume"; }
     height: 15%;
     border-radius: 1vh;
     border: 0.5vh aliceblue solid;
+    font-family: "bold";
+    box-sizing: content-box;
+    font-size: 3vh;
     color: aliceblue;
     background-image: linear-gradient(90deg,#5283ec, #af36c7);
 }
@@ -318,6 +321,14 @@ main{
     height: 100vh;
 }
 
+/* TIMER */
+#timer{
+    position: absolute;
+    z-index: 3;
+    left: calc(50vw - 60px);
+    top: 10px;
+    width: 120px;
+}
 
 /* LINEA CHE SEPARA PLAYER 1-2 */
 #separator {
@@ -338,95 +349,36 @@ section {
 }
 
 
-/* BARRA DELLA VITA */
-div.life {
-    position: relative;
-    top: 15px;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 450px;
-    height: 45px;
-    padding: 8px;
-    border-radius: 15px;
-    background-color: #83FA21;
-    overflow: hidden;
-}
-
-div.life::after{
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 5px;
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
-    border-radius: 10px;
-    /* border: 3px aliceblue solid; */
-    box-sizing: border-box;
-    background-color: rgb(6, 6, 6);
-}
-
-@keyframes rotate {
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-div.life > div:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-    font-family: "bold";
-    color: #83FA21;
-    font-size: 23px;
-}
-
-div.life > div:last-child{
-    display: flex;
-    justify-content: space-evenly;
-    width: 80%;
-    padding-right: 5px;
-}
-
-div.life > div:last-child > div{
-    width: 23px;
-    height: 28px;
-    margin: 0px 3px;
-    border-radius: 5px;
-    border: 1px rgb(6, 6, 6) solid;
-    background-color: #83FA21;
-    /* animation: lifeChange 3s infinite alternate cubic-bezier(0.39, 0.575, 0.565, 1); */
-    transform: scale(110%) skew(30deg);
-}
-
-div.life > div:last-child > div:nth-child(8){animation-delay: 0.1s;}
-div.life > div:last-child > div:nth-child(7){animation-delay: 0.2s;}
-div.life > div:last-child > div:nth-child(6){animation-delay: 0.3s;}
-div.life > div:last-child > div:nth-child(5){animation-delay: 0.4s;}
-div.life > div:last-child > div:nth-child(4){animation-delay: 0.5s;}
-div.life > div:last-child > div:nth-child(3){animation-delay: 0.6s;}
-div.life > div:last-child > div:nth-child(2){animation-delay: 0.7s;}
-div.life > div:last-child > div:nth-child(1){animation-delay: 0.8s;}
-
 /* BOX DEL NOME GIOCATORE */
 
-div.name{
-    z-index: 3;
+div.header{
     position: absolute;
-    top: 85px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+}
+
+div > div.score{
+    font-size: 20px;
+    padding: 4px 20px;
+    border-radius: 15px;
+}
+
+div.name , div.score , #timer{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4px 15px;
     box-sizing: border-box;
-    font-family: "bold";
+    padding: 7px 20px;
     color: aliceblue;
-    font-size: 20px;
-    background-color: rgba(6, 6, 6, 0.7);
-    border-radius: 15px;
+    font-family: "bold";
+    font-size: 25px;
     border: 3px #83FA21 solid;
+    border-radius: 20px;
+    background-color: rgba(6, 6, 6, 0.7);
 }
 
 /* CONTROLLY E JOYSTICK */
@@ -486,6 +438,7 @@ div.name{
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    font-family: "bold";
 }
 
 .movement > button:hover{
@@ -496,7 +449,7 @@ div.name{
     background-color: rgb(150, 150, 150);
 }
 
-.movement span.material-symbols-rounded {
+.movement span.material-symbols-rounded , .movement > button{
     font-size: 30px;
 }
 
@@ -663,11 +616,15 @@ div.name{
         height: 45%;
     }
 
-    .joystick , #img2 , div.life , .suggestWindow, div.name{
+    .joystick , #img2 , div.header , .suggestWindow, div.header, #timer{
         transform: scale(70%);
     }
 
-    div.life{
+    #timer{
+        top: 6px;
+    }
+
+    div.header{
         top: 0px;
     }
 
@@ -755,7 +712,7 @@ div.name{
         transform: rotate(-90deg);
     }
 
-    #menu a:hover{
+    #menu a:hover , #menu button:hover{
         transform: scale(110%) rotate(0deg);
     }
 
@@ -773,7 +730,7 @@ div.name{
         width: 100%;
     }
 
-    section:first-child , section:last-child div.life > div:first-child{
+    section:first-child{
         transform: rotate(180deg);
     }
 
@@ -784,21 +741,25 @@ div.name{
         top: 50%;
     }
     
-    div.life, section:first-child div.name{
-        transform: scale(60%) rotate(-90deg);
-        top: 150px;
+    div.header{
+        top: 70px;
     }
 
-    section:first-child div.life{ left: -45%; }
+    section:first-child div.header{
+        left: -27px;
+        transform: scale(60%) rotate(-90deg);
+    }
 
-    section:first-child div.name{ left: -45px;}
-
-    section:last-child div.life{ right: -45%; }
-
-    section:last-child div.name{
-        top: 165px;
-        right: -45px;
+    section:last-child div.header {
+        right: -27px;
         transform: scale(60%) rotate(90deg);
+    }
+
+    #timer{
+        left: auto;
+        right: -27px;
+        top: calc(50% - 25px);
+        transform: rotate(90deg);
     }
 
     .control{
@@ -818,5 +779,10 @@ div.name{
 
     #menu{
         transform: scale(80%);
+    }
+
+    #timer{
+        right: -35px;
+        transform: scale(80%) rotate(90deg);
     }
 }
