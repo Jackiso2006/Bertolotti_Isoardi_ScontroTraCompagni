@@ -9,9 +9,21 @@ if (sessionStorage.alreadyLoaded == undefined) {
 } else {
     document.getElementById("sectionAnimation").remove();
     tutorial.remove();
+    separator.remove();
     azzera();
-}
 
+    /* 180 secondi ==> 3 minuti */
+    resumeTimer(actualTimer);
+
+    let minutues = Math.floor(actualTimer / 60);
+    let seconds = actualTimer % 60;
+
+    if (seconds > 11)
+        timerDiv.textContent = minutues + ":" + seconds;
+    else
+        timerDiv.textContent = minutues + ":0" + seconds;
+
+}
 
 document.querySelectorAll("div.name")[0].textContent = player1Name;
 document.querySelectorAll("div.name")[1].textContent = player2Name;
@@ -20,25 +32,55 @@ document.querySelectorAll("div.name")[1].textContent = player2Name;
 
 pauseBtn.addEventListener("click", function () {
 
-    let menu = document.createElement("div");
-    menu.id = "menu";
-    menu.innerHTML = `<div><span class="material-symbols-rounded">pause</span><span>PAUSA</span></div><div><a id="resumeBtn">Riprendi</a><a id="optionAnchor">Opzioni</a><a href="./index.html">Home</a><a href="./punteggi.html">Classifica</a></div>`;
-    document.body.appendChild(menu);
+    if (!document.querySelector("body > #menu")) {
+        actualTimer = stopTimer();
 
-    let optionAnchor = document.getElementById("optionAnchor");
-    settingsBtn.href = "./settings/crediti.html?&ver=gamePg";
-    optionAnchor.href = "./settings/crediti.html?&ver=gamePg";
+        let menu = document.createElement("div");
+        menu.id = "menu";
+        menu.innerHTML = `<div><span class="material-symbols-rounded">pause</span><span>PAUSA</span></div><div><a id="resumeBtn">Riprendi</a><a id="optionAnchor">Opzioni</a><button id="homeBtn">Home</button><button id="leaderboardBtn">Classifica</button></div>`;
+        document.body.appendChild(menu);
 
-    document.body.style.backgroundBlendMode = "darken";
-    let main = document.querySelector("main");
-    main.style.opacity = "0.5";
+        let optionAnchor = document.getElementById("optionAnchor");
+        optionAnchor.href = "./settings/crediti.html?ver=gamePg";
 
-    document.getElementById("resumeBtn").addEventListener("click", function () {
-        menu.remove();
+        optionAnchor.addEventListener("click", function () {
+            localStorage.setItem("timer", actualTimer);
+        });
 
-        document.body.style.backgroundBlendMode = "";
-        main.style.opacity = "";
-    });
+        document.body.style.backgroundBlendMode = "darken";
+        let main = document.querySelector("main");
+        main.style.opacity = "0.5";
+
+        document.getElementById("resumeBtn").addEventListener("click", function () {
+            resumeTimer(actualTimer);
+
+            menu.remove();
+
+            document.body.style.backgroundBlendMode = "";
+            main.style.opacity = "";
+        });
+
+
+        document.getElementById("leaderboardBtn").addEventListener("click", function () {
+
+            if (confirm("Se vai alla classifica la partita terminerà,\ncontinuare?")) {
+                localStorage.setItem("score1", score1);
+                localStorage.setItem("score2", score2);
+                localStorage.setItem("timer", "180");
+                window.open("./punteggi.html", "_parent");
+            }
+        });
+
+        document.getElementById("homeBtn").addEventListener("click", function(){
+
+            if (confirm("Se vai alla pagina home la partita terminerà,\ncontinuare?")) {
+                localStorage.setItem("score1", score1);
+                localStorage.setItem("score2", score2);
+                localStorage.clear("timer");
+                window.open("./index.html", "_parent");
+            }
+        });
+    }
 });
 
 theme.addEventListener("click", function () {
@@ -66,3 +108,38 @@ theme.addEventListener("click", function () {
         header.classList.replace("darkHeader", "lightHeader");
     }
 });
+
+
+
+function stopTimer() {
+    /* STOPPO IL TIMER */
+    clearInterval(timerIstance);
+
+    let remainingMin = parseInt(timerDiv.textContent.split(":")[0]);
+    let remainingSec = parseInt(timerDiv.textContent.split(":")[1]);
+
+    return ((remainingMin * 60) + remainingSec);
+}
+
+function resumeTimer(timeInSeconds) {
+    /* RIPRESA DEL TIMER */
+
+    timerIstance = setInterval(() => {
+        timeInSeconds--;
+
+        let minutues = Math.floor(timeInSeconds / 60);
+        let seconds = timeInSeconds % 60;
+
+        if (seconds > 11) {
+            timerDiv.textContent = minutues + ":" + seconds;
+        } else {
+            timerDiv.textContent = minutues + ":0" + seconds;
+
+            if (timeInSeconds == 0) {
+                clearInterval(timerIstance);
+                alert("time scaduto!");
+            }
+        }
+
+    }, 1000);
+}

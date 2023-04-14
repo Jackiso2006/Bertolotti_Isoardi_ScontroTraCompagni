@@ -23,6 +23,7 @@ possibility1 è il vettore di tutte le PRIME POSSIBILII
 possibility2 è il vettore di tutte le SECONDE POSSIBILII
     abilità di un giocatore
 */
+
 let possibility1 = ["yo", "fire", "cSharp", "grenade"];
 let possibility2 = ["laser", "rocket"];
 
@@ -50,7 +51,7 @@ function assegna(ability, ab, abilityBtn, player) {
 
     for (let i = 0; i < ability.length; i++)
         ability[i].src = "./img/" + ab + ".png";
-        
+
 
     abilityBtn.src = "./img/" + ab + "_ability.png";
 
@@ -64,12 +65,10 @@ function assegna(ability, ab, abilityBtn, player) {
             break;
 
         case "grenade":
-
             animation += "2s linear 1";
             break;
 
         case "rocket":
-
             animation += "8s linear 1";
             break;
 
@@ -84,8 +83,14 @@ function assegna(ability, ab, abilityBtn, player) {
 function move(player, type) {
 
     /* tolgo la sbarra di metà campo se non è ancora stata tolta */
-    if (parseInt(separator.style.top) != 100)
-        separator.style.display = "none";
+    if (document.querySelector("main > #separator")) {
+        /* RIMUOVI SEPARATORE E AVVIA TIMER */
+        separator.remove();
+        /* 180 secondi ==> 3 minuti */
+        resumeTimer(180);
+    }
+
+    actualTimer = stopTimer();
 
     if (player == 1)
         settingStyle(img1, type, 1);
@@ -171,10 +176,21 @@ document.onkeydown = function (e) {
 
         /* compare il menu */
         case "Escape":
-            pauseBtn.focus();
+            /* pauseBtn.click(); */
+            if (!document.querySelector("body > #menu")) {
+                pauseBtn.click();
+            } else {
+                resumeTimer(actualTimer);
+
+                document.querySelector("body > #menu").remove();
+
+                document.body.style.backgroundBlendMode = "";
+                document.querySelector("main").style.opacity = "";
+            }
+
             break;
 
-        /* cambia tema */
+        /* cambia tema tasto ==> "\"  */
         case String.fromCharCode(92):
             themeMode.click();
             break;

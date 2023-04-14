@@ -423,4 +423,6 @@ document.querySelectorAll("#containerLuogo > a")[1].addEventListener("click", fu
 document.querySelector("#location > a").addEventListener("click", function(){
     if (!localStorage.getItem("bkg"))
         localStorage.setItem("bkg","backDesert");
+        
+    localStorage.setItem("timer", "180");
 })

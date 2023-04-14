@@ -162,7 +162,7 @@ function next() {
 
         case 3:
             changePosition(device);
-            message.innerHTML = "Questa è la barra della vita, durante il gioco ti rappresenterà quanta vita ti resta prima di morire.";
+            message.innerHTML = "Questa è la barra del tuo score, durante il gioco ti rappresenterà quanti punti stai accumulando.";
             break;
 
         case 4:
@@ -193,4 +193,5 @@ function skip() {
     changePosition(device);
 
     tutorial.remove();
+    resumeTimer(180);
 }
