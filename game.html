@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- qui sono presenti tutti i meta tags che rappresentano la parte dell' anteprima-->
+    <!-- qui sono presenti tutti i meta tags che rappresentano la parte dell' anteprima -->
 
     <meta name="description"
         content="Questo è un fantastimitico gioco dove puoi combattere fra personaggi con fantastiche abilità a tua scelta! Prova Endor Works e te ne innamorerai!!">
@@ -122,23 +122,10 @@
             <!-- area di gioco -->
             <div class="game_space">
 
-                <!-- BARRA DELLA VITA (momentaneamente non funzionante)-->
-                <div class="life">
-                    <div>100%</div>
-                    <div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                <div class="header">
+                    <div class="name"></div>
+                    <div class="score">Score : 0</div>
                 </div>
-                
-                <div class="name"></div>
 
                 <!-- questo bottone rappresenta il giocatore 1
                     in base a delle azioni si può trasformare 
@@ -198,49 +185,37 @@
                         <!-- bottone RUOTA SENSO ANTIORARIO -->
                         <!-- move(1,8) == move(player1,ruota_a_sinistra)  -->
                         <button onclick="move(1,7)">
-                            <span class="material-symbols-rounded">
-                                rotate_left
-                            </span>
+                            Q
                         </button>
 
                         <!-- bottone MUOVI SOPRA -->
                         <!-- move(1,8) == move(player1,up) -->
                         <button onclick="move(1,8)">
-                            <span class="material-symbols-rounded">
-                                north
-                            </span>
+                            W
                         </button>
 
                         <!-- bottone RUOTA SENSO ORARIO -->
                         <!-- move(1,9) == move(player1,ruota_a_destra)  -->
                         <button onclick="move(1,9)">
-                            <span class="material-symbols-rounded">
-                                rotate_right
-                            </span>
+                            E
                         </button>
 
                         <!-- bottone MUOVI SINSITRA -->
                         <!-- move(1,4) == move(player1,left) -->
                         <button onclick="move(1,4)">
-                            <span class="material-symbols-rounded">
-                                west
-                            </span>
+                            A
                         </button>
 
                         <!-- bottone MUOVI SOTTO -->
                         <!-- move(1,2) == move(player1,down) -->
                         <button onclick="move(1,2)">
-                            <span class="material-symbols-rounded">
-                                south
-                            </span>
+                            S
                         </button>
 
                         <!-- bottone MUOVI DESTRA -->
                         <!-- move(1,6) == move(player1,right) -->
                         <button onclick="move(1,6)">
-                            <span class="material-symbols-rounded">
-                                east
-                            </span>
+                            D
                         </button>
                     </div>
                 </div>
@@ -251,6 +226,7 @@
 
         <!-- LINEA BIANCA CHE SEPARA GIOCATORE 1 E GIOCATORE 2 -->
         <div id="separator"></div>
+        <div id="timer">3:00</div>
 
         <!-- sezione relativa al secondo giocatore -->
         <section>
@@ -258,22 +234,10 @@
             <!-- area di gioco -->
             <div class="game_space">
 
-                <!-- BARRA DELLA VITA (momentaneamente non funzionante)-->
-                <div class="life">
-                    <div>100%</div>
-                    <div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                <div class="header">
+                    <div class="name"></div>
+                    <div class="score">Score : 0</div>
                 </div>
-
-                <div class="name"></div>
 
                 <!-- questo bottone rappresenta il giocatore 1
                     in base a delle azioni si può trasformare 
