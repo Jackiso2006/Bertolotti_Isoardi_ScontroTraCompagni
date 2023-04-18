@@ -31,19 +31,16 @@ document.querySelectorAll("div.name")[1].textContent = player2Name;
 /* document.getElementById("resumeBtn").href = "./game.html?ver=gamePg"*/
 
 pauseBtn.addEventListener("click", function () {
-
+    
     if (!document.querySelector("body > #menu")) {
         actualTimer = stopTimer();
 
         let menu = document.createElement("div");
         menu.id = "menu";
-        menu.innerHTML = `<div><span class="material-symbols-rounded">pause</span><span>PAUSA</span></div><div><a id="resumeBtn">Riprendi</a><a id="optionAnchor">Opzioni</a><button id="homeBtn">Home</button><button id="leaderboardBtn">Classifica</button></div>`;
+        menu.innerHTML = `<div><span class="material-symbols-rounded">pause</span><span>PAUSA</span></div><div><button id="resumeBtn">Riprendi</button><a href="./settings/crediti.html?ver=gamePg" id="optionAnchor">Opzioni</a><button id="homeBtn">Home</button><button id="leaderboardBtn">Classifica</button></div>`;
         document.body.appendChild(menu);
 
-        let optionAnchor = document.getElementById("optionAnchor");
-        optionAnchor.href = "./settings/crediti.html?ver=gamePg";
-
-        optionAnchor.addEventListener("click", function () {
+        menu.querySelector("#optionAnchor").addEventListener("click", function () {
             localStorage.setItem("timer", actualTimer);
         });
 
@@ -51,8 +48,8 @@ pauseBtn.addEventListener("click", function () {
         let main = document.querySelector("main");
         main.style.opacity = "0.5";
 
-        document.getElementById("resumeBtn").addEventListener("click", function () {
-            if (actualTimer != 0)
+        menu.querySelector("#resumeBtn").addEventListener("click", function () {
+            if (actualTimer != 0 && !document.querySelector("body > #tutorial"))
                 resumeTimer(actualTimer);
 
             menu.remove();
@@ -62,7 +59,7 @@ pauseBtn.addEventListener("click", function () {
         });
 
 
-        document.getElementById("leaderboardBtn").addEventListener("click", function () {
+        menu.querySelector("#leaderboardBtn").addEventListener("click", function () {
 
             if (confirm("Se vai alla classifica la partita terminerà,\ncontinuare?")) {
                 localStorage.setItem("score1", score1);
@@ -72,7 +69,7 @@ pauseBtn.addEventListener("click", function () {
             }
         });
 
-        document.getElementById("homeBtn").addEventListener("click", function () {
+        menu.querySelector("#homeBtn").addEventListener("click", function () {
 
             if (confirm("Se vai alla pagina home la partita terminerà,\ncontinuare?")) {
                 localStorage.setItem("score1", score1);
