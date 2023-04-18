@@ -68,7 +68,7 @@ header > a{
     transition: transform 0.3s;
 }
 
-footer > div > a, footer > div > button , header > a{
+footer > div > button , header > a{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +85,7 @@ footer > div > a, footer > div > button , header > a{
     cursor: pointer;
 }
 
-footer > div > a > span, footer > div > button > span , header > a > span{
+footer > div > button > span , header > a > span{
     font-size: 4.5vh !important;
 }
 
@@ -148,8 +148,8 @@ main > div > div{
 }
 
 #skin img{
-    width: 2.667vh;
-    height: 2.667vh;
+    width: 2.66vh;
+    height: 2.66vh;
 }
 
 main > div > div > div:first-child{
@@ -172,11 +172,11 @@ main > div > div > div{
     font-size: 2vh;
     border-right: 0.4vh aliceblue solid;
     font-weight: bold;
-    background-color: #474554;
+    background-color: #787586;
 }
 
 main > div > div > div:nth-child(2n+3){
-    background-color: #443141;
+    background-color: #ACA9BB;
 }
 
 .top1{
@@ -198,7 +198,7 @@ main > div > div > div:nth-child(2n+3){
 }
 
 .ris{
-    background-color: rgb(180, 139, 27) !important;
+    background-color: #dba81c !important;
 }
 
 footer{
