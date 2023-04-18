@@ -7,9 +7,9 @@ img1.src = "./img/" + pl1 + ".png";
 img2.src = "./img/" + pl2 + ".png";
 
 let ability1 = document.querySelectorAll('.ability1');
-let ability2 = document.querySelectorAll('.ability2');
+let ability2 = document.querySelectorAll('#ability2');
 let ability3 = document.querySelectorAll('.ability3');
-let ability4 = document.querySelectorAll('.ability4');
+let ability4 = document.querySelectorAll('#ability4');
 
 let abilityBtn1 = document.getElementById('abilityBtn1');
 let abilityBtn2 = document.getElementById('abilityBtn2');
@@ -70,10 +70,6 @@ function assegna(ability, ab, abilityBtn, player) {
 
         case "rocket":
             animation += "8s linear 1";
-            break;
-
-        default:
-            break;
     }
 
     return animation;
@@ -85,119 +81,126 @@ function move(player, type) {
     /* tolgo la sbarra di metà campo se non è ancora stata tolta */
     if (document.querySelector("main > #separator")) {
         /* RIMUOVI SEPARATORE E AVVIA TIMER */
-        separator.remove();
         /* 180 secondi ==> 3 minuti */
-        resumeTimer(180);
+        skip();
     }
 
-    actualTimer = stopTimer();
-
-    if (player == 1)
-        settingStyle(img1, type, 1);
-    else
-        settingStyle(img2, type, 2);
+    if (actualTimer != 0 && document.querySelector("body > #menu") == null) {
+        if (player == 1)
+            settingStyle(img1, type, 1);
+        else
+            settingStyle(img2, type, 2);
+    }
 }
 
-/* funzione che permette lo spostamento tramite tasti */
-document.onkeydown = function (e) {
+/* funzione che permette   spostamento tramite tasti */
+document.addEventListener("keydown", function (e) {
 
-    switch (e.key) {
-        case "8":
-            move(2, 8);
-            break;
+    if (!document.querySelector("body > #menu")) {
+        switch (e.key) {
+            case "8":
+                move(2, 8);
+                break;
 
-        case "5":
-            move(2, 2);
-            break;
+            case "5":
+                move(2, 2);
+                break;
 
-        case "6":
-            move(2, 6);
-            break;
+            case "6":
+                move(2, 6);
+                break;
 
-        case "4":
-            move(2, 4);
-            break;
+            case "4":
+                move(2, 4);
+                break;
 
-        case "w":
-            move(1, 8);
-            break;
+            case "w":
+                move(1, 8);
+                break;
 
-        case "s":
-            move(1, 2);
-            break;
+            case "s":
+                move(1, 2);
+                break;
 
-        case "a":
-            move(1, 4);
-            break;
+            case "a":
+                move(1, 4);
+                break;
 
-        case "d":
-            move(1, 6);
-            break;
+            case "d":
+                move(1, 6);
+                break;
 
-        /* ruota sinistra player 1 */
-        case "q":
-            move(1, 7);
-            break;
+            /* ruota sinistra player 1 */
+            case "q":
+                move(1, 7);
+                break;
 
-        /* ruota destra player 1 */
-        case "e":
-            move(1, 9);
-            break;
+            /* ruota destra player 1 */
+            case "e":
+                move(1, 9);
+                break;
 
-        /* ruota sinistra player 2 */
-        case "7":
-            move(2, 7);
-            break;
+            /* ruota sinistra player 2 */
+            case "7":
+                move(2, 7);
+                break;
 
-        /* ruota destra player 2 */
-        case "9":
-            move(2, 9);
-            break;
+            /* ruota destra player 2 */
+            case "9":
+                move(2, 9);
+                break;
 
-        /* abilità 1 */
-        case "z":
-            move(1, 10);
-            break;
+            /* abilità 1 */
+            case "z":
+                move(1, 10);
+                break;
 
-        /* abilità 2 */
-        case "c":
-            move(1, 20);
-            break;
+            /* abilità 2 */
+            case "c":
+                move(1, 20);
+                break;
 
-        /* abilità 3 */
-        case "1":
-            move(2, 10);
-            break;
+            /* abilità 3 */
+            case "1":
+                move(2, 10);
+                break;
 
-        /* abilità 4 */
-        case "3":
-            move(2, 20);
-            break;
+            /* abilità 4 */
+            case "3":
+                move(2, 20);
+                break;
 
-        /* compare il menu */
-        case "Escape":
-            /* pauseBtn.click(); */
-            if (!document.querySelector("body > #menu")) {
+            case "Escape":
                 pauseBtn.click();
-            } else {
-                resumeTimer(actualTimer);
+                break;
 
-                document.querySelector("body > #menu").remove();
+            /* cambia tema tasto ==> "\"  */
+            case "\\":
+                themeMode.click();
+                break;
+        }
+    } else {
+        switch (e.key) {
+            /* compare il menu */
+            case "Escape":
 
-                document.body.style.backgroundBlendMode = "";
-                document.querySelector("main").style.opacity = "";
-            }
+                if (actualTimer != 0) {
+                    resumeTimer(actualTimer);
 
-            break;
+                    document.querySelector("body > #menu").remove();
 
-        /* cambia tema tasto ==> "\"  */
-        case String.fromCharCode(92):
-            themeMode.click();
-            break;
-        default:
-            break;
+                    document.body.style.backgroundBlendMode = "";
+                    document.querySelector("main").style.opacity = "";
+                }
+                break;
+
+            /* cambia tema tasto ==> "\"  */
+            case "\\":
+                themeMode.click();
+                break;
+        }
     }
-}
+});
 
 function settingStyle(image, type, player) {
 
@@ -255,26 +258,26 @@ function settingStyle(image, type, player) {
 
         case 10:
             //ABILITA' 1 oppure ABILITA' 3
+            if (player == 1) {
+                if (ability1[0].style.animation == "")
+                    setAbility(ability1, 1, ab1, image);
 
-            if (player == 1)
-                setAbility(ability1, 1, ab1, image);
-            else
+            } else if (ability3[0].style.animation == "") {
                 setAbility(ability3, 2, ab3, image);
+            }
 
             break;
 
         case 20:
             //ABILITA' 2 oppure ABILITA' 4
 
-            if (player == 1)
-                setAbility(ability2, 1, ab2, image);
-            else
+            if (player == 1) {
+                if (ability2[0].style.animation == "")
+                    setAbility(ability2, 1, ab2, image);
+
+            } else if (ability4[0].style.animation == "") {
                 setAbility(ability4, 2, ab4, image);
-
-            break;
-
-        default:
-            break;
+            }
     }
 
 }
@@ -282,20 +285,20 @@ function settingStyle(image, type, player) {
 function firstAbility(abilityArray, player, image, time) {
 
     if (player == 1) {
-        eseguiFor(abilityArray, "left", image, 10);
 
-        abilityArray.forEach(val => {
-            val.style.animation = animation1;
-        });
+        for (let i = 0; i < abilityArray.length; i++) {
+            abilityArray[i].style.left = parseInt(image.style.left) + (i * 10) + "%";
+            abilityArray[i].style.animation = animation1;
+        }
 
         setTimeout(ability1Reset, time);
 
     } else {
-        eseguiFor(abilityArray, "right", image, 10);
 
-        abilityArray.forEach(val => {
-            val.style.animation = animation3;
-        });
+        for (let i = 0; i < abilityArray.length; i++) {
+            abilityArray[i].style.right = parseInt(image.style.right) + (i * 10) + "%";
+            abilityArray[i].style.animation = animation3;
+        }
 
         setTimeout(ability3Reset, time);
     }
@@ -308,7 +311,8 @@ function setAbility(abilityArray, player, ab, image) {
 
         case "grenade":
 
-            eseguiFor(abilityArray, "top", image, 0);
+            for (let i = 0; i < abilityArray.length; i++)
+                abilityArray[i].style.top = parseInt(image.style.top) + "%";
 
             if (player == 1)
                 firstAbility(abilityArray, 1, image, 2000);
@@ -318,31 +322,11 @@ function setAbility(abilityArray, player, ab, image) {
             break;
 
         case "yo":
-
-            eseguiFor(abilityArray, "top", image, 0);
-
-
-            if (player == 1)
-                firstAbility(abilityArray, 1, image, 1700);
-            else
-                firstAbility(abilityArray, 2, image, 1700);
-
-            break;
-
         case "cSharp":
-
-            eseguiFor(abilityArray, "top", image, 0);
-
-            if (player == 1)
-                firstAbility(abilityArray, 1, image, 1700);
-            else
-                firstAbility(abilityArray, 2, image, 1700);
-
-            break;
-
         case "fire":
 
-            eseguiFor(abilityArray, "top", image, 0);
+            for (let i = 0; i < abilityArray.length; i++)
+                abilityArray[i].style.top = parseInt(image.style.top) + "%";
 
             if (player == 1)
                 firstAbility(abilityArray, 1, image, 1700);
@@ -353,24 +337,21 @@ function setAbility(abilityArray, player, ab, image) {
 
         case "laser":
 
+            abilityArray[0].style.top = Math.floor(Math.random() * 80) + 10 + "%";
+
             if (player == 1) {
 
-                abilityArray.forEach(val => {
-                    val.style.top = Math.floor(Math.random() * 80) + 10 + "%";
-                    val.style.left = Math.floor(Math.random() * 15) + 10 + "%";
-                    val.style.animation = animation2;
-                });
+                abilityArray[0].style.left = Math.floor(Math.random() * 80) + 10 + "%";
+                abilityArray[0].style.animation = animation2;
+
 
                 //metti la durata del timeout uguale alla durata dell'animazione
                 setTimeout(ability2Reset, 1700);
 
             } else {
 
-                abilityArray.forEach(val => {
-                    val.style.top = Math.floor(Math.random() * 80) + 10 + "%";
-                    val.style.right = Math.floor(Math.random() * 15) + 10 + "%";
-                    val.style.animation = animation4;
-                });
+                abilityArray[0].style.right = Math.floor(Math.random() * 80) + 10 + "%";
+                abilityArray[0].style.animation = animation4;
 
                 //metti la durata del timeout uguale alla durata dell'animazione
                 setTimeout(ability4Reset, 1700);
@@ -383,51 +364,19 @@ function setAbility(abilityArray, player, ab, image) {
 
             if (player == 1) {
 
-                abilityArray.forEach(val => {
-                    val.style.animation = animation2;
-                });
+                abilityArray[0].style.animation = animation2;
 
                 setTimeout(ability2Reset, 8000);
 
             } else {
 
-                abilityArray.forEach(val => {
-                    val.style.animation = animation4;
-                });
+                abilityArray[0].style.animation = animation4;
 
                 setTimeout(ability4Reset, 8000);
             }
-
-            break;
-
-        default:
-            break;
     }
 }
 
-
-function eseguiFor(array, stile, image, sfasamento) {
-
-    switch (stile) {
-        case "top":
-            for (let i = 0; i < array.length; i++)
-                array[i].style.top = parseInt(image.style.top) + (i * sfasamento) + "%";
-            break;
-
-        case "right":
-            for (let i = 0; i < array.length; i++)
-                array[i].style.right = parseInt(image.style.right) + (i * sfasamento) + "%";
-            break;
-
-        case "left":
-            for (let i = 0; i < array.length; i++)
-                array[i].style.left = parseInt(image.style.left) + (i * sfasamento) + "%";
-            break;
-
-        default:
-            break;
-    }
-}
 
 function ability1Reset() {
     for (let i = 0; i < 4; i++)
@@ -435,8 +384,7 @@ function ability1Reset() {
 }
 
 function ability2Reset() {
-    for (let i = 0; i < 4; i++)
-        ability2[i].style.animation = null;
+    ability2[0].style.animation = null;
 }
 
 function ability3Reset() {
@@ -445,6 +393,5 @@ function ability3Reset() {
 }
 
 function ability4Reset() {
-    for (let i = 0; i < 4; i++)
-        ability4[i].style.animation = null;
+    ability4[0].style.animation = null;
 }

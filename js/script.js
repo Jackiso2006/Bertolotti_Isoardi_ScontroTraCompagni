@@ -52,7 +52,8 @@ pauseBtn.addEventListener("click", function () {
         main.style.opacity = "0.5";
 
         document.getElementById("resumeBtn").addEventListener("click", function () {
-            resumeTimer(actualTimer);
+            if (actualTimer != 0)
+                resumeTimer(actualTimer);
 
             menu.remove();
 
@@ -71,7 +72,7 @@ pauseBtn.addEventListener("click", function () {
             }
         });
 
-        document.getElementById("homeBtn").addEventListener("click", function(){
+        document.getElementById("homeBtn").addEventListener("click", function () {
 
             if (confirm("Se vai alla pagina home la partita terminerà,\ncontinuare?")) {
                 localStorage.setItem("score1", score1);
@@ -83,7 +84,7 @@ pauseBtn.addEventListener("click", function () {
     }
 });
 
-theme.addEventListener("click", function () {
+themeMode.addEventListener("click", function () {
     if (icon.textContent.includes("light")) {
 
         icon.textContent = "dark_mode";
@@ -110,7 +111,6 @@ theme.addEventListener("click", function () {
 });
 
 
-
 function stopTimer() {
     /* STOPPO IL TIMER */
     clearInterval(timerIstance);
@@ -130,7 +130,7 @@ function resumeTimer(timeInSeconds) {
         let minutues = Math.floor(timeInSeconds / 60);
         let seconds = timeInSeconds % 60;
 
-        if (seconds > 11) {
+        if (seconds > 9) {
             timerDiv.textContent = minutues + ":" + seconds;
         } else {
             timerDiv.textContent = minutues + ":0" + seconds;
@@ -140,6 +140,5 @@ function resumeTimer(timeInSeconds) {
                 alert("time scaduto!");
             }
         }
-
     }, 1000);
 }

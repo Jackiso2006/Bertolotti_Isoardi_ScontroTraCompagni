@@ -9,10 +9,10 @@ let header = document.querySelector("header");
 let pauseBtn = document.getElementById("pauseBtn");
 let volumeBtn = document.getElementById("volumeBtn");
 let volumeRange = document.getElementById("volumeRange");
-let theme = document.getElementById("themeMode");
+let themeMode = document.getElementById("themeMode");
 let settingsBtn = document.getElementById("settingsBtn");
 
-let allType = [pauseBtn, volumeBtn, volumeRange, theme, settingsBtn];
+let allType = [pauseBtn, volumeBtn, volumeRange, themeMode, settingsBtn];
 
 
 /* VARIABILI ==> script.js */
@@ -26,7 +26,6 @@ let actualTimer = localStorage.getItem("timer");
 
 
 /* VARIABILI ==> movement.js */
-
 let pl1 = localStorage.getItem("pl1");
 let pl2 = localStorage.getItem("pl2");
 let ab1 = localStorage.getItem("ab1");

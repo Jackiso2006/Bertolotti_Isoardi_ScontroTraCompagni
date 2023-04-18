@@ -78,7 +78,7 @@ let leaderboard = [
         name: "Username",
         score: 363,
         skin: "gabibbo",
-    },
+    }
 ];
 
 let position = document.getElementById("position");
@@ -87,6 +87,7 @@ let score = document.getElementById("score");
 let skin = document.getElementById("skin");
 let searchBtn = document.getElementById("searchBtn");
 let top3Btn = document.getElementById("top3Btn");
+let replayBtn = document.getElementById("replayBtn");
 
 let player1 = {
     name: localStorage.getItem("player1"),
@@ -191,5 +192,16 @@ searchBtn.addEventListener("click", function () {
         for (let i = 1; i < leaderboard.length + 1; i++)
             if (player.children[i].classList.contains("ris"))
                 player.children[i].classList.remove("ris");
+    }
+});
+
+replayBtn.addEventListener("click", function(){
+    if (confirm("Rigiocando cancellerai i punteggi dei tuoi giocatori,\ncontinuare?")) {
+        
+        localStorage.setItem("timer","180");
+        localStorage.setItem("score1","0");
+        localStorage.setItem("score2","0");
+
+        window.open("./game.html","_parent");
     }
 });
