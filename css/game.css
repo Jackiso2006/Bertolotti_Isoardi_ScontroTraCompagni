@@ -294,6 +294,7 @@ header > div:hover > .suggestWindow::before{ content: "Regola il  volume"; }
 }
 
 #menu a , #menu button{
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -627,9 +628,9 @@ div.name , div.score , #timer{
         top: 0px;
     }
 
-    div.name{
+/*     div.name{
         top: 50px;
-    }
+    } */
 
     #img1{
         transform: scale(70%) rotateY(180deg);
@@ -658,7 +659,6 @@ div.name , div.score , #timer{
     .control{
         height: 160px;
     }
-
 }
 
 @media screen and (max-width: 769px) {

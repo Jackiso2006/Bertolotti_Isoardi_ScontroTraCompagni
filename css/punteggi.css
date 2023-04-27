@@ -60,15 +60,15 @@ footer > div , header > div{
     cursor: pointer;
 }
 
-footer > div:hover,  header > a:hover{
+footer > div:hover,  header > button:hover{
     transform: scale(108%);
 }
 
-header > a{
+header > button{
     transition: transform 0.3s;
 }
 
-footer > div > button , header > a{
+footer > div > button , header > button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +85,7 @@ footer > div > button , header > a{
     cursor: pointer;
 }
 
-footer > div > button > span , header > a > span{
+footer > div > button > span , header > button > span{
     font-size: 4.5vh !important;
 }
 
@@ -147,9 +147,9 @@ main > div > div{
     border-right: none;
 }
 
-#skin img{
-    width: 2.66vh;
-    height: 2.66vh;
+#skin > div > img{
+    width: 3.8vh;
+    height: 3.8vh;
 }
 
 main > div > div > div:first-child{
@@ -166,7 +166,7 @@ main > div > div > div{
     align-items: center;
     justify-content: space-around;
     box-sizing: border-box;
-    padding: 1vh;
+    min-height: 5vh;
     width: 100%;
     font-family: "regular";
     font-size: 2vh;
@@ -266,9 +266,9 @@ footer{
         font-size: 1.8vh !important;
     }
     
-    #skin img{
-        width: 2.34vh;
-        height: 2.34vh;
+    #skin > div > img{
+        width: 2.8vh;
+        height: 2.8vh;
     }
     
     footer{
@@ -284,16 +284,24 @@ footer{
     main > div > div > div{
         font-size: 1.5vh !important;
     }
-    
-    #skin img{
-        width: 1.92vh;
-        height: 1.92vh;
-    }
+
     
     header{
         box-sizing: border-box;
         padding: 0 1vh;
         font-size: 3vh;
+    }
+
+    #position{
+        width: 15%;
+    }
+    
+    #player{
+        width: 60%;
+    }
+
+    #skin{
+        display: none;
     }
 
     #search{

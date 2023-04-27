@@ -134,53 +134,6 @@
 }
 
 /*
-    uguale all'animiazione rocket1
-    solo che è adattata per mobile
-*/
-@keyframes rocket1Mobile {
-    5%{
-        opacity: 1;
-    }
-    10%{
-        top: -170%;
-        left: 10%;
-        transform: rotate(30deg);
-    }
-    25%{
-        top: -100%;
-        left: 20%;
-        transform: rotate(-30deg);
-    }
-    40%{
-        top: -150%;
-        left: 30%;
-        transform: rotate(-60deg);
-    }
-    55%{
-        top: -170%;
-        left: 40%;
-        transform: rotate(80deg);
-    }
-    70%{
-        top: -115%;
-        left: 50%;
-        transform: rotate(0deg);
-    }
-    85%{
-        top: -130%;
-        left: 70%;
-        transform: rotate(10deg);
-        opacity: 1;
-    }
-    100%{
-        top: -140%;
-        left: 100%;
-        transform: rotate(0deg);
-        opacity: 0;
-    }
-}
-
-/*
     l'animazione rocket1 ricrea, per il GIOCATORE 1,
     la comparsa di un razzo e il suo spostamento lungo tutto
     lo spazio di gioco
@@ -235,55 +188,7 @@
     uguale all'animiazione rocket1
     solo che è adattata per mobile
 */
-@keyframes rocket2Mobile {
-    5%{
-        opacity: 1;
-    }
-    10%{
-        top: -170%;
-        right: 10%;
-        transform: rotate(150deg);
-    }
-    20%{
-        top: -100%;
-        right: 20%;
-        transform: rotate(210deg);
-    }
-    30%{
-        top: -150%;
-        right: 30%;
-        transform: rotate(240deg);
-    }
-    45%{
-        top: -170%;
-        right: 40%;
-        transform: rotate(100deg);
-    }
-    60%{
-        top: -115%;
-        right: 50%;
-        transform: rotate(180deg);
-    }
-    70%{
-        top: -130%;
-        right: 70%;
-        transform: rotate(170deg);
-        opacity: 1;
-    }
-    100%{
-        top: -140%;
-        right: 100%;
-        transform: rotate(180deg);
-        opacity: 0;
-    }
-}
-
-/*
-    uguale all'animiazione attack2
-    solo che è adattata per mobile
-*/
 @keyframes attack2Mobile {
-
     35%{
         transform: translateX(-100px) translateY(100px) rotate(100deg) scale(50%);
         filter: saturate(15);
