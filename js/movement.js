@@ -77,7 +77,6 @@ function assegna(ability, ab, abilityBtn, player) {
 
 
 function move(player, type) {
-
     /* tolgo la sbarra di metà campo se non è ancora stata tolta */
     if (document.querySelector("main > #separator")) {
         /* RIMUOVI SEPARATORE E AVVIA TIMER */
@@ -85,7 +84,7 @@ function move(player, type) {
         skip();
     }
 
-    if (actualTimer != 0 && document.querySelector("body > #menu") == null) {
+    if (actualTimer > 0 && document.querySelector("body > #menu") == null) {
         if (player == 1)
             settingStyle(img1, type, 1);
         else
@@ -95,109 +94,96 @@ function move(player, type) {
 
 /* funzione che permette   spostamento tramite tasti */
 document.addEventListener("keydown", function (e) {
+    if (actualTimer > 0) {
+        if (!document.querySelector("body > #menu")) {
+            switch (e.key) {
+                case "8":
+                    move(2, 8);
+                    break;
 
-    if (!document.querySelector("body > #menu")) {
-        switch (e.key) {
-            case "8":
-                move(2, 8);
-                break;
+                case "5":
+                    move(2, 2);
+                    break;
 
-            case "5":
-                move(2, 2);
-                break;
+                case "6":
+                    move(2, 6);
+                    break;
 
-            case "6":
-                move(2, 6);
-                break;
+                case "4":
+                    move(2, 4);
+                    break;
 
-            case "4":
-                move(2, 4);
-                break;
+                case "w":
+                    move(1, 8);
+                    break;
 
-            case "w":
-                move(1, 8);
-                break;
+                case "s":
+                    move(1, 2);
+                    break;
 
-            case "s":
-                move(1, 2);
-                break;
+                case "a":
+                    move(1, 4);
+                    break;
 
-            case "a":
-                move(1, 4);
-                break;
+                case "d":
+                    move(1, 6);
+                    break;
 
-            case "d":
-                move(1, 6);
-                break;
+                case "q":
+                    move(1, 7);
+                    break;
 
-            /* ruota sinistra player 1 */
-            case "q":
-                move(1, 7);
-                break;
+                case "e":
+                    move(1, 9);
+                    break;
 
-            /* ruota destra player 1 */
-            case "e":
-                move(1, 9);
-                break;
+                case "7":
+                    move(2, 7);
+                    break;
 
-            /* ruota sinistra player 2 */
-            case "7":
-                move(2, 7);
-                break;
+                case "9":
+                    move(2, 9);
+                    break;
 
-            /* ruota destra player 2 */
-            case "9":
-                move(2, 9);
-                break;
+                /* abilitò 1 */
+                case "z":
+                    move(1, 10);
+                    break;
 
-            /* abilità 1 */
-            case "z":
-                move(1, 10);
-                break;
+                /* abilità 2 */
+                case "c":
+                    move(1, 20);
+                    break;
 
-            /* abilità 2 */
-            case "c":
-                move(1, 20);
-                break;
+                /* abilità 3 */
+                case "1":
+                    move(2, 10);
+                    break;
 
-            /* abilità 3 */
-            case "1":
-                move(2, 10);
-                break;
+                /* abilità 4 */
+                case "3":
+                    move(2, 20);
+                    break;
 
-            /* abilità 4 */
-            case "3":
-                move(2, 20);
-                break;
+                case "Escape":
+                    pauseBtn.click();
+                    break;
 
-            case "Escape":
-                pauseBtn.click();
-                break;
+                case "\\":
+                    themeMode.click();
+                    break;
+            }
+        } else {
+            switch (e.key) {
+                /* compare il menu */
+                case "Escape":
+                    pauseBtn.click();
+                    break;
 
-            /* cambia tema tasto ==> "\"  */
-            case "\\":
-                themeMode.click();
-                break;
-        }
-    } else {
-        switch (e.key) {
-            /* compare il menu */
-            case "Escape":
-
-                if (actualTimer != 0) {
-                    resumeTimer(actualTimer);
-
-                    document.querySelector("body > #menu").remove();
-
-                    document.body.style.backgroundBlendMode = "";
-                    document.querySelector("main").style.opacity = "";
-                }
-                break;
-
-            /* cambia tema tasto ==> "\"  */
-            case "\\":
-                themeMode.click();
-                break;
+                case "\\":
+                    themeMode.click();
+                    break;
+            }
         }
     }
 });
@@ -265,7 +251,7 @@ function settingStyle(image, type, player) {
             } else if (ability3[0].style.animation == "") {
                 setAbility(ability3, 2, ab3, image);
             }
-
+            
             break;
 
         case 20:

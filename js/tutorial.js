@@ -112,9 +112,8 @@ function changePosition(device) {
 /*  AZZERA LO STILE IMPOSTATO NEL JAVASCRIPT E RIASSEGNA QUELLO DEL CSS  */
 function azzera() {
 
-    allType.forEach(val => {
-        val.style = null;
-    });
+    for (let i = 0; i < allType.length; i++)
+        allType[i].style = null;
 
     header.style = null;
     separator.style = null;
@@ -193,5 +192,5 @@ function skip() {
     changePosition(device);
 
     tutorial.remove();
-    resumeTimer(180);
+    resumeTimer(actualTimer);
 }

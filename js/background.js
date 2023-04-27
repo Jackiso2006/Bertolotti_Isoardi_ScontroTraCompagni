@@ -5,6 +5,9 @@ let onOffs = document.getElementsByClassName("onOff");
 
 let gamePage = document.URL.slice(-10);
 
+for (let i = 0; i < anchors.length; i++)
+    anchors[i].href += "?" + gamePage;
+
 if (gamePage == "ver=gamePg") {
     closeBtn.href = "../game.html";
     closeMobile.href = "../game.html";
@@ -20,9 +23,6 @@ if (gamePage == "ver=gamePg") {
     closeBtn.href = "../punteggi.html";
     closeMobile.href = "../punteggi.html";
 }
-
-for (let i = 0; i < anchors.length; i++)
-    anchors[i].href += "?" + gamePage;
 
 for (let i = 0; i < onOffs.length; i++) {
     onOffs[i].addEventListener("click", function () {

@@ -88,6 +88,7 @@ let skin = document.getElementById("skin");
 let searchBtn = document.getElementById("searchBtn");
 let top3Btn = document.getElementById("top3Btn");
 let replayBtn = document.getElementById("replayBtn");
+let homeBtn = document.getElementById("homeBtn");
 
 let player1 = {
     name: localStorage.getItem("player1"),
@@ -105,11 +106,10 @@ findPosition(player1);
 findPosition(player2);
 
 function findPosition(pl) {
-    let i = leaderboard.length;
+    let i = leaderboard.length - 1;
 
-    do
+    while (i >= 0 && pl.score >= leaderboard[i].score)
         i--;
-    while (i >= 0 && pl.score >= leaderboard[i].score);
 
     /* aggiunge al vettore i due giocatori */
     leaderboard.splice((i + 1), 0, pl);
@@ -159,7 +159,7 @@ searchBtn.addEventListener("click", function () {
 
         let div = document.createElement("div");
         div.id = "search";
-        div.innerHTML = `<div>Cerca un giocatore...<span class="material-symbols-rounded">close</span></div><input type="text" placeholder="Cerca qui...">`
+        div.innerHTML = `<div>Cerca un giocatore...<span class="material-symbols-rounded">close</span></div><input type="text" placeholder="Cerca qui...">`;
         document.body.appendChild(div);
 
         div.querySelector("span").addEventListener("click", function () {
@@ -195,13 +195,20 @@ searchBtn.addEventListener("click", function () {
     }
 });
 
-replayBtn.addEventListener("click", function(){
+replayBtn.addEventListener("click", function () {
     if (confirm("Rigiocando cancellerai i punteggi dei tuoi giocatori,\ncontinuare?")) {
-        
-        localStorage.setItem("timer","180");
-        localStorage.setItem("score1","0");
-        localStorage.setItem("score2","0");
 
-        window.open("./game.html","_parent");
+        localStorage.setItem("timer", "180");
+        localStorage.setItem("score1", "0");
+        localStorage.setItem("score2", "0");
+
+        window.open("./game.html", "_self");
+    }
+});
+
+homeBtn.addEventListener("click", function () {
+    if (confirm("Tornando alla pagina iniziale cancellerai i punteggi dei tuoi giocatori,\ncontinuare?")) {
+        localStorage.clear();
+        window.open("./index.html", "_self");
     }
 });

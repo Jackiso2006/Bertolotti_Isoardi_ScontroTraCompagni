@@ -118,7 +118,7 @@ function resetAbility(number, index) {
 
 function findSelected(number) {
     let labels;
-    let i = -1;
+    let i = 0;
 
     if (number == 0)
         //PRENDO I PERSONAGGI
@@ -130,9 +130,8 @@ function findSelected(number) {
         //PRENDO LE ABILITA' NUMERO 2
         labels = section.querySelectorAll("div > div:last-child > label");
 
-    do
-        i++;
     while (i < labels.length && !labels[i].classList.contains("checked"));
+        i++;
 
     if (i == labels.length)
         i = -1;
@@ -293,7 +292,7 @@ for (let i = 0; i < buttons.length; i++) {
                         cards[j].classList.remove("checked");
                 }
 
-                selectedCharacter = 0;
+                selectedCharacter = -1;
                 currentSection++;
             }
 
@@ -353,8 +352,8 @@ for (let i = 0; i < buttons.length; i++) {
                     section = document.querySelector("section");
                 }
 
-                selectedAbilities1 = 0;
-                selectedAbilities2 = 0;
+                selectedAbilities1 = -1;
+                selectedAbilities2 = -1;
                 currentSection++;
             }
         }
@@ -375,11 +374,10 @@ for (let i = 0; i < imgs.length; i++) {
 
         localStorage.setItem("bkg", input.value);
 
-        let j = -1;
+        let j = 0;
 
-        do
+        while (j < imgs.length && !imgs[j].classList.contains("checked"))
             j++;
-        while (j < imgs.length && !imgs[j].classList.contains("checked"));
 
         imgs[j].classList.remove("checked");
 
@@ -425,4 +423,5 @@ document.querySelector("#location > a").addEventListener("click", function(){
         localStorage.setItem("bkg","backDesert");
         
     localStorage.setItem("timer", "180");
+    sessionStorage.clear();
 })

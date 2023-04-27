@@ -6,79 +6,52 @@ riproduce l'animazione iniziale
 
 if (sessionStorage.alreadyLoaded == undefined) {
     sessionStorage.alreadyLoaded = "true";
+    localStorage.setItem("score1", "0");
+    localStorage.setItem("score2", "0");
 } else {
     document.getElementById("sectionAnimation").remove();
     tutorial.remove();
     separator.remove();
     azzera();
 
-    /* 180 secondi ==> 3 minuti */
-    resumeTimer(actualTimer);
-
     let minutues = Math.floor(actualTimer / 60);
     let seconds = actualTimer % 60;
 
-    if (seconds > 11)
+    if (seconds > 9)
         timerDiv.textContent = minutues + ":" + seconds;
     else
         timerDiv.textContent = minutues + ":0" + seconds;
 
-}
-
-document.querySelectorAll("div.name")[0].textContent = player1Name;
-document.querySelectorAll("div.name")[1].textContent = player2Name;
-
-/* document.getElementById("resumeBtn").href = "./game.html?ver=gamePg"*/
-
-pauseBtn.addEventListener("click", function () {
-    
-    if (!document.querySelector("body > #menu")) {
+    if (actualTimer > 0) {
+        resumeTimer(actualTimer);
+    } else {
         actualTimer = stopTimer();
+        creaMenu("FINITO");
 
-        let menu = document.createElement("div");
-        menu.id = "menu";
-        menu.innerHTML = `<div><span class="material-symbols-rounded">pause</span><span>PAUSA</span></div><div><button id="resumeBtn">Riprendi</button><a href="./settings/crediti.html?ver=gamePg" id="optionAnchor">Opzioni</a><button id="homeBtn">Home</button><button id="leaderboardBtn">Classifica</button></div>`;
-        document.body.appendChild(menu);
+        let transformBtn = document.querySelector("body > #menu > div > button");
+        transformBtn.textContent = "Rigioca";
 
-        menu.querySelector("#optionAnchor").addEventListener("click", function () {
-            localStorage.setItem("timer", actualTimer);
-        });
-
-        document.body.style.backgroundBlendMode = "darken";
-        let main = document.querySelector("main");
-        main.style.opacity = "0.5";
-
-        menu.querySelector("#resumeBtn").addEventListener("click", function () {
-            if (actualTimer != 0 && !document.querySelector("body > #tutorial"))
-                resumeTimer(actualTimer);
-
-            menu.remove();
-
-            document.body.style.backgroundBlendMode = "";
-            main.style.opacity = "";
-        });
-
-
-        menu.querySelector("#leaderboardBtn").addEventListener("click", function () {
-
-            if (confirm("Se vai alla classifica la partita terminerà,\ncontinuare?")) {
-                localStorage.setItem("score1", score1);
-                localStorage.setItem("score2", score2);
-                localStorage.setItem("timer", "180");
-                window.open("./punteggi.html", "_parent");
-            }
-        });
-
-        menu.querySelector("#homeBtn").addEventListener("click", function () {
-
-            if (confirm("Se vai alla pagina home la partita terminerà,\ncontinuare?")) {
-                localStorage.setItem("score1", score1);
-                localStorage.setItem("score2", score2);
-                localStorage.clear("timer");
-                window.open("./index.html", "_parent");
-            }
+        transformBtn.addEventListener("click", function () {
+            localStorage.setItem("timer", "180");
+            localStorage.setItem("score1", "0");
+            localStorage.setItem("score2", "0");
+            location.reload();
         });
     }
+}
+
+document.querySelector("div.name").textContent = player1Name;
+document.querySelectorAll("div.name")[1].textContent = player2Name;
+
+pauseBtn.addEventListener("click", function () {
+
+    if (!document.querySelector("body > #menu"))
+        creaMenu("PAUSA");
+});
+
+settingsBtn.addEventListener("click", function () {
+
+    localStorage.setItem("timer", stopTimer());
 });
 
 themeMode.addEventListener("click", function () {
@@ -107,13 +80,61 @@ themeMode.addEventListener("click", function () {
     }
 });
 
+function creaMenu(msg) {
+    actualTimer = stopTimer();
+
+    let menu = document.createElement("div");
+    menu.id = "menu";
+    menu.innerHTML = `<div><span class="material-symbols-rounded">pause</span><span>` + msg + `</span></div><div><button id="resumeBtn">Riprendi</button><a href="./settings/crediti.html?ver=gamePg" id="optionAnchor">Opzioni</a><button id="homeBtn">Home</button><button id="leaderboardBtn">Classifica</button></div>`;
+    document.body.appendChild(menu);
+
+    menu.querySelector("#optionAnchor").addEventListener("click", function () {
+        localStorage.setItem("timer", actualTimer);
+    });
+
+    document.body.style.backgroundBlendMode = "darken";
+    let main = document.querySelector("main");
+    main.style.opacity = "0.5";
+
+    menu.querySelector("#resumeBtn").addEventListener("click", function () {
+
+        if (actualTimer > 0 && !document.querySelector("body > #tutorial"))
+            resumeTimer(actualTimer);
+
+        menu.remove();
+
+        document.body.style.backgroundBlendMode = "";
+        main.style.opacity = "";
+    });
+
+
+    menu.querySelector("#leaderboardBtn").addEventListener("click", function () {
+
+        if (confirm("Se vai alla classifica la partita terminerà,\ncontinuare?")) {
+            localStorage.setItem("score1", score1);
+            localStorage.setItem("score2", score2);
+            localStorage.setItem("timer", "180");
+            window.open("./punteggi.html", "_self");
+        }
+    });
+
+    menu.querySelector("#homeBtn").addEventListener("click", function () {
+
+        if (confirm("Se vai alla pagina home la partita terminerà,\ncontinuare?")) {
+            localStorage.clear();
+            window.open("./index.html", "_self");
+        }
+    });
+}
 
 function stopTimer() {
     /* STOPPO IL TIMER */
     clearInterval(timerIstance);
 
-    let remainingMin = parseInt(timerDiv.textContent.split(":")[0]);
-    let remainingSec = parseInt(timerDiv.textContent.split(":")[1]);
+    let timeArray = timerDiv.textContent.split(":");
+
+    let remainingMin = parseInt(timeArray[0]);
+    let remainingSec = parseInt(timeArray[1]);
 
     return ((remainingMin * 60) + remainingSec);
 }
@@ -121,7 +142,7 @@ function stopTimer() {
 function resumeTimer(timeInSeconds) {
     /* RIPRESA DEL TIMER */
 
-    timerIstance = setInterval(() => {
+    timerIstance = setInterval(function () {
         timeInSeconds--;
 
         let minutues = Math.floor(timeInSeconds / 60);
@@ -133,8 +154,17 @@ function resumeTimer(timeInSeconds) {
             timerDiv.textContent = minutues + ":0" + seconds;
 
             if (timeInSeconds == 0) {
-                clearInterval(timerIstance);
-                alert("time scaduto!");
+                creaMenu("FINITO");
+                localStorage.setItem("timer", "0");
+
+                let transformBtn = document.querySelector("body > #menu > div > button");
+                transformBtn.textContent = "Rigioca";
+                transformBtn.addEventListener("click", function () {
+                    localStorage.setItem("timer", "180");
+                    localStorage.setItem("score1", "0");
+                    localStorage.setItem("score2", "0");
+                    location.reload();
+                });
             }
         }
     }, 1000);

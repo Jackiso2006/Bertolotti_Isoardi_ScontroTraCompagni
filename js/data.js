@@ -22,8 +22,7 @@ let player1Name = localStorage.getItem("player1");
 let player2Name = localStorage.getItem("player2");
 let timerDiv = document.getElementById("timer");
 let timerIstance;
-let actualTimer = localStorage.getItem("timer");
-
+let actualTimer = parseInt(localStorage.getItem("timer"));
 
 /* VARIABILI ==> movement.js */
 let pl1 = localStorage.getItem("pl1");
@@ -34,9 +33,9 @@ let ab3 = localStorage.getItem("ab3");
 let ab4 = localStorage.getItem("ab4");
 let bkg = localStorage.getItem("bkg");
 
-/* settaggio punteggi a zero */
-localStorage.setItem("score1", 0);
-localStorage.setItem("score2", 0);
+let score1Div = document.querySelector("div.score");
+let score2Div = document.querySelectorAll("div.score")[1];
 
+/* settaggio punteggi a zero */
 let score1 = localStorage.getItem("score1");
 let score2 = localStorage.getItem("score2");
