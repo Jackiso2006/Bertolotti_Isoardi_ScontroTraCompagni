@@ -345,6 +345,14 @@
     100%{ transform: scale(100%); }
 }
 
+.scoreChange{ animation: scorePulse 0.3s linear; }
+
+@keyframes scorePulse {
+    0%  { scale: 100%; }
+    50% { scale: 110%; }
+    100%{ scale: 100%; }
+}
+
 /* ANIMIAZIONE PER VITA SIMILE A DOOM */
 /* @keyframes lifeChange {
     0%   { background-color: #83FA21;   transform: scale(110%) skewX(30deg); }

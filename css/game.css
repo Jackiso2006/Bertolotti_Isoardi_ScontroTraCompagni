@@ -352,8 +352,10 @@ section {
 /* BOX DEL NOME GIOCATORE */
 
 div.header{
+    z-index: 5;
     position: absolute;
     top: 10px;
+    width: 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -628,10 +630,6 @@ div.name , div.score , #timer{
         top: 0px;
     }
 
-/*     div.name{
-        top: 50px;
-    } */
-
     #img1{
         transform: scale(70%) rotateY(180deg);
     }
@@ -745,12 +743,12 @@ div.name , div.score , #timer{
     }
 
     section:first-child div.header{
-        left: -27px;
+        left: -50px;
         transform: scale(60%) rotate(-90deg);
     }
 
     section:last-child div.header {
-        right: -27px;
+        right: -50px;
         transform: scale(60%) rotate(90deg);
     }
 
