@@ -72,7 +72,7 @@ themeMode.addEventListener("click", function () {
 
         for (let i = 0; i < allType.length; i++)
             allType[i].classList.replace("darkMode", "lightMode");
-
+        
         joystick[0].classList.replace("darkMode", "lightMode");
         joystick[1].classList.replace("darkMode", "lightMode");
 
@@ -167,5 +167,20 @@ function resumeTimer(timeInSeconds) {
                 });
             }
         }
+    }, 1000);
+}
+
+
+function changeScore(scoreDiv, scorePoints) {
+
+    setInterval(function () {
+        scorePoints += Math.floor(Math.random() * 600);
+        scoreDiv.textContent = "Score : " + scorePoints;
+        scoreDiv.classList.add("scoreChange");
+    
+        setTimeout(function () {
+            scoreDiv.classList.remove("scoreChange");
+        }, 300);
+    
     }, 1000);
 }

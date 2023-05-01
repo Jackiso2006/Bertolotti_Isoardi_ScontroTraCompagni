@@ -37,5 +37,5 @@ let score1Div = document.querySelector("div.score");
 let score2Div = document.querySelectorAll("div.score")[1];
 
 /* settaggio punteggi a zero */
-let score1 = localStorage.getItem("score1");
-let score2 = localStorage.getItem("score2");
+let score1 = parseInt(localStorage.getItem("score1"));
+let score2 = parseInt(localStorage.getItem("score2"));
