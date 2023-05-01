@@ -14,17 +14,22 @@ if (sessionStorage.alreadyLoaded == undefined) {
     separator.remove();
     azzera();
 
-    let minutues = Math.floor(actualTimer / 60);
-    let seconds = actualTimer % 60;
-
-    if (seconds > 9)
-        timerDiv.textContent = minutues + ":" + seconds;
-    else
-        timerDiv.textContent = minutues + ":0" + seconds;
+    score1Div.textContent = "Score : " + score1;
+    score2Div.textContent = "Score : " + score2;
 
     if (actualTimer > 0) {
         resumeTimer(actualTimer);
+
+        let minutues = Math.floor(actualTimer / 60);
+        let seconds = actualTimer % 60;
+
+        if (seconds > 9)
+            timerDiv.textContent = minutues + ":" + seconds;
+        else
+            timerDiv.textContent = minutues + ":0" + seconds;
+
     } else {
+
         actualTimer = stopTimer();
         creaMenu("FINITO");
 
@@ -72,7 +77,7 @@ themeMode.addEventListener("click", function () {
 
         for (let i = 0; i < allType.length; i++)
             allType[i].classList.replace("darkMode", "lightMode");
-        
+
         joystick[0].classList.replace("darkMode", "lightMode");
         joystick[1].classList.replace("darkMode", "lightMode");
 
@@ -155,10 +160,12 @@ function resumeTimer(timeInSeconds) {
 
             if (timeInSeconds == 0) {
                 creaMenu("FINITO");
+
                 localStorage.setItem("timer", "0");
 
                 let transformBtn = document.querySelector("body > #menu > div > button");
                 transformBtn.textContent = "Rigioca";
+
                 transformBtn.addEventListener("click", function () {
                     localStorage.setItem("timer", "180");
                     localStorage.setItem("score1", "0");
@@ -170,17 +177,12 @@ function resumeTimer(timeInSeconds) {
     }, 1000);
 }
 
-
 function changeScore(scoreDiv, scorePoints) {
 
-    setInterval(function () {
-        scorePoints += Math.floor(Math.random() * 600);
-        scoreDiv.textContent = "Score : " + scorePoints;
-        scoreDiv.classList.add("scoreChange");
-    
-        setTimeout(function () {
-            scoreDiv.classList.remove("scoreChange");
-        }, 300);
-    
-    }, 1000);
+    scoreDiv.textContent = "Score : " + scorePoints;
+    scoreDiv.classList.add("scoreChange");
+
+    setTimeout(function () {
+        scoreDiv.classList.remove("scoreChange");
+    }, 300);
 }
