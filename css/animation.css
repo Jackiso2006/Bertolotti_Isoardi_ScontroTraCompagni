@@ -184,6 +184,100 @@
     }
 }
 
+@keyframes rocket1Mobile {
+    5%{
+        opacity: 1;
+    }
+    10%{
+        top: 50vh;
+        right: 100vw;
+        transform: rotate(-30deg);
+    }
+    20%{
+        top: 20vh;
+        right: 100vw;
+        transform: rotate(30deg);
+    }
+    30%{
+        top: 0vh;
+        right: 110vw;
+        transform: rotate(60deg);
+    }
+    45%{
+        top: -15vh;
+        right: 105vw;
+        transform: rotate(-80deg);
+    }
+    60%{
+        top: -25vh;
+        right: 90vw;
+        transform: rotate(0deg);
+    }
+    70%{
+        top: -35vh;
+        right: 95vw;
+        transform: rotate(-10deg);
+        opacity: 1;
+    }
+    100%{
+        top: -50vh;
+        right: 100vw;
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+}
+
+/*
+    l'animazione rocket1 ricrea, per il GIOCATORE 1,
+    la comparsa di un razzo e il suo spostamento lungo tutto
+    lo spazio di gioco
+*/
+@keyframes rocket2Mobile {
+    0%{
+        transform: rotate(180deg);
+    }
+    5%{
+        opacity: 1;
+    }
+    10%{
+        top: 50vh;
+        right: 100vw;
+        transform: rotate(-30deg);
+    }
+    20%{
+        top: 20vh;
+        right: 100vw;
+        transform: rotate(30deg);
+    }
+    30%{
+        top: 0vh;
+        right: 110vw;
+        transform: rotate(60deg);
+    }
+    45%{
+        top: -15vh;
+        right: 105vw;
+        transform: rotate(-80deg);
+    }
+    60%{
+        top: -25vh;
+        right: 90vw;
+        transform: rotate(0deg);
+    }
+    70%{
+        top: -35vh;
+        right: 95vw;
+        transform: rotate(-10deg);
+        opacity: 1;
+    }
+    100%{
+        top: -50vh;
+        right: 100vw;
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+}
+
 /*
     uguale all'animiazione rocket1
     solo che è adattata per mobile
@@ -210,7 +304,6 @@
 
 
 
-/* queste sono le animazione per la versione CON JAVASCRIPT */
 /* queste sono le animazione per la versione CON JAVASCRIPT */
 
 @keyframes grenade1 {
@@ -291,13 +384,92 @@
     100%{right: 200%; opacity: 0;}
 }
 
+/* queste sono le animazione per la versione CON JAVASCRIPT da mobile */
+
+@keyframes grenade1Mobile {
+    from {
+        opacity: 1;
+        rotate: 0deg;
+        top: 50vh;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        rotate: 360deg;
+        top: -50vh;
+    }
+}
+
+@keyframes grenade2Mobile {
+    from {
+        opacity: 1;
+        rotate: 0deg;
+        top: 50vh;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        rotate: 360deg;
+        top: -50vh;
+    }
+}
+
+@keyframes fire1Mobile {
+    from{top: 50vh;opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
+
+@keyframes fire2Mobile {
+    from{top: 50vh; opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
+
+@keyframes yo1Mobile {
+    from{top: 50vh;opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
+
+@keyframes yo2Mobile {
+    from{top: 50vh; opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
+
+@keyframes laser1Mobile {
+    from{top: 50vh;opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
+
+@keyframes laser2Mobile {
+    from{top: 50vh; opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
+
+@keyframes cSharp1Mobile {
+    from{top: 50vh;opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
+
+@keyframes cSharp2Mobile {
+    from{top: 50vh; opacity: 1;}
+    75% {opacity: 1;}
+    100%{top: -50vh; opacity: 0;}
+}
 
 /*
 	le seguenti animazioni
 	riguardano le animazioni di avvio
 */
-
-
 @keyframes circleRotate {
     from{
         opacity: 0.2;

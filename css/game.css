@@ -14,7 +14,7 @@
 #sectionAnimation{
     z-index: 0;
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -67,6 +67,7 @@
     content: "Loading";
     animation: loadingText cubic-bezier(0.59, 0.98, 0.64, 0.62) 1.9s 2;
 }
+ 
 
 /* FINE PARTE RELATIVA ALL' ANIMAZIONE INIZIALE */
 
@@ -706,7 +707,7 @@ div.name , div.score , #timer{
         left: 30%;
         width: 40%;
         height: 40%;
-        transform: rotate(-90deg);
+        transform: rotate(90deg);
     }
 
     #menu a:hover , #menu button:hover{

@@ -33,9 +33,15 @@ img2.style.top = "40%";
 
 img1.style.rotate = "0deg";
 img2.style.rotate = "0deg";
-
-img1.style.left = "10%";
-img2.style.right = "10%";
+    
+if(window.innerWidth < 769){ 
+    img1.style.left = "40%";
+    img2.style.right = "40%";
+}
+else{
+    img1.style.left = "10%";
+    img2.style.right = "10%";
+}
 
 //SETTI ANIMAZIONI E NOME ABILITA'
 
@@ -47,7 +53,11 @@ let animation4 = assegna(ability4, ab4, abilityBtn4, 2);
 
 function assegna(ability, ab, abilityBtn, player) {
 
-    let animation = ab + player + " ";
+    let animation = "";
+    if(window.innerWidth < 769)
+        animation = ab + player + "Mobile" + " ";
+    else
+        animation = ab + player + " ";
 
     for (let i = 0; i < ability.length; i++)
         ability[i].src = "./img/" + ab + ".png";
