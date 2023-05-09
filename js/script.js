@@ -159,6 +159,7 @@ function resumeTimer(timeInSeconds) {
             timerDiv.textContent = minutues + ":0" + seconds;
 
             if (timeInSeconds == 0) {
+                clearInterval(timerIstance)
                 creaMenu("FINITO");
 
                 localStorage.setItem("timer", "0");
