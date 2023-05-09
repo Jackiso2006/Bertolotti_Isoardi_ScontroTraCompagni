@@ -68,6 +68,8 @@ let section = document.querySelector("section");
 let allInput = section.querySelectorAll("input");
 let span = section.querySelector("span");
 let buttons = document.querySelectorAll("section > button");
+let frecce = document.getElementsByClassName("freccia");
+let frecceLuoghi = document.querySelectorAll("#containerLuogo > a");
 //Contatore di sezioni
 let currentSection = 1;
 //Indice del personaggio selezionato
@@ -92,6 +94,7 @@ if (window.innerWidth < 769) {
 }
 
 function resetCharacter(index) {
+
     let label = section.querySelector("label");
     label.id = character[index].value;
     label.querySelector("h3").textContent = character[index].name;
@@ -117,6 +120,7 @@ function resetAbility(number, index) {
 }
 
 function findSelected(number) {
+
     let labels;
     let i = 0;
 
@@ -130,17 +134,11 @@ function findSelected(number) {
         //PRENDO LE ABILITA' NUMERO 2
         labels = section.querySelectorAll("div > div:last-child > label");
 
-    while (i < labels.length && !labels[i].classList.contains("checked"));
-        i++;
-
-    if (i == labels.length)
-        i = -1;
-
-    return i;
+    return Array.from(labels).findIndex(label => label.classList.contains("checked"));
 }
 
 //freccia indietro personaggi
-document.getElementsByClassName("freccia")[0].addEventListener("click", function () {
+frecce[0].addEventListener("click", function () {
     if (selectedCharacter != 0) {
         selectedCharacter--;
         resetCharacter(selectedCharacter);
@@ -148,7 +146,7 @@ document.getElementsByClassName("freccia")[0].addEventListener("click", function
 });
 
 //freccia avanti personaggi
-document.getElementsByClassName("freccia")[1].addEventListener("click", function () {
+frecce[1].addEventListener("click", function () {
     if (selectedCharacter != character.length - 1) {
         selectedCharacter++;
         resetCharacter(selectedCharacter);
@@ -156,7 +154,7 @@ document.getElementsByClassName("freccia")[1].addEventListener("click", function
 });
 
 //freccia indietro abilità 1
-document.getElementsByClassName("freccia")[2].addEventListener("click", function () {
+frecce[2].addEventListener("click", function () {
     if (selectedAbilities1 != 0) {
         selectedAbilities1--;
         resetAbility(0, selectedAbilities1);
@@ -164,7 +162,7 @@ document.getElementsByClassName("freccia")[2].addEventListener("click", function
 });
 
 //freccia avanti abilità 1
-document.getElementsByClassName("freccia")[3].addEventListener("click", function () {
+frecce[3].addEventListener("click", function () {
     if (selectedAbilities1 != abilities[0].length - 1) {
         selectedAbilities1++;
         resetAbility(0, selectedAbilities1);
@@ -172,7 +170,7 @@ document.getElementsByClassName("freccia")[3].addEventListener("click", function
 });
 
 //freccia indietro abilità 2
-document.getElementsByClassName("freccia")[4].addEventListener("click", function () {
+frecce[4].addEventListener("click", function () {
     if (selectedAbilities2 != 0) {
         selectedAbilities2--;
         resetAbility(1, selectedAbilities2);
@@ -180,7 +178,7 @@ document.getElementsByClassName("freccia")[4].addEventListener("click", function
 });
 
 //freccia avanti abilità 2
-document.getElementsByClassName("freccia")[5].addEventListener("click", function () {
+frecce[5].addEventListener("click", function () {
     if (selectedAbilities2 != abilities[1].length - 1) {
         selectedAbilities2++;
         resetAbility(1, selectedAbilities2);
@@ -196,6 +194,7 @@ document.getElementById("close").addEventListener("click", function () {
 let previousWidth = window.innerWidth;
 
 window.addEventListener("resize", function () {
+    
     if (previousWidth < 769 && window.innerWidth > 769) {
         // ESEGUITO QUANDO DA MOBILE VAI A PC
 
@@ -206,6 +205,7 @@ window.addEventListener("resize", function () {
             selectedAbilities1 = findSelected(1);
             selectedAbilities2 = findSelected(2);
             resetAbility(0, 0);
+            resetAbility(1, 0);
         }
     }
 
@@ -215,9 +215,9 @@ window.addEventListener("resize", function () {
 
 for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener("click", function () {
-        let k;
 
         if (window.innerWidth > 769) {
+            let k;
 
             if (section.id == "pl") {
                 k = i;
@@ -374,24 +374,21 @@ for (let i = 0; i < imgs.length; i++) {
 
         localStorage.setItem("bkg", input.value);
 
-        let j = 0;
-
-        while (j < imgs.length && !imgs[j].classList.contains("checked"))
-            j++;
+        let j = Array.from(imgs).findIndex(img => img.classList.contains("checked"));
 
         imgs[j].classList.remove("checked");
 
         selectedBackground = i;
-        imgs[selectedBackground].classList.add("checked");
+        imgs[i].classList.add("checked");
     });
 }
 
-document.querySelectorAll("#containerLuogo > a")[0].addEventListener("click", function () {
+frecceLuoghi[0].addEventListener("click", function () {
     if (selectedBackground != 0) {
         imgs[selectedBackground].classList.remove("checked");
 
         selectedBackground--;
-        
+
         let input = imgs[selectedBackground].querySelector("input");
         input.checked = true;
 
@@ -402,7 +399,7 @@ document.querySelectorAll("#containerLuogo > a")[0].addEventListener("click", fu
     }
 });
 
-document.querySelectorAll("#containerLuogo > a")[1].addEventListener("click", function () {
+frecceLuoghi[1].addEventListener("click", function () {
     if (selectedBackground != imgs.length - 1) {
         imgs[selectedBackground].classList.remove("checked");
 
@@ -418,10 +415,17 @@ document.querySelectorAll("#containerLuogo > a")[1].addEventListener("click", fu
     }
 });
 
-document.querySelector("#location > a").addEventListener("click", function(){
+document.querySelector("#location > a").addEventListener("click", function () {
     if (!localStorage.getItem("bkg"))
-        localStorage.setItem("bkg","backDesert");
-        
+        localStorage.setItem("bkg", "backDesert");
+
     localStorage.setItem("timer", "180");
     sessionStorage.clear();
-})
+});
+
+document.body.lastElementChild.addEventListener("click", function(){
+    if (confirm("Tornando indietro perderai le scelte che hai effettuato,\ncontinuare?")) {
+        localStorage.clear();
+        window.open("./index.html","_self");
+    }
+});
