@@ -178,6 +178,17 @@ function resumeTimer(timeInSeconds) {
     }, 1000);
 }
 
+function changeScore(scoreDiv, scorePoints) {
+
+    scoreDiv.textContent = "Score : " + scorePoints;
+    scoreDiv.classList.add("scoreChange");
+
+    setTimeout(function () {
+        scoreDiv.classList.remove("scoreChange");
+    }, 300);
+}
+
+
 function checkCollision(ability, img, tipo, pl) {
     if (tocco(ability, img)) {
 
