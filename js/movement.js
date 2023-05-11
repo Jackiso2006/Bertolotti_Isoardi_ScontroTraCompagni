@@ -54,8 +54,23 @@ let colpito1, colpito2, colpito3, colpito4;
 
 let colpo1 = ability1[0].getBoundingClientRect();
 let colpo2 = ability3[0].getBoundingClientRect();
+let previousWidth= window.innerWidth;
 
+window.addEventListener("resize", function(){
+    if(previousWidth < 769 && window.innerWidth > 769){
+        animation1 = assegna(ability1, ab1, abilityBtn1, 1);
+        animation2 = assegna(ability2, ab2, abilityBtn2, 1);
+        animation3 = assegna(ability3, ab3, abilityBtn3, 2);
+        animation4 = assegna(ability4, ab4, abilityBtn4, 2);
+    } else if(previousWidth > 769 && window.innerWidth < 769) {
+        animation1 = assegna(ability1, ab1, abilityBtn1, 1);
+        animation2 = assegna(ability2, ab2, abilityBtn2, 1);
+        animation3 = assegna(ability3, ab3, abilityBtn3, 2);
+        animation4 = assegna(ability4, ab4, abilityBtn4, 2);
+    }
 
+    previousWidth = window.innerWidth;
+});
 
 function assegna(ability, ab, abilityBtn, player) {
 
