@@ -178,9 +178,40 @@ function resumeTimer(timeInSeconds) {
     }, 1000);
 }
 
-function checkCollision(oggetto1, oggetto2) {
-    var obj1 = oggetto1.getBoundingClientRect();
-    var obj2 = oggetto2.getBoundingClientRect();
+function checkCollision(ability, img, tipo, pl) {
+    if (tocco(ability, img)) {
+
+        switch (tipo) {
+            case "cSharp":
+            case "fire":
+            case "grenade":
+            case "yo":
+                if (pl == 1) {
+                    score1 += 400;
+                    changeScore(score1Div, score1);
+                } else {
+                    score2 += 100;
+                    changeScore(score2Div, score2);
+                }
+                break;
+
+            case "rocket":
+            case "laser":
+                if (pl == 1) {
+                    score1 += 400;
+                    changeScore(score1Div, score1);
+                }
+                else {
+                    score2 += 100;
+                    changeScore(score2Div, score2);
+                }
+        }
+    }
+}
+
+function tocco(oggetto1, oggetto2) {
+    let obj1 = oggetto1.getBoundingClientRect();
+    let obj2 = oggetto2.getBoundingClientRect();
     return (
         obj1.x < obj2.x + obj2.width &&
         obj1.x + obj1.width > obj2.x &&
@@ -197,4 +228,19 @@ function changeScore(scoreDiv, scorePoints) {
     setTimeout(function () {
         scoreDiv.classList.remove("scoreChange");
     }, 300);
+}
+
+function verso(image, pl) {
+    let dir = "";
+
+    if (window.innerWidth >= 769)
+        dir = image.style.top;
+    else {
+        if (pl == 1)
+            dir = image.style.left;
+        else
+            dir = image.style.right;
+    }
+
+    return parseInt(dir);
 }

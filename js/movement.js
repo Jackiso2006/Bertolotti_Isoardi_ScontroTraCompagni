@@ -50,6 +50,12 @@ let animation1 = assegna(ability1, ab1, abilityBtn1, 1);
 let animation2 = assegna(ability2, ab2, abilityBtn2, 1);
 let animation3 = assegna(ability3, ab3, abilityBtn3, 2);
 let animation4 = assegna(ability4, ab4, abilityBtn4, 2);
+let colpito1, colpito2, colpito3, colpito4;
+
+let colpo1 = ability1[0].getBoundingClientRect();
+let colpo2 = ability3[0].getBoundingClientRect();
+
+
 
 function assegna(ability, ab, abilityBtn, player) {
 
@@ -67,11 +73,14 @@ function assegna(ability, ab, abilityBtn, player) {
 
     switch (ab) {
 
-        case "laser":
         case "cSharp":
         case "yo":
         case "fire":
             animation += "1.7s linear 1";
+            break;
+
+        case "laser":
+            animation += "5.5s linear 1";
             break;
 
         case "grenade":
@@ -255,11 +264,18 @@ function settingStyle(image, type, player) {
         case 10:
             //ABILITA' 1 oppure ABILITA' 3
             if (player == 1) {
-                if (ability1[0].style.animation == "")
+                if (ability1[0].style.animation == ""){
                     setAbility(ability1, 1, ab1, image);
+                    colpito1 = setInterval(() => checkCollision(ability1[0], img2, ab1, 1), 200);
+                }
+                else
+                    clearInterval(colpito1);
 
             } else if (ability3[0].style.animation == "") {
                 setAbility(ability3, 2, ab3, image);
+                colpito3 = setInterval(() => checkCollision(ability3[0], img1, ab3, 2), 200);
+            } else {
+                clearInterval(colpito3);
             }
             
             break;
@@ -268,11 +284,18 @@ function settingStyle(image, type, player) {
             //ABILITA' 2 oppure ABILITA' 4
 
             if (player == 1) {
-                if (ability2[0].style.animation == "")
+                if (ability2[0].style.animation == ""){
                     setAbility(ability2, 1, ab2, image);
+                    colpito2 = setInterval(() => checkCollision(ability2[0], img2, ab2, 1), 500);
+                }
+                else
+                    clearInterval(colpito2);
 
             } else if (ability4[0].style.animation == "") {
                 setAbility(ability4, 2, ab4, image);
+                colpito4 = setInterval(() => checkCollision(ability4[0], img1, ab4, 2), 500);
+            } else {
+                clearInterval(colpito4);
             }
     }
 
@@ -282,19 +305,25 @@ function firstAbility(abilityArray, player, image, time) {
 
     if (player == 1) {
 
-        for (let i = 0; i < abilityArray.length; i++) {
-            abilityArray[i].style.left = parseInt(image.style.left) + (i * 10) + "%";
-            abilityArray[i].style.animation = animation1;
+        if (window.innerWidth >= 769) {
+            for (let i = 0; i < abilityArray.length; i++) {
+                abilityArray[i].style.left = parseInt(image.style.left) + (i * 10) + "%";
+                abilityArray[i].style.animation = animation1;
+            }
+        } else {
+            for (let i = 0; i < abilityArray.length; i++) {
+                abilityArray[i].style.left = parseInt(image.style.left) + (i * 10) + "%";
+                abilityArray[i].style.animation = animation1;
+            }
         }
 
         setTimeout(ability1Reset, time);
 
     } else {
-
-        for (let i = 0; i < abilityArray.length; i++) {
-            abilityArray[i].style.right = parseInt(image.style.right) + (i * 10) + "%";
-            abilityArray[i].style.animation = animation3;
-        }
+            for (let i = 0; i < abilityArray.length; i++) {
+                abilityArray[i].style.right = parseInt(image.style.right) + (i * 10) + "%";
+                abilityArray[i].style.animation = animation3;
+            }
 
         setTimeout(ability3Reset, time);
     }
@@ -307,8 +336,19 @@ function setAbility(abilityArray, player, ab, image) {
 
         case "grenade":
 
-            for (let i = 0; i < abilityArray.length; i++)
-                abilityArray[i].style.top = parseInt(image.style.top) + "%";
+            let imageDir = verso(image, player); 
+
+            if (window.innerWidth >= 769) {
+
+                for (let i = 0; i < abilityArray.length; i++)
+                    abilityArray[i].style.top = imageDir + "%";
+
+            } else {
+
+                for (let i = 0; i < abilityArray.length; i++)
+                    abilityArray[i].style.left = imageDir + "%";
+
+            }
 
             if (player == 1)
                 firstAbility(abilityArray, 1, image, 2000);
@@ -342,7 +382,7 @@ function setAbility(abilityArray, player, ab, image) {
 
 
                 //metti la durata del timeout uguale alla durata dell'animazione
-                setTimeout(ability2Reset, 1700);
+                setTimeout(ability2Reset, 5500);
 
             } else {
 
@@ -350,7 +390,7 @@ function setAbility(abilityArray, player, ab, image) {
                 abilityArray[0].style.animation = animation4;
 
                 //metti la durata del timeout uguale alla durata dell'animazione
-                setTimeout(ability4Reset, 1700);
+                setTimeout(ability4Reset, 5500);
 
             }
 
