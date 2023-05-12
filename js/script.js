@@ -3,7 +3,6 @@ la prima volta che è stata caricata la pagina non assegno nulla e dopo la asseg
 così quando riesegue il controllo vede che è già stata assegnata e non
 riproduce l'animazione iniziale
 */
-
 if (sessionStorage.alreadyLoaded == undefined) {
     sessionStorage.alreadyLoaded = "true";
     localStorage.setItem("score1", "0");
