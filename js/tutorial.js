@@ -49,10 +49,6 @@ function changePosition(device) {
                 separator.style.left = 0 + "%";
                 tutorial.style.top = 40 + "%";
                 tutorial.style.left = 15 + "%";
-                break;
-
-            default:
-                break;
         }
 
     } else {
@@ -100,10 +96,6 @@ function changePosition(device) {
             case 5:
                 tutorial.style.top = 40 + "%";
                 tutorial.style.left = 52 + "%";
-                break;
-
-            default:
-                break;
         }
 
     }
@@ -175,8 +167,6 @@ function next() {
             changePosition(device);
             message.innerHTML = "Bene ora avete completato il tutorial. <span>Siete pronti per combattere!</span>";
             nextBtn.textContent = "GIOCA!";
-        default:
-            break;
     }
 
 }
