@@ -112,7 +112,7 @@ function assegna(ability, ab, abilityBtn, player) {
 
 function move(player, type) {
     /* tolgo la sbarra di metà campo se non è ancora stata tolta */
-    if (document.querySelector("main > #separator")) {
+    if (document.querySelector("body > #tutorial")) {
         /* RIMUOVI SEPARATORE E AVVIA TIMER */
         /* 180 secondi ==> 3 minuti */
         skip();
